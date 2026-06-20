@@ -1,5 +1,4 @@
-
-*{
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,27 +24,23 @@ html{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #F5F5F5;
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    background: rgba(255,255,255,0.7);
+    /* box-shadow: 0 8px 30px rgba(0,0,0,0.1); */
+    /* background: rgba(255,255,255,0.7); */
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* .nav-bar.scrolled{
-    width:80%;
-    top:15px;
-} */
 
 .nav-logo{
-    font-size: 2rem;
-    font-weight: 600;
-    font-family: "Lucida Handwriting";
+    font-size: 3rem;
+    font-weight: 800;
+     font-family: "Dancing Script", cursive;
     color: #0f1a1e;
     cursor: pointer;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
     transition:0.3s ease;
 }
 .nav-logo:hover{
@@ -89,8 +84,8 @@ html{
 .footer-content{
   width:100%;
   height:60px;
-  background-color:#ffffff;
-  box-shadow: 0 -18px 10px rgba(0,0,0,0.1);
+  background-color:#F5F5F5;
+  /* box-shadow: 0 -18px 10px rgba(0,0,0,0.1); */
   color:rgb(18, 8, 8);
   font-weight:500;
   font-size:1.3rem;
@@ -226,11 +221,13 @@ html{
     font-weight:600;
     font-family:Georgia;
     max-width:20%;
+    border:none;
+    transition:0.3 ease;
 }
 .c-inputs button:hover{
     background-color:#14ed96;
     color:#3e3e3e;
-    transition:0.3 ease;
+    
 }
 
 
@@ -274,6 +271,12 @@ html{
     padding:15px;
     list-style:none;
     font-family:Georgia;
+}
+.skill-right-box li{
+    list-style:none;
+}
+.skill-right-box h4{
+    color:#464141;
 }
 
 .skill-category{
@@ -475,6 +478,14 @@ html{
     .skill-icon{
         width:28px;
         height:28px;
+    }
+    .skill-right-box ol{
+        font-size:0.9rem;
+        margin:0;
+    }
+    .skill-right-box li{
+        font-size:0.8rem;
+        list-style:none;
     }
 
     /* Projects */

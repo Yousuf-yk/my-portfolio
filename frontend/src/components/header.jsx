@@ -6,10 +6,10 @@ function Header(){
       <nav className="nav-bar" >
         <span className="nav-logo">yousuf.dev</span>
         <ul className="nav-anchor">
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Project</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>  
       </header>

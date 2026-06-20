@@ -3,7 +3,7 @@ import yousufImg from "../assets/photos/yousufimg.jpeg";
 
 function Home(){
     return(
-        <section className="hero-section">
+        <section className="hero-section" id="home">
             <div className="hero-image">
                 <img src={yousufImg} alt="my image" />
             </div>
