@@ -33,7 +33,7 @@ function Contact() {
                 <input type="text" placeholder="Name" name="name" required />
                 <input type="email" placeholder="Email" name="email" required />
                 <input type="tel" placeholder="Number" name="number" />
-                <textarea type="text" placeholder="textarea" name="text" required />
+                <textarea type="text" placeholder="tell me about your project" name="text" required />
                 <button type="submit">Submit</button>
             </form>
         </section>

@@ -124,7 +124,7 @@ function Skills() {
               <li>Operating system</li>
             </ol>
           </div>
-          <div className="skill-right-box">2</div>
+          <div className="skill-right-box">DSA</div>
           <div className="skill-right-box">3</div>
           <div className="skill-right-box">4</div>
         </div>

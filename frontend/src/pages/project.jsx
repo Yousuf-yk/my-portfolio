@@ -3,7 +3,7 @@ import "../index.css";
 const projects = [
   {
     id: 1,
-    name: "Portfolio Website",
+    name: "basic-ecommerce",
     image: "/images/portfolio.png",
     description: "Personal portfolio built using React."
   },
@@ -13,18 +13,6 @@ const projects = [
     image: "/images/weather.png",
     description: "Displays real-time weather information."
   },
-//   {
-//     id: 3,
-//     name: "Portfolio Website",
-//     image: "/images/portfolio.png",
-//     description: "Personal portfolio built using React."
-//   },
-//   {
-//     id: 4,
-//     name: "Weather App",
-//     image: "/images/weather.png",
-//     description: "Displays real-time weather information."
-//   }
 ]
 function Projects() {
     return (
