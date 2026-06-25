@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +7,8 @@
 }
 body {
     background-color: #F5F5F5;
-    background-image: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+    /* background-image: linear-gradient(90deg, #efd5ff 0%, #515ada 100%); */
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 html{
@@ -77,13 +79,14 @@ html{
     cursor:pointer;
 }
 .img-logo{
-     display:flex;
+    display:flex;
     align-items:center;
 }
 .nav-logo{
     font-size: 3rem;
-    font-weight: 800;
-     font-family: "Dancing Script", cursive;
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-style: normal;
     color: #0f1a1e;
     cursor: pointer;
     /* letter-spacing: 1px; */
@@ -131,7 +134,7 @@ html{
 .footer-content{
   width:100%;
   height:60px;
-  background-image: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   /* box-shadow: 0 -18px 10px rgba(0,0,0,0.1); */
   color:rgb(18, 8, 8);
   font-weight:500;
@@ -411,6 +414,8 @@ html{
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .projects-card:hover{
@@ -418,10 +423,28 @@ html{
     box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
+.project-btn {
+  display: inline-block;
+  /* margin-top: 10px; */
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.3s;
+  align-self: flex-end;
+}
+
+.project-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
 .project-img{
     width: 100%;
     height: 220px;
-    object-fit: cover;
+    /* object-fit: cover; */
     display: block;
 }
 
@@ -490,7 +513,9 @@ body {
         gap:10px;
         justify-content:space-around;
     }
-
+    .nav-bar.scrolled{
+        width: 92%;
+    }
     .nav-logo{
         font-size:1.5rem;
     }
@@ -651,16 +676,21 @@ body {
         }
     
         .nav-anchor.active {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            right: 20px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            gap: 50px;
-        }
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 20px;
+        padding: 25px;
+        gap: 25px;
+        border: 1px solid rgba(255,255,255,0.2);
+}
     }
 
     
