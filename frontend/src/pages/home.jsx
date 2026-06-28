@@ -4,15 +4,16 @@ import yousufImg from "../assets/photos/yousufimg.jpeg";
 function Home(){
     return(
         <section className="hero-section" id="home">
-            <div className="hero-image">
+            {/* <div className="hero-image">
                 <img src={yousufImg} alt="my image" />
-            </div>
+            </div> */}
             <div className="hero-content">
-                <h1 className="my-name">Yousuf khan, here</h1>
+                <h1 className="my-name">hi, i'm yousuf <button className="open-work-btn"><span className="status-dot"></span>Open to work</button></h1>
                 <h2 className="my-role">Full stack web developer</h2>
-                <h3 className="stack-used">stack used to build this website : <span className="stack-used">PERN</span></h3>
-                <p className="my-role">I build modern, responsive and interactive, user-friendly web applicaction</p>
-                <p className="my-role">well knowdlege of API's, DBMS, and UI clarity</p>
+                <h3 className="stack-used">Building modern, responsive, and scalable web applications with the PERN stack.
+                    Focused on clean APIs, efficient database design, and intuitive user experiences.</h3>
+                <h3 className="stack-used">Passionate About Clean Code, API Design & User Experience</h3>
+                <h3 className="stack-used">Clean Code. Modern Design. Reliable Performance.</h3>
             </div>
         </section>
     )
