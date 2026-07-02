@@ -40,8 +40,8 @@ function AppContent() {
       {/* Grouping your page sections in a main tag is good semantic HTML */}
       <main>
         <Home />
-        <Skills />
         <Projects />
+        <Skills />
         <Contact />
       </main>
       <Footer />
