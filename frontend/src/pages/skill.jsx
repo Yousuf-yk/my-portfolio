@@ -16,10 +16,6 @@ function Skills() {
     { name: "PostgreSQL", src: "/svg/PostgresSQL.svg" },
   ];
 
-  // const databaseSkills = [
-    
-  // ];
-
   const programmingSkills = [
     { name: "JavaScript", src: "/svg/JavaScript.svg" },
     { name: "Python", src: "/svg/Python.svg" },
@@ -97,8 +93,10 @@ function Skills() {
                   <img
                     src={skill.src}
                     alt={skill.name}
-                    title={skill.name}
-                    className="skill-icon"
+                    className={`skill-icon ${["GitHub", "Express", "Vercel", "chatgpt"].includes(skill.name)
+                        ? "invert-icon"
+                        : ""
+                      }`}
                   />
                 </li>
               ))}
