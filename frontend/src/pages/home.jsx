@@ -18,22 +18,19 @@ function Home(){
                     and delivering fast, user-friendly digital experiences.
                 </h3>
                 <div className="social-buttons">
-                <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-btn">
+                <a href="www.linkedin.com/in/yousuf-khan06" target="_blank" rel="noopener noreferrer" className="social-btn">
                     <FaLinkedin className="icon" />
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" className="social-btn">
+                <a href="https://github.com/Yousuf-yk" target="_blank" rel="noopener noreferrer" className="social-btn">
                     <FaGithub className="icon" />
                     <span>GitHub</span>
                 </a>
-                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" className="social-btn">
+                <a href="https://x.com/yousufKhan_20" target="_blank" rel="noopener noreferrer" className="social-btn">
                     <FaXTwitter className="icon" />
                     <span>twitter</span>
                 </a>
-                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" className="social-btn">
-                    <MdOutlineMarkEmailUnread className="icon" />
-                    <span>email</span>
-                </a>
+                
             </div>
             </div>
             

@@ -8,12 +8,13 @@ let currentDate = new Date();
 let year = currentDate.getFullYear();
 
 
-
+ 
 function Footer(){
     return(
         <footer className="footer-content">
-            <p className="copyright-title"> copyright © by yusuf khan {year}</p>
-            {/* <p className="dynamic-year" > {year} </p> */}
+            <p className="copyright-title"> developed by yousuf khan</p>
+            <p> copyright © {year}</p>            
+
         </footer>
     );
 }
