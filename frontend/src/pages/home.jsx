@@ -5,12 +5,10 @@ import { MdOutlineMarkEmailUnread } from "react-icons/md";
 
 function Home(){
     return(
-        <section className="hero-section" id="home">
+        <section className="hero-section section" id="home">
             <div className="hero-content">
-                <div className="nameAndStatus-dot" >
                     <h1 className="my-name">hi, i'm yousuf </h1>
-                    <button className="open-work-btn"><span className="status-dot"></span>Open to work</button>
-                </div>
+                
                 <h2 className="my-role">Full stack web developer</h2>
                 <h3 className="stack-used">I develop modern web applications using the PERN stack,
                     combining responsive frontend design with robust backend architecture.
@@ -28,10 +26,12 @@ function Home(){
                 </a>
                 <a href="https://x.com/yousufKhan_20" target="_blank" rel="noopener noreferrer" className="social-btn">
                     <FaXTwitter className="icon" />
-                    <span>twitter</span>
-                </a>
-                
+                    <span>X</span>
+                </a> 
             </div>
+                <div className="nameAndStatus-dot" >
+                    <button className="open-work-btn"><span className="status-dot"></span>Available for freelance</button>
+                </div>
             </div>
             
         </section>

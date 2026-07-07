@@ -34,7 +34,7 @@ function Skills() {
 
   return (
     <>
-      <h1 className="skills">Skills</h1>
+      <h1 className="skills text-gradient">Skills</h1>
       <section className="skills-section" id="skill">
         <div className="skill-left">
           <div className="skill-category">

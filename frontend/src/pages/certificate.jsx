@@ -13,8 +13,8 @@ function Certificate() {
   const certificates = [cert1, cert2, cert3, cert4];
 
   return (
-    <section className="certificate-section">
-      <h2>Certificates</h2>
+    <section className="certificate-section section">
+      <h2 className="certificate-section text-gradient">Certificates</h2>
 
       <Swiper
         modules={[Autoplay]}

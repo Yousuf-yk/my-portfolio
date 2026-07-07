@@ -12,8 +12,8 @@ let year = currentDate.getFullYear();
 function Footer(){
     return(
         <footer className="footer-content">
-            <p className="copyright-title"> developed by yousuf khan</p>
-            <p> copyright © {year}</p>            
+            <p className="copyright-title"> developed by yousuf Khan</p>
+            <p>  © {year} All rights reserved</p>            
 
         </footer>
     );

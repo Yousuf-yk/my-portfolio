@@ -22,7 +22,7 @@ function Contact() {
     return (
     <>
         <section className="contact-box" id="contact">
-            <h1 className="c-name">let's work together</h1>
+            <h1 className="c-name text-gradient">let's work together</h1>
             <p className="c-message">send me a message </p>
             <p className="c-info">Fill out the form</p>
         </section>

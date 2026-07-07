@@ -29,6 +29,7 @@ import Contact from "./pages/contact"
 import Skills from "./pages/skill.jsx"
 import Projects from "./pages/project.jsx"
 import Certificate from "./pages/certificate.jsx"
+import QuoteSection from "./components/quoteSection.jsx"
 
 // 1. Create an inner component to consume the theme context
 function AppContent() {
@@ -46,6 +47,7 @@ function AppContent() {
         <Certificate />
         <Contact />
       </main>
+      < QuoteSection />
       <Footer />
     </div>
   );
