@@ -67,16 +67,15 @@ function Header() {
           </ul>
 
           <div className="nav-actions">
+            <div className="neomorphism">
             <DarkModeSwitch
               checked={theme === "warm"}
               onChange={toggleTheme}
               size={28}
             />
+            </div>
 
-            <div
-              className="hamburger"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
+            <div className="hamburger " onClick={() => setMenuOpen(!menuOpen)}>
               ☰
             </div>
           </div>

@@ -748,6 +748,20 @@ body {
     
     .hamburger {
         display: block;
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        
+        /* Pressed (inside) by default */
+        box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.18), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
+        transition: all 0.3s ease;
     }
 
     .nav-anchor {
@@ -1025,6 +1039,11 @@ html[theme="warm"] .c-inputs input:focus,
 html[theme="warm"] .c-inputs textarea:focus {
     border-color: #6366f1;
 }
+html[theme="warm"] .neomorphism {
+    box-shadow:
+        inset 5px 5px 10px rgba(0, 0, 0, 0.45),
+        inset -3px -3px 6px rgba(60, 60, 60, 0.15);
+}
 
 
 /* .nav-bar {
@@ -1049,3 +1068,26 @@ html[theme="warm"] .c-inputs textarea:focus {
 .footer-content{
     padding:100px 0;
 }
+
+
+.neomorphism {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* Pressed (inside) by default */
+  box-shadow:inset 4px 4px 8px rgba(0, 0, 0, 0.18), inset -4px -4px 8px rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* .neomorphism:hover {
+    box-shadow:6px 6px 12px rgba(0, 0, 0, 0.18),-6px -6px 12px rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
+} */
