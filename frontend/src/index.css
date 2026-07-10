@@ -445,16 +445,7 @@ body {
 .secondary-btn:hover span{
     transform:translateY(3px);
 }
-/* .hero-right{
-    position:relative;
-    width:500px;
-    height:600px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
 
-/* Green Gradient Blob */
 
 .image-bg{
     position:absolute;
@@ -465,30 +456,26 @@ body {
         #79f2b6,
         #42d392
     );
-
     border-radius:
         38% 62% 48% 52% /
         30% 35% 65% 70%;
-
     transform:rotate(-10deg);
     filter:blur(2px);
 }
 
-/* Image */
+
 
 .image-card{
     position:relative;
     width:320px;
     height:470px;
     overflow:hidden;
-
     border-radius:
         45% 55% 35% 65%/
         25% 45% 55% 75%;
 
     background:white;
     box-shadow:0 30px 60px rgba(0,0,0,.15);
-
     z-index:2;
 }
 
@@ -496,30 +483,23 @@ body {
     width:100%;
     height:100%;
     object-fit:cover;
-} */
+} 
 
-/* Floating Cards */
+
 
 .floating-card{
     position:absolute;
-
     width:70px;
     height:70px;
-
     background:white;
-
     border-radius:20px;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     font-size:1.6rem;
     font-weight:700;
-
     box-shadow:
     0 15px 35px rgba(0,0,0,.15);
-
     z-index:5;
 }
 
