@@ -13,7 +13,7 @@ function Footer(){
     return(
         <footer className="footer-content">
             <p className="copyright-title"> developed by yousuf Khan</p>
-            <p>  © {year} All rights reserved</p>            
+            <p className="copyright-title">  © {year} All rights reserved</p>            
 
         </footer>
     );
