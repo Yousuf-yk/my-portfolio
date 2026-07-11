@@ -1,25 +1,3 @@
-// import Header from "./components/header"
-// import Footer from "./components/footer"
-// import Home from "./pages/home"
-// import Contact from "./pages/contact"
-// import Skills from "./pages/skill.jsx"
-// import Projects from "./pages/project.jsx"
-// function App(){
-//   return(
-//     <>
-//     <Header />
-//     <Home />
-//     <Skills />
-//     <Projects />
-//     <Contact />
-//     <Footer />
-//     </>
-//   )
-// }
-
-// export default App;
-
-
 import { useContext } from "react";
 import { ThemeProvider, ThemeContext } from "./context/ThemeContext.jsx";
 import Header from "./components/header"
@@ -30,6 +8,7 @@ import Skills from "./pages/skill.jsx"
 import Projects from "./pages/project.jsx"
 import Certificate from "./pages/certificate.jsx"
 import QuoteSection from "./components/quoteSection.jsx"
+
 
 // 1. Create an inner component to consume the theme context
 function AppContent() {
@@ -43,6 +22,7 @@ function AppContent() {
       <main>
         <Home />
         <Projects />
+        
         <Skills />
         <Certificate />
         <Contact />

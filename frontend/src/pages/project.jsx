@@ -7,9 +7,9 @@ const projects = [
     id: 1,
     name: "basic-ecommerce",
     image: Ecommerce,
-    description: "prototype of ecommerce using ejs, node, express, postgres.",
+    description: "Prototype of ecommerce using EJS, Node, Express, Postgres.",
     github: "https://github.com/Yousuf-yk/basic_ecommerce.git",
-    live: "#", // Add your deployed link here
+    live: "#", 
     techStack: ["Node", "Express", "Postgres"],
     status: "Completed"
   },
@@ -17,9 +17,9 @@ const projects = [
     id: 2,
     name: "weather-app",
     image: weatherApp,
-    description: "Displays real-time weather information.",
+    description: "Displays real-time weather information dynamically.",
     github: "https://github.com/Yousuf-yk/weather-app.git",
-    live: "#", // Add your deployed link here
+    live: "#", 
     techStack: ["React", "API"],
     status: "Completed"
   },
@@ -32,7 +32,11 @@ function Projects() {
       <div className="projects-grid">
         {projects.map((project) => (
           <div className="projects-card" key={project.id}>
-            <img src={project.image} alt={project.name} className="project-img" />
+            
+            {/* Image Wrapper for better hover control */}
+            <div className="project-img-wrapper">
+              <img src={project.image} alt={project.name} className="project-img" />
+            </div>
             
             <div className="card-content">
               {/* Header: Title and Links */}
@@ -56,7 +60,6 @@ function Projects() {
                 <p className="tech-label">TECH-STACK</p>
                 <div className="tech-bottom">
                   <div className="tech-icons">
-                    {/* Placeholder circles for tech icons. You can replace the text with actual <img src={...}/> of the tech logos later */}
                     {project.techStack.map((tech, index) => (
                       <div className="tech-circle" key={index} title={tech}>
                         {tech.charAt(0)}

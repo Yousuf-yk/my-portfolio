@@ -18,7 +18,7 @@ function Home(){
                 </h3>
                 <div className="hero-buttons">
 
-                    <a href="#projects" className="primary-btn">
+                    <a href="#project" className="primary-btn">
                         View My Work
                         <span>→</span>
                     </a>

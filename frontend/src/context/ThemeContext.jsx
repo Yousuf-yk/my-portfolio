@@ -21,11 +21,11 @@ export const ThemeProvider = ({ children }) => {
       setTheme((prevTheme) =>
         prevTheme === "classic" ? "warm" : "classic"
       );
-    }, 300);
+    }, 200);
 
     setTimeout(() => {
       setIsBlurring(false);
-    }, 300);
+    }, 200);
   };
 
   const triggerPageBlur = (callback) => {
@@ -33,11 +33,11 @@ export const ThemeProvider = ({ children }) => {
 
     setTimeout(() => {
       if (callback) callback();
-    }, 300);
+    }, 200);
 
     setTimeout(() => {
       setIsBlurring(false);
-    }, 300);
+    }, 200);
   };
 
   return (

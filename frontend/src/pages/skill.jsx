@@ -1,6 +1,10 @@
 import "../index.css";
 import { DiJsBadge } from "react-icons/di";
+
 function Skills() {
+  // 1. Define which icons need to be inverted in dark mode
+  const whiteIcons = ["GitHub", "vercel", "Express", "chatgpt"];
+
   const frontendSkills = [
     { name: "HTML5", src: "/svg/HTML5.svg" },
     { name: "CSS3", src: "/svg/CSS3.svg" },
@@ -35,83 +39,79 @@ function Skills() {
 
   return (
     <>
-  <h1 className="skills text-gradient">Skills</h1>
+      <h1 className="skills text-gradient">Skills</h1>
 
-  <section className="skills-section" id="skill">
+      <section className="skills-section" id="skill">
+        <div className="skill-right">
+          
+          <div className="skill-category">
+            <h3>Frontend</h3>
+            <ul>
+              {frontendSkills.map((skill) => (
+                <li key={skill.name} className="skill-item">
+                  <img
+                    src={skill.src}
+                    alt={skill.name}
+                    title={skill.name}
+                    className={`skill-icon ${whiteIcons.includes(skill.name) ? "svg-invert" : ""}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-    <div className="skill-right">
+          <div className="skill-category">
+            <h3>Backend</h3>
+            <ul>
+              {backendSkills.map((skill) => (
+                <li key={skill.name} className="skill-item">
+                  <img
+                    src={skill.src}
+                    alt={skill.name}
+                    title={skill.name}
+                    className={`skill-icon ${whiteIcons.includes(skill.name) ? "svg-invert" : ""}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="skill-category">
-        <h3>Frontend</h3>
-        <ul>
-          {frontendSkills.map((skill) => (
-            <li key={skill.name} className="skill-item">
-              <img
-                src={skill.src}
-                alt={skill.name}
-                title={skill.name}
-                className="skill-icon"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+          <div className="skill-category">
+            <h3>Programming Languages</h3>
+            <ul>
+              {programmingSkills.map((skill) => (
+                <li key={skill.name} className="skill-item">
+                  <img
+                    src={skill.src}
+                    alt={skill.name}
+                    title={skill.name}
+                    className={`skill-icon ${whiteIcons.includes(skill.name) ? "svg-invert" : ""}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="skill-category">
-        <h3>Backend</h3>
-        <ul>
-          {backendSkills.map((skill) => (
-            <li key={skill.name} className="skill-item">
-              <img
-                src={skill.src}
-                alt={skill.name}
-                title={skill.name}
-                className="skill-icon"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
+          <div className="skill-category">
+            <h3>Tools & Technologies</h3>
+            <ul>
+              {toolsSkills.map((skill) => (
+                <li key={skill.name} className="skill-item">
+                  <img
+                    src={skill.src}
+                    alt={skill.name}
+                    title={skill.name}
+                    className={`skill-icon ${whiteIcons.includes(skill.name) ? "svg-invert" : ""}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="skill-category">
-        <h3>Programming Languages</h3>
-        <ul>
-          {programmingSkills.map((skill) => (
-            <li key={skill.name} className="skill-item">
-              <img
-                src={skill.src}
-                alt={skill.name}
-                title={skill.name}
-                className="skill-icon"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="skill-category">
-        <h3>Tools & Technologies</h3>
-        <ul>
-          {toolsSkills.map((skill) => (
-            <li key={skill.name} className="skill-item">
-              <img
-                src={skill.src}
-                alt={skill.name}
-                title={skill.name}
-                className="skill-icon"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-    </div>
-
-  </section>
-</>
+        </div>
+      </section>
+    </>
   );
 }
 
 export default Skills;
-
-

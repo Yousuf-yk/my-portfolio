@@ -6,8 +6,8 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const { theme, toggleTheme, triggerPageBlur } = useContext(ThemeContext);
+  const [scrolled, setScrolled] = useState(false);
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
@@ -21,15 +21,12 @@ function Header() {
     });
   };
 
-  const [scrolled, setScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -68,16 +65,22 @@ function Header() {
 
           <div className="nav-actions">
             <div className="neomorphism">
-            <DarkModeSwitch
-              checked={theme === "warm"}
-              onChange={toggleTheme}
-              size={28}
-            />
+              <DarkModeSwitch
+                checked={theme === "warm"}
+                onChange={toggleTheme}
+                size={24}
+                sunColor="#ffdd00"
+                moonColor="#86bbd8"
+              />
             </div>
 
-            <div className="hamburger " onClick={() => setMenuOpen(!menuOpen)}>
+            <button 
+              className="hamburger" 
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle navigation menu"
+            >
               ☰
-            </div>
+            </button>
           </div>
         </div>
       </nav>

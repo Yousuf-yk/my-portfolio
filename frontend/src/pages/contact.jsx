@@ -49,7 +49,7 @@ function Contact() {
               {/* <MdEmail /> */}
               <div>
                 <h4>Email</h4>
-                <p>yourmail@gmail.com</p>
+                <p>yk0574292@gmail.com</p>
               </div>
             </div>
 
@@ -57,7 +57,7 @@ function Contact() {
               {/* <FaPhoneAlt /> */}
               <div>
                 <h4>Phone</h4>
-                <p>+91 9876543210</p>
+                <p>+91 **********</p>
               </div>
             </div>
 
@@ -87,6 +87,7 @@ function Contact() {
                 type="text"
                 placeholder="Your Name"
                 name="name"
+                className="contact-input"
                 required
               />
 
@@ -94,6 +95,7 @@ function Contact() {
                 type="email"
                 placeholder="Email Address"
                 name="email"
+                className="contact-input"
                 required
               />
 
@@ -101,11 +103,13 @@ function Contact() {
                 type="tel"
                 placeholder="Phone Number"
                 name="number"
+                className="contact-input"
               />
 
               <textarea
                 placeholder="Tell me about your project..."
                 name="text"
+                className="contact-input"
                 required
               />
 
