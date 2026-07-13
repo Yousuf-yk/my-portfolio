@@ -7,14 +7,20 @@
 :root {
     --bg-main: #FAF9F6;
     --text-main: #292929;
-    --nav-bg: rgba(255, 255, 255, 0.75);
+    --nav-bg: rgba(255, 255, 255, 0.4);
     --nav-text: #080b0d;
+}
+/* Disable default crossfade for the Iris effect */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 html[theme="warm"] {
     --bg-main: #121212;
     --text-main: #e0e0e0;
-    --nav-bg: rgba(30, 30, 30, 0.75);
+    --nav-bg: rgba(30, 30, 30, 0.4);
     --nav-text: #FAF9F6;
 }
 
@@ -1047,7 +1053,7 @@ html:not([theme="warm"]) .info-box svg {
 
     .nav-actions {
         display: flex;
-        flex-direction: row-reverse;
+        /* flex-direction: row-reverse; */
         align-items: center; 
         gap: 15px; 
     }
@@ -1073,7 +1079,7 @@ html:not([theme="warm"]) .info-box svg {
 
     .nav-bar.scrolled {
         width: 90%;
-        height: 75px;
+        height: 60px;
         top: 10px;
     }
 
@@ -1181,6 +1187,27 @@ html:not([theme="warm"]) .info-box svg {
         height: 180px;
         border-radius: 10px;
     }
+        .blog-section {
+            padding: 3rem 1rem;
+        }
+    
+        .blog-heading {
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+    
+        .blog-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    
+        .blog-card {
+            padding: 1.5rem;
+        }
+    
+        .blog-title {
+            font-size: 1.25rem;
+        }
 }
 
 /* --- WARM / DARK THEME OVERRIDES --- */
@@ -1201,7 +1228,8 @@ html[theme="warm"] .hero-content h2,
 html[theme="warm"] .project-title,
 html[theme="warm"] .c-name,
 html[theme="warm"] .skill-category h3,
-html[theme="warm"] .skills {
+html[theme="warm"] .skills,
+html[theme="warm"] .blog-heading {
   color: #FAF9F6;
 }
 
@@ -1209,8 +1237,7 @@ html[theme="warm"] .hero-content p,
 html[theme="warm"] .hero-content h3,
 html[theme="warm"] .c-message,
 html[theme="warm"] .c-info,
-html[theme="warm"] .stack-used,
-html[theme="warm"] .footer-content {
+html[theme="warm"] .stack-used{
   color: #a0a0a0;
 }
 
@@ -1259,4 +1286,127 @@ html:not([theme="warm"]) .svg-invert,
 html:not([theme="warm"]) .info-box svg {
     filter: none !important;
     transition: filter 0.3s ease;
+}
+html[theme="warm"] .blog-card {
+  background: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+}
+
+html[theme="warm"] .blog-title,
+html[theme="warm"] .blog-read-more {
+  color: #FAF9F6;
+}
+
+html[theme="warm"] .blog-desc {
+  color: #a0a0a0;
+}
+
+
+
+
+.nav-bar.scrolled .hero-image {
+    height: 40px;
+    width: 40px;
+}
+
+
+
+
+
+.blog-section {
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.blog-container {
+  max-width: 1000px;
+  width: 100%;
+}
+
+.blog-heading {
+  font-family: "Sora", sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-main);
+}
+
+/* .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+} */
+
+.blog-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.blog-meta {
+  font-size: 0.875rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dot {
+  font-size: 1.2rem;
+  line-height: 0;
+}
+
+.blog-title {
+  font-family: "Sora", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.blog-desc {
+  font-family: "Inter", sans-serif;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  flex-grow: 1;
+}
+
+.blog-read-more {
+  font-weight: 600;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.2s ease;
+}
+
+.blog-card:hover .blog-read-more {
+  gap: 0.75rem;
+  color: #38bdf8;
+}
+
+.arrow {
+  font-size: 1.2rem;
 }

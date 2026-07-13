@@ -64,13 +64,22 @@ function Header() {
           </ul>
 
           <div className="nav-actions">
-            <div className="neomorphism">
+            {/* 
+              Attach the onClick here to capture e.clientX and e.clientY.
+              This guarantees the Iris wipe starts exactly at the button.
+            */}
+            <div 
+              className="neomorphism" 
+              onClick={(e) => toggleTheme(e)}
+              style={{ cursor: "pointer" }}
+            >
               <DarkModeSwitch
                 checked={theme === "warm"}
-                onChange={toggleTheme}
+                onChange={() => {}} /* Handled by the wrapper's onClick instead */
                 size={24}
                 sunColor="#ffdd00"
                 moonColor="#86bbd8"
+                style={{ pointerEvents: "none" }} /* Ensures the div catches the click */
               />
             </div>
 
