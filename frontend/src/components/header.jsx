@@ -46,11 +46,11 @@ function Header() {
                 Home
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="#about" onClick={(e) => handleNavClick(e, "#about")}>
                 About
               </a>
-            </li>
+            </li> */}
             <li>
               <a href="#project" onClick={(e) => handleNavClick(e, "#project")}>
                 Project

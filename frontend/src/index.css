@@ -97,8 +97,9 @@ body {
     align-items: center;
     z-index: 1000;
     background: var(--nav-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /* backdrop-filter: blur(12px); */
+    backdrop-filter: blur(8px) !important;
+    /* -webkit-backdrop-filter: blur(12px); */
     transition: all 0.4s cubic-bezier(.22, 1, .36, 1);
 }
 
