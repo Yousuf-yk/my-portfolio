@@ -1,32 +1,42 @@
 @import "tailwindcss";
 
+/* =========================================
+Theme variables
+========================================= */
+
 :root {
   --bg-main: #ffffff;
   --bg-card: #ffffff;
   --text-main: #111827;
   --text-secondary: #6b7280;
   --border-color: #e5e7eb;
+
+  --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [theme="warm"] {
-  /* Ultra-modern pure dark base (No blue/purple tones) */
-  --bg-main: #0a0a0a;         /* Deep obsidian pitch */
-  --bg-card: #121212;         /* Subtle contrast card layer */
-  --text-main: #ededed;       /* Crisp high-contrast main body */
-  --text-secondary: #a1a1aa;  /* Muted cool grey subtext */
-  --border-color: #27272a;    /* Subtle, sleek border definition */
+  --bg-main: #0a0a0a;
+  --bg-card: #121212;
+  --text-main: #ededed;
+  --text-secondary: #a1a1aa;
+  --border-color: #27272a;
 }
+
+/* =========================================
+Base styles
+========================================= */
 
 html,
 body,
 #root {
   background: var(--bg-main);
   color: var(--text-main);
-  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100%;
 }
 
 body {
   min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
 }
 
 .app-wrapper {
@@ -35,16 +45,43 @@ body {
   min-height: 100vh;
 }
 
+/* =========================================
+Page blur helper
+========================================= */
+
 .page-blur {
   filter: blur(10px);
-  transition: filter 0.2s ease;
+  transition: filter 0.18s ease;
 }
+
+/* =========================================
+SVG support
+========================================= */
 
 svg.svg-invert {
   filter: invert(1);
 }
 
+/* =========================================
+View Transition Base Setup
+========================================= */
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation: none;
+  mix-blend-mode: normal;
+  animation-duration: 2s;
+  animation-timing-function: var(--expo-out);
+}
+
+/* =========================================
+Selection styling
+========================================= */
+
+::selection {
+  background: rgba(99, 102, 241, 0.18);
+  color: inherit;
+}
+
+[theme="warm"] ::selection {
+  background: rgba(255, 255, 255, 0.16);
 }

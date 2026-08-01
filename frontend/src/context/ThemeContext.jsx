@@ -1,6 +1,52 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 
 export const ThemeContext = createContext();
+
+const styleId = 'theme-transition-styles';
+
+const updateStyles = (css) => {
+  let styleElement = document.getElementById(styleId);
+  if (!styleElement) {
+    styleElement = document.createElement('style');
+    styleElement.id = styleId;
+    document.head.appendChild(styleElement);
+  }
+  styleElement.textContent = css;
+};
+
+const createAnimation = () => ({
+  css: `
+    ::view-transition-group(root) {
+      animation-duration: 2s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    ::view-transition-old(root) {
+      animation: none !important;
+      z-index: 1;
+    }
+
+    ::view-transition-new(root) {
+      animation-name: reveal-center;
+      z-index: 9999;
+      mix-blend-mode: normal;
+    }
+
+    @keyframes reveal-center {
+      0% {
+        clip-path: circle(0% at 50% 50%);
+        filter: blur(12px) brightness(1.05);
+      }
+      40% {
+        filter: blur(6px) brightness(1.02);
+      }
+      100% {
+        clip-path: circle(150% at 50% 50%);
+        filter: blur(0px) brightness(1);
+      }
+    }
+  `,
+});
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
@@ -12,64 +58,40 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     document.documentElement.setAttribute('theme', theme);
     localStorage.setItem('portfolio-theme', theme);
+
+    if (theme === 'warm') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, [theme]);
 
-  const toggleTheme = (event) => {
+  const toggleTheme = useCallback(() => {
     const nextTheme = theme === 'classic' ? 'warm' : 'classic';
+    const animation = createAnimation();
+    updateStyles(animation.css);
 
-    const hasMouseEvent =
-      event && typeof event === 'object' && 'clientX' in event;
-
-    const x = hasMouseEvent ? event.clientX : window.innerWidth / 2;
-    const y = hasMouseEvent ? event.clientY : window.innerHeight / 2;
+    const switchTheme = () => {
+      setTheme(nextTheme);
+    };
 
     if (!document.startViewTransition) {
-      setTheme(nextTheme);
+      switchTheme();
       return;
     }
 
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
-    const transition = document.startViewTransition(() => {
-      setTheme(nextTheme);
-    });
-
-    transition.ready.then(() => {
-      const clipPath = [
-        `circle(0px at ${x}px ${y}px)`,
-        `circle(${endRadius}px at ${x}px ${y}px)`,
-      ];
-
-      document.documentElement.animate(
-        {
-          clipPath:
-            nextTheme === 'warm' ? clipPath : [...clipPath].reverse(),
-        },
-        {
-          duration: 600,
-          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          pseudoElement:
-            nextTheme === 'warm'
-              ? '::view-transition-new(root)'
-              : '::view-transition-old(root)',
-        }
-      );
-    });
-  };
+    document.startViewTransition(switchTheme);
+  }, [theme]);
 
   const triggerPageBlur = (callback) => {
     setIsBlurring(true);
-
     setTimeout(() => {
-      if (callback) callback();
-    }, 200);
+      callback?.();
+    }, 180);
 
     setTimeout(() => {
       setIsBlurring(false);
-    }, 200);
+    }, 180);
   };
 
   return (

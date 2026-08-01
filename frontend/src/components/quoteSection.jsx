@@ -11,19 +11,19 @@ function QuoteSection() {
   if (!quote) return null;
 
   return (
-    <section className='mx-auto max-w-4xl px-6 py-20'>
-      <div className='rounded-3xl border border-gray-200 bg-white p-10 shadow-sm'>
-        <p className='mb-4 text-sm font-medium uppercase tracking-[0.2em] text-emerald-600'>
+    <section className="mx-auto max-w-4xl px-5 py-10 sm:px-6 sm:py-14">
+      <div className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-5 shadow-sm sm:p-8">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-600 sm:text-sm">
           Quote of the visit
         </p>
 
-        <blockquote className='text-2xl font-medium leading-relaxed text-gray-900 md:text-3xl'>
+        <blockquote className="text-lg font-medium leading-7 text-[var(--text-main)] sm:text-xl md:text-2xl">
           “{quote.text}”
         </blockquote>
 
-        <div className='mt-6 h-px w-16 bg-emerald-500'></div>
+        <div className="mt-4 h-px w-12 bg-emerald-500" />
 
-        <p className='mt-4 text-base font-semibold text-gray-700'>
+        <p className="mt-3 text-sm font-semibold text-[var(--text-secondary)] sm:text-base">
           {quote.author}
         </p>
       </div>

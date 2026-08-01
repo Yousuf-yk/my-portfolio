@@ -10,6 +10,7 @@ function Skills() {
     { name: 'React', src: '/svg/React.svg', hoverColor: '#61DAFB' },
     { name: 'jQuery', src: '/svg/jQuery.svg', hoverColor: '#0769AD' },
     { name: 'Bootstrap', src: '/svg/bootstrap.svg', hoverColor: '#7952B3' },
+    { name: 'tailwind', src: '/svg/tailwind.svg', hoverColor: '#06B6D4' },
   ];
 
   const backendSkills = [
@@ -17,6 +18,9 @@ function Skills() {
     { name: 'Express', src: '/svg/Express.svg', hoverColor: '#444444' },
     { name: 'MySQL', src: '/svg/MySQL.svg', hoverColor: '#4479A1' },
     { name: 'PostgreSQL', src: '/svg/PostgresSQL.svg', hoverColor: '#336791' },
+    { name: 'jwt', src: '/svg/jwt.svg', hoverColor: '#336791' },
+    { name: '', src: '/svg/jwt.svg', hoverColor: '#336791' },
+
   ];
 
   const programmingSkills = [
@@ -36,14 +40,16 @@ function Skills() {
   ];
 
   const SkillCard = ({ title, skills }) => (
-    <div className='rounded-3xl border border-gray-200 bg-white p-6 shadow-sm'>
-      <h3 className='mb-6 text-xl font-semibold text-gray-900'>{title}</h3>
+    <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm">
+      <h3 className="mb-6 text-xl font-semibold text-[var(--text-main)]">
+        {title}
+      </h3>
 
-      <div className='flex flex-wrap gap-3'>
+      <div className="flex flex-wrap gap-3">
         {skills.map((skill) => (
           <div
             key={skill.name}
-            className='group flex items-center gap-3 rounded-full border border-gray-200 bg-gray-50 px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md'
+            className="group flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
             style={{
               '--hover-color': skill.hoverColor,
             }}
@@ -52,17 +58,19 @@ function Skills() {
               e.currentTarget.style.backgroundColor = skill.hoverColor + '15';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#E5E7EB';
-              e.currentTarget.style.backgroundColor = '#F9FAFB';
+              e.currentTarget.style.borderColor = 'var(--border-color)';
+              e.currentTarget.style.backgroundColor = 'var(--bg-main)';
             }}
           >
             <img
               src={skill.src}
               alt={skill.name}
-              className={`h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${whiteIcons.includes(skill.name) ? 'svg-invert' : ''}`}
+              className={`h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${
+                whiteIcons.includes(skill.name) ? 'svg-invert' : ''
+              }`}
             />
 
-            <span className='text-sm font-medium text-gray-700'>
+            <span className="text-sm font-medium text-[var(--text-main)]">
               {skill.name}
             </span>
           </div>
@@ -72,21 +80,24 @@ function Skills() {
   );
 
   return (
-    <section id='skills' className='mx-auto max-w-6xl px-6 py-24'>
-      <div className='mb-12 text-center'>
-        <p className='mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-600'>
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
+      <div className="mb-12 text-center">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-600">
           Expertise
         </p>
-        <h2 className='text-4xl font-bold text-gray-900 md:text-5xl'>
+        <h2 className="text-4xl font-bold text-[var(--text-main)] md:text-5xl">
           Skills & technologies
         </h2>
       </div>
 
-      <div className='grid gap-6 md:grid-cols-2'>
-        <SkillCard title='Frontend' skills={frontendSkills} />
-        <SkillCard title='Backend' skills={backendSkills} />
-        <SkillCard title='Programming Languages' skills={programmingSkills} />
-        <SkillCard title='Tools & Technologies' skills={toolsSkills} />
+      <div className="grid gap-6 md:grid-cols-2">
+        <SkillCard title="Frontend" skills={frontendSkills} />
+        <SkillCard title="Backend" skills={backendSkills} />
+        <SkillCard
+          title="Programming Languages"
+          skills={programmingSkills}
+        />
+        <SkillCard title="Tools & Technologies" skills={toolsSkills} />
       </div>
     </section>
   );

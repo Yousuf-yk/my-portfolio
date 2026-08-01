@@ -14,46 +14,46 @@ function Blog() {
   ];
 
   return (
-    <section id='blog' className='mx-auto max-w-4xl px-6 py-24'>
-      <div className='mb-12 text-center'>
-        <p className='mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-600'>
+    <section id="blog" className="mx-auto max-w-4xl px-6 py-24">
+      <div className="mb-12 text-center">
+        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-600">
           Writing
         </p>
 
-        <h2 className='text-4xl font-bold text-gray-900 md:text-5xl'>
+        <h2 className="text-4xl font-bold text-[var(--text-main)] md:text-5xl">
           Latest writing
         </h2>
 
-        <p className='mx-auto mt-4 max-w-2xl text-gray-600'>
+        <p className="mx-auto mt-4 max-w-2xl text-[var(--text-secondary)]">
           Technical articles and practical guides based on what I learn while
           building software.
         </p>
       </div>
 
-      <div className='grid gap-8'>
+      <div className="grid gap-8">
         {blogs.map((blog) => (
           <a
             key={blog.id}
             href={blog.link}
-            target='_blank'
-            rel='noopener noreferrer'
-            className='group rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl'
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
-            <div className='mb-4 flex items-center gap-2 text-sm text-gray-500'>
+            <div className="mb-4 flex items-center gap-2 text-sm text-[var(--text-secondary)]">
               <span>{blog.date}</span>
               <span>•</span>
               <span>{blog.readTime}</span>
             </div>
 
-            <h3 className='mb-4 text-2xl font-semibold text-gray-900 transition-colors duration-200 group-hover:text-emerald-700'>
+            <h3 className="mb-4 text-2xl font-semibold text-[var(--text-main)] transition-colors duration-200 group-hover:text-emerald-600">
               {blog.title}
             </h3>
 
-            <p className='leading-7 text-gray-600'>
+            <p className="leading-7 text-[var(--text-secondary)]">
               {blog.description}
             </p>
 
-            <div className='mt-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition-all duration-200 group-hover:gap-3'>
+            <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 transition-all duration-200 group-hover:gap-3">
               Read on Medium
               <span>→</span>
             </div>
