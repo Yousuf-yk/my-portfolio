@@ -58,9 +58,6 @@ Page blur helper
 SVG support
 ========================================= */
 
-svg.svg-invert {
-  filter: invert(1);
-}
 
 /* =========================================
 View Transition Base Setup
@@ -84,4 +81,12 @@ Selection styling
 
 [theme="warm"] ::selection {
   background: rgba(255, 255, 255, 0.16);
+}
+
+.svg-invert {
+  filter: invert(0); /* black in light theme */
+}
+
+[theme='warm'] .svg-invert {
+  filter: invert(1); /* white in dark theme */
 }

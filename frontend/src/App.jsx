@@ -10,6 +10,7 @@ import Certificate from './pages/certificate.jsx';
 import Contact from './pages/contact';
 import QuoteSection from './components/quoteSection.jsx';
 
+
 function AppContent() {
   const { isBlurring } = useContext(ThemeContext);
 
@@ -28,6 +29,7 @@ function AppContent() {
       <div className="mx-auto w-full max-w-6xl px-[2px]">
         <QuoteSection />
         <Footer />
+        
       </div>
     </div>
   );

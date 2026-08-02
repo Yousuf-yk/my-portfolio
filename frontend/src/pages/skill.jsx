@@ -19,8 +19,6 @@ function Skills() {
     { name: 'MySQL', src: '/svg/MySQL.svg', hoverColor: '#4479A1' },
     { name: 'PostgreSQL', src: '/svg/PostgresSQL.svg', hoverColor: '#336791' },
     { name: 'jwt', src: '/svg/jwt.svg', hoverColor: '#336791' },
-    { name: '', src: '/svg/jwt.svg', hoverColor: '#336791' },
-
   ];
 
   const programmingSkills = [
@@ -65,8 +63,7 @@ function Skills() {
             <img
               src={skill.src}
               alt={skill.name}
-              className={`h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${
-                whiteIcons.includes(skill.name) ? 'svg-invert' : ''
+              className={`h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${whiteIcons.includes(skill.name) ? 'svg-invert' : ''
               }`}
             />
 
