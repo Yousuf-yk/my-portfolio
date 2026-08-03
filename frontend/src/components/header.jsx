@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import yousufImg from '../assets/photos/yousufimg.jpeg';
 import { ThemeContext } from '../context/ThemeContext.jsx';
 import { Moon, Sun, Menu, X } from 'lucide-react';
@@ -6,26 +7,8 @@ import { AnimatePresence, motion } from 'motion/react';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme, triggerPageBlur } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [scrolled, setScrolled] = useState(false);
-
-  const handleNavClick = (e, targetId) => {
-    e.preventDefault();
-    setMenuOpen(false);
-
-    const scroll = () => {
-      const element = document.querySelector(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
-
-    if (typeof triggerPageBlur === 'function') {
-      triggerPageBlur(scroll);
-    } else {
-      scroll();
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,17 +28,14 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 px-4">
       <div className="mx-auto max-w-6xl">
         <nav
-          className={` flex items-center justify-between border transition-all duration-300 ${
+          className={`flex items-center justify-between border transition-all duration-300 ${
             scrolled
               ? 'mt-3 rounded-4xl border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-2 shadow-lg backdrop-blur-xl'
               : 'rounded-none border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md'
           }`}
         >
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center gap-3"
-          >
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3">
             <img
               src={yousufImg}
               alt="Yousuf Khan"
@@ -72,26 +52,39 @@ function Header() {
                 Full Stack Developer
               </p>
             </div>
-          </a>
+          </Link>
 
+          {/* Desktop navigation */}
           <ul className="hidden items-center gap-8 md:flex">
-            {[
-              ['Home', '#home'],
-              ['Projects', '#project'],
-              ['Contact', '#contact'],
-            ].map(([label, href]) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  onClick={(e) => handleNavClick(e, href)}
-                  className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <Link
+                to="/"
+                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+              >
+                Home
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/projects"
+                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+              >
+                Projects
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/contact"
+                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
 
+          {/* Right side buttons */}
           <div className="flex items-center gap-3">
             <button
               onClick={toggleTheme}
@@ -106,11 +99,7 @@ function Header() {
                   initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
                   animate={{ opacity: 1, rotate: 0, scale: 1 }}
                   exit={{ opacity: 0, rotate: 90, scale: 0.2 }}
-                  transition={{
-                    delay: 0.1,
-                    duration: 0.25,
-                    ease: 'easeOut',
-                  }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   {isDark ? (
@@ -138,23 +127,33 @@ function Header() {
           </div>
         </nav>
 
+        {/* Mobile menu */}
         {menuOpen && (
-          <div className="absolute mt-3 w-[50%] right-[10px] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/70 p-4 shadow-lg backdrop-blur-xl md:hidden">
+          <div className="absolute right-[10px] mt-3 w-[50%] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/70 p-4 shadow-lg backdrop-blur-xl md:hidden">
             <div className="flex flex-col gap-3">
-              {[
-                ['Home', '#home'],
-                ['Projects', '#project'],
-                ['Contact', '#contact'],
-              ].map(([label, href]) => (
-                <a
-                  key={label}
-                  href={href}
-                  onClick={(e) => handleNavClick(e, href)}
-                  className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60 hover:text-[var(--text-main)]"
-                >
-                  {label}
-                </a>
-              ))}
+              <Link
+                to="/"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
+              >
+                Home
+              </Link>
+
+              <Link
+                to="/projects"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
+              >
+                Projects
+              </Link>
+
+              <Link
+                to="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}

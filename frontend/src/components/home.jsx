@@ -5,27 +5,27 @@ import { FaInstagram } from 'react-icons/fa';
 
 function Home() {
   const techStack = [
-  {
-    name: 'React',
-    color: 'bg-[#D9F7FF] text-[#0EA5E9] border-2 border-dotted border-[#7DD3FC] shadow-[0_0_12px_rgba(14,165,233,0.5)] hover:shadow-[0_0_20px_rgba(14,165,233,0.8)]',
-  },
-  {
-    name: 'Node.js',
-    color: 'bg-[#DCFCE7] text-[#15803D] border-2 border-dotted border-[#86EFAC] shadow-[0_0_12px_rgba(21,128,61,0.5)] hover:shadow-[0_0_20px_rgba(21,128,61,0.8)]',
-  },
-  {
-    name: 'Express',
-    color: 'bg-gray-100 text-gray-800 border-2 border-dotted border-gray-400 shadow-[0_0_12px_rgba(107,114,128,0.5)] hover:shadow-[0_0_20px_rgba(107,114,128,0.8)]',
-  },
-  {
-    name: 'PostgreSQL',
-    color: 'bg-[#DBEAFE] text-[#2563EB] border-2 border-dotted border-[#93C5FD] shadow-[0_0_12px_rgba(37,99,235,0.5)] hover:shadow-[0_0_20px_rgba(37,99,235,0.8)]',
-  },
-  {
-    name: 'Tailwind CSS',
-    color: 'bg-[#CCFBF1] text-[#0891B2] border-2 border-dotted border-[#67E8F9] shadow-[0_0_12px_rgba(8,145,178,0.5)] hover:shadow-[0_0_20px_rgba(8,145,178,0.8)]',
-  },
-];
+    {
+      name: 'React',
+      color: 'bg-[#D9F7FF] text-[#0EA5E9] border-2 border-dotted border-[#7DD3FC] shadow-[0_0_12px_rgba(14,165,233,0.5)] hover:shadow-[0_0_20px_rgba(14,165,233,0.8)]',
+    },
+    {
+      name: 'Node.js',
+      color: 'bg-[#DCFCE7] text-[#15803D] border-2 border-dotted border-[#86EFAC] shadow-[0_0_12px_rgba(21,128,61,0.5)] hover:shadow-[0_0_20px_rgba(21,128,61,0.8)]',
+    },
+    {
+      name: 'Express',
+      color: 'bg-gray-100 text-gray-800 border-2 border-dotted border-gray-400 shadow-[0_0_12px_rgba(107,114,128,0.5)] hover:shadow-[0_0_20px_rgba(107,114,128,0.8)]',
+    },
+    {
+      name: 'PostgreSQL',
+      color: 'bg-[#DBEAFE] text-[#2563EB] border-2 border-dotted border-[#93C5FD] shadow-[0_0_12px_rgba(37,99,235,0.5)] hover:shadow-[0_0_20px_rgba(37,99,235,0.8)]',
+    },
+    {
+      name: 'Tailwind CSS',
+      color: 'bg-[#CCFBF1] text-[#0891B2] border-2 border-dotted border-[#67E8F9] shadow-[0_0_12px_rgba(8,145,178,0.5)] hover:shadow-[0_0_20px_rgba(8,145,178,0.8)]',
+    },
+  ];
 
   return (
     <section className="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 pt-2 ppy-20 sm:px-6 md:py-24">
