@@ -173,7 +173,7 @@ function ContactPage() {
               <input
                 type="tel"
                 name="number"
-                placeholder="+91 98765 43210"
+                placeholder="+91 69696 96969"
                 className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-[var(--text-main)] outline-none transition placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20"
               />
             </div>

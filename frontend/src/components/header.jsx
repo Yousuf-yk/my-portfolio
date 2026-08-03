@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import yousufImg from '../assets/photos/yousufimg.jpeg';
+import yousufImg from '../assets/photos/yousufimg2.jpeg';
 import { ThemeContext } from '../context/ThemeContext.jsx';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
@@ -56,14 +56,14 @@ function Header() {
 
           {/* Desktop navigation */}
           <ul className="hidden items-center gap-8 md:flex">
-            <li>
+            {/* <li>
               <Link
                 to="/"
                 className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
               >
                 Home
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link
@@ -71,6 +71,15 @@ function Header() {
                 className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
               >
                 Projects
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/about"
+                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+              >
+                About
               </Link>
             </li>
 
@@ -145,6 +154,13 @@ function Header() {
                 className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
               >
                 Projects
+              </Link>
+              <Link
+                to="/about"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
+              >
+                About
               </Link>
 
               <Link

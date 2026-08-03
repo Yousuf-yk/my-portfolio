@@ -10,6 +10,8 @@ import Home from './components/home.jsx';
 import Projects from './components/project'; // homepage preview (2 projects)
 import ProjectsPage from './pages/ProjectsPage'; // new page with all projects
 import ContactPage from './pages/ContactPage'; // new page with contact form
+import AboutPage from './pages/aboutPage.jsx'; // new page with about me content
+
 import Blog from './components/Blog.jsx';
 import Skills from './components/skill.jsx';
 import Certificate from './components/certificate.jsx';
@@ -40,6 +42,7 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
 
