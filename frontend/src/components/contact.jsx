@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../api';
 
 function Contact() {
   const [submitting, setSubmitting] = useState(false);
@@ -17,7 +18,7 @@ function Contact() {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch(`${API_URL}contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

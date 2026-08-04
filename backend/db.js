@@ -1,12 +1,14 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import pg from "pg";
-const {Pool} = pg;
+const { Pool } = pg;
 
 const db = new Pool({
-    user:process.env.DB_USER,
-    host:process.end.DB_HOST,
-    database:process.end.DB_NAME,
-    password:process.end.DB_PASSWORD,
-    port:process.end.DB_PORT,
+    connectionString: process.env.DATABASE_URL,
+    ssl:
+        process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+
 });
 
 export default db;

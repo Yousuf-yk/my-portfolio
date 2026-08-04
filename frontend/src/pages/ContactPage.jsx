@@ -35,7 +35,7 @@ function ContactPage() {
   };
 
   return (
-    <section className="container mx-auto px-4 py-12 md:py-20 max-w-7xl">
+    <section className="container mx-auto px-4 py-12 md:py-20 max-w-7xl ">
       {/* Hero */}
       <div className="mb-16 text-center">
         <span className="mb-4 block text-sm font-bold uppercase tracking-wider text-emerald-600">
@@ -44,7 +44,7 @@ function ContactPage() {
         <h1 className="text-5xl font-bold text-[var(--text-main)] md:text-6xl">
           Let's build something meaningful
         </h1>
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[var(--text-secondary)]">
+        <p className="mx-auto mt-6 text-left max-w-3xl text-lg leading-8 text-[var(--text-secondary)]">
           Whether you're looking for a full-stack developer, discussing a
           product idea, or exploring internship opportunities, I'm always
           interested in working on projects that solve real problems and create

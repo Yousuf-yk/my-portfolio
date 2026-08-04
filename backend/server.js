@@ -2,6 +2,9 @@
 import express from "express";
 import cors from "cors"
 import pool from "./db.js"
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
 
@@ -32,6 +35,7 @@ app.post("/contact", async (req, res) => {
         });
     }
 });
+
 
 app.listen(5000, () => {
     console.log("Server running on port 5000");

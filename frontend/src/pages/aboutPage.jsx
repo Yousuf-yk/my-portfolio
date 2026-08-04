@@ -30,7 +30,7 @@ function AboutPage() {
           Full-stack developer focused on building useful products
         </h1>
 
-        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-[var(--text-secondary)]">
+        <p className="mx-auto mt-6 max-w-3xl text-left text-lg leading-8 text-[var(--text-secondary)]">
           I build clean, responsive, and practical web applications with React,
           Node.js, Express, and PostgreSQL while preparing for software
           engineering internships and full-time developer roles.
