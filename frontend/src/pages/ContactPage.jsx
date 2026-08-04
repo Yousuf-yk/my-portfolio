@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { VITE_API_URL } from '../api';
 
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
@@ -16,7 +17,7 @@ function ContactPage() {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
