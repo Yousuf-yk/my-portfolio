@@ -1,4 +1,3 @@
-
 import express from "express";
 import cors from "cors"
 import pool from "./db.js"
@@ -9,8 +8,10 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "https://yousufKhan.vercel.app"
+  origin: "https://yousufkhan.vercel.app",
+  credentials: true
 }));
+
 app.use(express.json());
 
 app.post("/contact", async (req, res) => {
