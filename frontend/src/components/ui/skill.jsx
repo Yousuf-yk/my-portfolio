@@ -10,7 +10,7 @@ function Skills() {
     { name: 'React', src: '/svg/React.svg', hoverColor: '#61DAFB' },
     { name: 'jQuery', src: '/svg/jQuery.svg', hoverColor: '#0769AD' },
     { name: 'Bootstrap', src: '/svg/bootstrap.svg', hoverColor: '#7952B3' },
-    { name: 'tailwind', src: '/svg/tailwind.svg', hoverColor: '#06B6D4' },
+    { name: 'Tailwind', src: '/svg/tailwind.svg', hoverColor: '#06B6D4' },
   ];
 
   const backendSkills = [
@@ -18,7 +18,7 @@ function Skills() {
     { name: 'Express', src: '/svg/Express.svg', hoverColor: '#444444' },
     { name: 'MySQL', src: '/svg/MySQL.svg', hoverColor: '#4479A1' },
     { name: 'PostgreSQL', src: '/svg/PostgresSQL.svg', hoverColor: '#336791' },
-    { name: 'jwt', src: '/svg/jwt.svg', hoverColor: '#336791' },
+    { name: 'JWT', src: '/svg/jwt.svg', hoverColor: '#8B5CF6' },
   ];
 
   const programmingSkills = [
@@ -37,9 +37,16 @@ function Skills() {
     { name: 'Nodemon', src: '/svg/nodemon.svg', hoverColor: '#76D04B' },
   ];
 
+  const learning = [
+    { name: 'MongoDB', src: '/svg/mongodb.svg', hoverColor: '#008000' },
+    { name: 'AWS', src: '/svg/aws.svg', hoverColor: '#FF9900' },
+    { name: 'Docker', src: '/svg/docker.svg', hoverColor: '#2496ED' },
+    { name: 'TypeScript', src: '/svg/typescript.svg', hoverColor: '#3178C6' },
+  ];
+
   const SkillCard = ({ title, skills }) => (
-    <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm">
-      <h3 className="mb-6 text-xl font-semibold text-[var(--text-main)]">
+    <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6">
+      <h3 className="mb-5 text-xl font-semibold text-[var(--text-main)]">
         {title}
       </h3>
 
@@ -47,23 +54,23 @@ function Skills() {
         {skills.map((skill) => (
           <div
             key={skill.name}
-            className="group flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-            style={{
-              '--hover-color': skill.hoverColor,
-            }}
+            className="group flex items-center gap-3 rounded-full border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 transition-all duration-300 hover:-translate-y-1 hover:scale-105"
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = skill.hoverColor;
               e.currentTarget.style.backgroundColor = skill.hoverColor + '15';
+              e.currentTarget.style.boxShadow = `0 0 18px ${skill.hoverColor}55, 0 0 35px ${skill.hoverColor}25`;
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderColor = 'var(--border-color)';
               e.currentTarget.style.backgroundColor = 'var(--bg-main)';
+              e.currentTarget.style.boxShadow = 'none';
             }}
           >
             <img
               src={skill.src}
               alt={skill.name}
-              className={`h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${whiteIcons.includes(skill.name) ? 'svg-invert' : ''
+              className={`h-5 w-5 transition-transform duration-300 group-hover:scale-110 ${
+                whiteIcons.includes(skill.name) ? 'svg-invert' : ''
               }`}
             />
 
@@ -77,24 +84,30 @@ function Skills() {
   );
 
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-24">
-      <div className="mb-12 text-center">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-emerald-600">
-          Expertise
-        </p>
-        <h2 className="text-4xl font-bold text-[var(--text-main)] md:text-5xl">
-          Skills & technologies
-        </h2>
-      </div>
+    <section id="skills" className="px-6 py-0 sm:px-10 lg:px-16">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-12 text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-600">
+            Expertise
+          </p>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        <SkillCard title="Frontend" skills={frontendSkills} />
-        <SkillCard title="Backend" skills={backendSkills} />
-        <SkillCard
-          title="Programming Languages"
-          skills={programmingSkills}
-        />
-        <SkillCard title="Tools & Technologies" skills={toolsSkills} />
+          <h2 className="text-4xl font-bold text-[var(--text-main)] sm:text-5xl">
+            Skills & technologies
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-[var(--text-secondary)]">
+            Technologies I use to build full-stack applications, APIs, and
+            modern web experiences.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <SkillCard title="Frontend" skills={frontendSkills} />
+          <SkillCard title="Backend" skills={backendSkills} />
+          <SkillCard title="Programming Languages" skills={programmingSkills} />
+          <SkillCard title="Tools & Technologies" skills={toolsSkills} />
+          <SkillCard title="Learning" skills={learning} />
+        </div>
       </div>
     </section>
   );

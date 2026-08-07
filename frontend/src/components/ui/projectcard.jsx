@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { statusColors } from '../data/project';
+import { statusColors } from '../../data/project';
 
 const ProjectCard = ({ project, index }) => {
   return (

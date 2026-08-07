@@ -4,7 +4,7 @@ import { API_URL } from '../api';
 
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);

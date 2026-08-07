@@ -2,6 +2,7 @@ import React from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Home() {
   const techStack = [
@@ -28,7 +29,7 @@ function Home() {
   ];
 
   return (
-    <section className="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 pt-2 ppy-20 sm:px-6 md:py-24">
+    <section className="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 pt-1 pb-2 sm:px-6 md:py-10">
       {/* Background */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--bg-main)] via-emerald-50/30 to-[var(--bg-main)] dark:via-emerald-900/10" />
 
@@ -77,13 +78,12 @@ function Home() {
               View projects
             </a>
 
-            <a
-              href="/resume.pdf"
-              download
-              className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-5 py-2.5 text-sm font-semibold text-[var(--text-main)] transition hover:border-emerald-500 hover:text-emerald-600 sm:px-6 sm:py-3 sm:text-base"
-            >
-              Download resume
-            </a>
+            <Link
+  to="/notfound"
+  className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-5 py-2.5 text-sm font-semibold text-[var(--text-main)] transition hover:border-emerald-500 hover:text-emerald-600 sm:px-6 sm:py-3 sm:text-base"
+>
+  Download resume
+</Link>
           </div>
 
           {/* Socials */}

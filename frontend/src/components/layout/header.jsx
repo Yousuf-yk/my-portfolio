@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import yousufImg from '../assets/photos/yousufimg2.jpeg';
-import { ThemeContext } from '../context/ThemeContext.jsx';
+import yousufImg from '../../assets/photos/yousufimg2.jpeg';
+import { ThemeContext } from '../../context/ThemeContext.jsx';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -56,14 +56,7 @@ function Header() {
 
           {/* Desktop navigation */}
           <ul className="hidden items-center gap-8 md:flex">
-            {/* <li>
-              <Link
-                to="/"
-                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
-              >
-                Home
-              </Link>
-            </li> */}
+            
 
             <li>
               <Link

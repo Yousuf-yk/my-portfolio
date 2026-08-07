@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { projects } from '../data/project';
+import { projects } from '../../data/project';
 import ProjectCard from './projectcard';
 import { Link } from 'react-router-dom';
+import  GlowButton  from '../layout/button';
 
 function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -10,7 +11,7 @@ function Projects() {
   return (
     <section
       id="project"
-      className="relative mx-auto max-w-6xl px-5 py-24 sm:px-6"
+      className="relative mx-auto max-w-6xl px-5 py-5 sm:px-6"
     >
       <div className="absolute left-1/2 top-20 -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-emerald-100/40 blur-3xl dark:bg-emerald-900/20" />
 
@@ -70,15 +71,12 @@ function Projects() {
       </div>
 
       {projects.length > 2 && (
-        <div className="mt-14 text-center">
-          <Link
-            to="/projects"
-            className="rounded-2xl border border-emerald-300 bg-emerald-50 px-8 py-3 font-semibold text-emerald-700 transition hover:bg-emerald-100"
-          >
-            View All Projects
-          </Link>
-        </div>
-      )}
+  <div className="mt-14 flex justify-center">
+    <Link to="/projects">
+      <GlowButton>View All Projects</GlowButton>
+    </Link>
+  </div>
+)}
     </section>
   );
 }

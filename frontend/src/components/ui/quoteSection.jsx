@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import quotes from '../data/quotes';
+import quotes from '../../data/quotes';
 
 function QuoteSection() {
   const quote = useMemo(() => {
