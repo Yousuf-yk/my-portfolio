@@ -73,7 +73,7 @@ function Projects() {
       {projects.length > 2 && (
   <div className="mt-14 flex justify-center">
     <Link to="/projects">
-      <GlowButton>View All Projects</GlowButton>
+      <GlowButton className="!bg-gray-500 hover:!bg-gray-700">View All Projects</GlowButton>
     </Link>
   </div>
 )}

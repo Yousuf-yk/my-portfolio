@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { API_URL } from '../../api';
 import { HiMail, HiPhone, HiLocationMarker, HiArrowRight } from 'react-icons/hi';
+import GlowButton from '../layout/button';
 
 function Contact() {
   const [submitting, setSubmitting] = useState(false);
@@ -189,16 +190,18 @@ function Contact() {
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={submitting}
-                className="group inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-[0_10px_25px_rgba(16,185,129,0.35)] disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {submitting ? 'Sending...' : 'Send message'}
-                {!submitting && (
-                  <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                )}
-              </button>
+              <GlowButton
+  type="submit"
+  disabled={submitting}
+  className="group bg-emerald-600 px-4 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+>
+  <span className="inline-flex items-center gap-2">
+    {submitting ? 'Sending...' : 'Send message'}
+    {!submitting && (
+      <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+    )}
+  </span>
+</GlowButton>
             </form>
           </div>
         </div>

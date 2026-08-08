@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { VITE_API_URL } from '../api';
 import { API_URL } from '../api';
+import GlowButton from '../components/layout/button';
 
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
@@ -205,13 +206,15 @@ function ContactPage() {
               </p>
             </div>
 
-            <button
+            <GlowButton
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center rounded-xl bg-emerald-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {submitting ? 'Sending message...' : 'Send message'}
-            </button>
+              className="bg-emerald-600 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50">
+  {submitting ? 'Sending message...' : 'Send message'}
+</GlowButton>
+{/* <GlowButton className="!bg-emerald-600 hover:!bg-emerald-700">download resume</GlowButton> */}
+
+
           </form>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import GlowButton from '../layout/button';
 
 function Home() {
   const techStack = [
@@ -70,21 +71,23 @@ function Home() {
           </div>
 
           {/* CTA buttons */}
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-row gap-3 ">
             <a
               href="#project"
-              className="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700 sm:px-6 sm:py-3 sm:text-base"
-            >
-              View projects
+              >
+             <GlowButton className="!bg-gray-500 hover:!bg-gray-700 px-4">View All Projects</GlowButton>
             </a>
 
-            <Link
-  to="/notfound"
-  className="rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-5 py-2.5 text-sm font-semibold text-[var(--text-main)] transition hover:border-emerald-500 hover:text-emerald-600 sm:px-6 sm:py-3 sm:text-base"
->
-  Download resume
-</Link>
+            <Link to="/notfound">
+                <GlowButton className="!bg-emerald-600 hover:!bg-emerald-700 px-4">download resume</GlowButton>
+            </Link>
           </div>
+{/* Link to="/projects">
+      <GlowButton>View All Projects</GlowButton>
+    </Link> */}
+
+
+
 
           {/* Socials */}
           <div className="mt-8 flex items-center gap-4">
