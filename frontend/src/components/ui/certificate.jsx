@@ -7,9 +7,11 @@ import cert1 from '../../assets/certificates/certi1.jpeg';
 import cert2 from '../../assets/certificates/certi2.jpeg';
 import cert3 from '../../assets/certificates/certi3.jpeg';
 import cert4 from '../../assets/certificates/certi4.jpeg';
+import cert5 from '../../assets/certificates/certi5.jpeg';
+import cert6 from '../../assets/certificates/certi6.jpeg';
 
 function Certificate() {
-  const certificates = [cert1, cert2, cert3, cert4];
+  const certificates = [cert1, cert2, cert3, cert4, cert5, cert6];
 
   return (
     <section className="relative overflow-hidden px-6 py-5 sm:px-10 lg:px-16">
