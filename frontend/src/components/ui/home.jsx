@@ -4,30 +4,50 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import GlowButton from '../layout/button';
+import {
+  TextAnimationProvider,
+  AnimatedText,
+} from '../../context/textAnimation';
 
 function Home() {
-  const techStack = [
-    {
-      name: 'React',
-      color: 'bg-[#D9F7FF] text-[#0EA5E9] border-2 border-dotted border-[#7DD3FC] shadow-[0_0_12px_rgba(14,165,233,0.5)] hover:shadow-[0_0_20px_rgba(14,165,233,0.8)]',
-    },
-    {
-      name: 'Node.js',
-      color: 'bg-[#DCFCE7] text-[#15803D] border-2 border-dotted border-[#86EFAC] shadow-[0_0_12px_rgba(21,128,61,0.5)] hover:shadow-[0_0_20px_rgba(21,128,61,0.8)]',
-    },
-    {
-      name: 'Express',
-      color: 'bg-gray-100 text-gray-800 border-2 border-dotted border-gray-400 shadow-[0_0_12px_rgba(107,114,128,0.5)] hover:shadow-[0_0_20px_rgba(107,114,128,0.8)]',
-    },
-    {
-      name: 'PostgreSQL',
-      color: 'bg-[#DBEAFE] text-[#2563EB] border-2 border-dotted border-[#93C5FD] shadow-[0_0_12px_rgba(37,99,235,0.5)] hover:shadow-[0_0_20px_rgba(37,99,235,0.8)]',
-    },
-    {
-      name: 'Tailwind CSS',
-      color: 'bg-[#CCFBF1] text-[#0891B2] border-2 border-dotted border-[#67E8F9] shadow-[0_0_12px_rgba(8,145,178,0.5)] hover:shadow-[0_0_20px_rgba(8,145,178,0.8)]',
-    },
-  ];
+const techStack = [
+  {
+    name: 'React',
+    icon:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
+    color:
+      'text-gray-900 border-2 border-dotted border-[#7DD3FC] shadow-[0_0_10px_rgba(14,165,233,0.25)] hover:shadow-[0_0_22px_rgba(14,165,233,0.7)]',
+  },
+  {
+    name: 'Node.js',
+    icon:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+    color:
+      'text-gray-900 border-2 border-dotted border-[#86EFAC] shadow-[0_0_10px_rgba(21,128,61,0.25)] hover:shadow-[0_0_22px_rgba(21,128,61,0.7)]',
+  },
+  {
+    name: 'Express',
+    icon:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg',
+    color:
+      'text-gray-900 border-2 border-dotted border-gray-400 shadow-[0_0_10px_rgba(107,114,128,0.25)] hover:shadow-[0_0_22px_rgba(107,114,128,0.7)]',
+    darkIcon: true,
+  },
+  {
+    name: 'PostgreSQL',
+    icon:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+    color:
+      'text-gray-900 border-2 border-dotted border-[#93C5FD] shadow-[0_0_10px_rgba(37,99,235,0.25)] hover:shadow-[0_0_22px_rgba(37,99,235,0.7)]',
+  },
+  {
+    name: 'Tailwind CSS',
+    icon:
+      'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+    color:
+      'text-gray-900 border-2 border-dotted border-[#67E8F9] shadow-[0_0_10px_rgba(8,145,178,0.25)] hover:shadow-[0_0_22px_rgba(8,145,178,0.7)]',
+  },
+];
 
   return (
     <section className="relative mx-auto flex min-h-screen max-w-7xl items-center px-5 pt-1 pb-2 sm:px-6 md:py-10">
@@ -43,51 +63,105 @@ function Home() {
             Open to internships and SDE opportunities
           </div>
 
-          {/* Heading */}
-          <h1 className="text-4xl font-bold leading-tight text-[var(--text-main)] sm:text-5xl md:text-6xl xl:text-7xl">
-            Building web apps
-            <br />
-            <span className="text-emerald-600">that people actually use.</span>
-          </h1>
+          {/* Animation Provider */}
+          <TextAnimationProvider delaySpeed={0.004}>
+            {/* Heading */}
+            <h1 className="text-4xl font-bold leading-tight text-[var(--text-main)] sm:text-5xl md:text-6xl xl:text-7xl">
+              <AnimatedText as="span" text="Building web apps" />
+              <br />
+              <AnimatedText
+                as="span"
+                className="text-emerald-600"
+                text="that people actually use."
+              />
+            </h1>
 
-          {/* Description */}
-          <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-secondary)] sm:text-lg sm:leading-8">
-            I’m Yousuf Khan, a full stack web developer specializing in the PERN
-            stack. I build responsive frontends, scalable backends, and
-            production-ready APIs with a strong focus on clean architecture,
-            performance, and real-world usability.
-          </p>
+            {/* Description */}
+            <AnimatedText
+              as="p"
+              className="mt-5 max-w-xl text-base leading-7 text-[var(--text-secondary)] sm:text-lg sm:leading-8"
+              text="I’m Yousuf Khan, a full stack web developer specializing in the PERN stack. I build responsive frontends, scalable backends, and production-ready APIs with a strong focus on clean architecture, performance, and real-world usability."
+            />
+          </TextAnimationProvider>
 
           {/* Tech stack */}
           <div className="mt-7 flex flex-wrap gap-2.5">
             {techStack.map((tech) => (
               <span
                 key={tech.name}
-                className={`rounded-lg border px-3 py-2 text-xs font-semibold shadow-sm sm:px-4 sm:py-2.5 sm:text-sm ${tech.color}`}
+                className={`
+                  group
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  px-3
+                  py-2
+                  text-xs
+                  font-semibold
+                  backdrop-blur-md
+                  transition-all
+                  duration-300
+                  ease-out
+                  hover:-translate-y-0.5
+                  active:scale-95
+                  sm:px-4
+                  sm:py-2.5
+                  sm:text-sm
+                  ${tech.color}
+                `}
               >
-                {tech.name}
+                <span
+                  className="
+                    flex
+                    h-5
+                    w-5
+                    items-center
+                    justify-center
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                >
+                  <img
+                    src={tech.icon}
+                    alt={`${tech.name} icon`}
+                    className={`
+                      h-5
+                      w-5
+                      object-contain
+                      transition-all
+                      duration-300
+                      group-hover:drop-shadow-[0_0_6px_currentColor]
+                      ${
+                        tech.darkIcon
+                          ? 'brightness-0'
+                          : ''
+                      }
+                    `}
+                  />
+                </span>
+
+                <span>{tech.name}</span>
               </span>
             ))}
           </div>
 
           {/* CTA buttons */}
-          <div className="mt-8 flex flex-row gap-3 ">
-            <a
-              href="#project"
-              >
-             <GlowButton className="!bg-gray-500 hover:!bg-gray-700 px-4">View All Projects</GlowButton>
+          <div className="mt-8 flex flex-row gap-3">
+            <a href="#project">
+              <GlowButton className="!bg-gray-500 hover:!bg-gray-700 px-4">
+                View All Projects
+              </GlowButton>
             </a>
 
             <Link to="/notfound">
-                <GlowButton className="!bg-emerald-600 hover:!bg-emerald-700 px-4">download resume</GlowButton>
+              <GlowButton className="!bg-emerald-600 hover:!bg-emerald-700 px-4">
+                download resume
+              </GlowButton>
             </Link>
           </div>
-{/* Link to="/projects">
-      <GlowButton>View All Projects</GlowButton>
-    </Link> */}
-
-
-
 
           {/* Socials */}
           <div className="mt-8 flex items-center gap-4">
@@ -108,6 +182,7 @@ function Home() {
             >
               <FaGithub size={20} />
             </a>
+
             <a
               href="https://www.instagram.com/_yousuf.yk_?igsh=azl6ZWZpd3RpNzcx"
               target="_blank"
@@ -164,7 +239,9 @@ while (learning) {
 
                 <div className="rounded-xl bg-gray-900 p-4">
                   <p className="text-xl font-bold text-white">2026</p>
-                  <p className="text-xs text-gray-400">Portfolio rebuild</p>
+                  <p className="text-xs text-gray-400">
+                    Portfolio rebuild
+                  </p>
                 </div>
               </div>
             </div>

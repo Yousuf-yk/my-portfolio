@@ -13,11 +13,12 @@ import ContactPage from './pages/ContactPage'; // new page with contact form
 import AboutPage from './pages/aboutPage.jsx'; // new page with about me content
 
 import NotFound from './pages/notFound.jsx';
-
 import Blog from './components/ui/Blog.jsx';
 import Skills from './components/ui/skill.jsx';
 import Certificate from './components/ui/certificate.jsx';
 import Contact from './components/ui/contact.jsx';
+
+
 
 function HomePage() {
   return (
