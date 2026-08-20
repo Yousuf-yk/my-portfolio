@@ -17,8 +17,8 @@ const updateStyles = (css) => {
 const createAnimation = () => ({
   css: `
     ::view-transition-group(root) {
-      animation-duration: 2s;
-      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      animation-duration: 0.4s;
+      animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
     }
 
     ::view-transition-old(root) {
@@ -30,15 +30,13 @@ const createAnimation = () => ({
       animation-name: reveal-center;
       z-index: 9999;
       mix-blend-mode: normal;
+      will-change: clip-path, filter;
     }
 
     @keyframes reveal-center {
       0% {
         clip-path: circle(0% at 50% 50%);
-        filter: blur(12px) brightness(1.05);
-      }
-      40% {
-        filter: blur(6px) brightness(1.02);
+        filter: blur(8px) brightness(1.05);
       }
       100% {
         clip-path: circle(150% at 50% 50%);
@@ -85,13 +83,10 @@ export const ThemeProvider = ({ children }) => {
 
   const triggerPageBlur = (callback) => {
     setIsBlurring(true);
-    setTimeout(() => {
-      callback?.();
-    }, 180);
-
-    setTimeout(() => {
+    callback?.();
+    requestAnimationFrame(() => {
       setIsBlurring(false);
-    }, 180);
+    });
   };
 
   return (

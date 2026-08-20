@@ -14,59 +14,101 @@ function Certificate() {
   const certificates = [cert1, cert2, cert3, cert4, cert5, cert6];
 
   return (
-    <section className="relative overflow-hidden px-6 py-5 sm:px-10 lg:px-16">
+    <section
+      id="certificates"
+      className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-16 lg:px-10"
+    >
       {/* Background glow */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-10 top-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute right-10 bottom-10 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-100px] top-10 h-64 w-64 rounded-full bg-emerald-500/[0.06] blur-3xl" />
+
+        <div className="absolute bottom-10 right-[-100px] h-72 w-72 rounded-full bg-sky-500/[0.05] blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-600">
+        {/* Header */}
+        <div className="mb-8 text-center sm:mb-10">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
             Achievements
           </p>
 
-          <h2 className="text-4xl font-bold text-[var(--text-main)] md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[var(--text-main)] sm:text-4xl">
             Certificates
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-[var(--text-secondary)]">
-            Certifications and course completions that reflect my continuous
-            learning in web development and software engineering.
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-[var(--text-secondary)] sm:text-base">
+            Certifications and courses that reflect my continuous learning in
+            web development and software engineering.
           </p>
         </div>
 
+        {/* Slider */}
         <Swiper
           modules={[Autoplay]}
-          spaceBetween={24}
+          spaceBetween={20}
           slidesPerView={1}
-          loop={true}
-          speed={900}
+          loop
+          speed={800}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
-          className="pb-8"
+          className="!pb-6"
         >
           {certificates.map((img, index) => (
             <SwiperSlide key={index}>
               <div className="flex justify-center">
-                <div className="group w-full max-w-4xl overflow-hidden rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-4 shadow-lg transition-all duration-500 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-[0_20px_50px_rgba(16,185,129,0.15)]">
-                  <div className="overflow-hidden rounded-2xl">
+                <div
+                  className="
+                    group
+                    w-full
+                    max-w-2xl
+                    overflow-hidden
+                    rounded-2xl
+                    border
+                    border-[var(--border-color)]
+                    bg-[var(--bg-card)]
+                    p-3
+                    shadow-md
+                    transition-all
+                    duration-500
+                    hover:-translate-y-1
+                    hover:border-emerald-300
+                    hover:shadow-[0_15px_40px_rgba(16,185,129,0.12)]
+                    sm:p-4
+                  "
+                >
+                  {/* Certificate image */}
+                  <div className="overflow-hidden rounded-xl">
                     <img
                       src={img}
                       alt={`Certificate ${index + 1}`}
-                      className="h-auto w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="
+                        mx-auto
+                        h-auto
+                        max-h-[420px]
+                        w-full
+                        object-contain
+                        transition-transform
+                        duration-700
+                        group-hover:scale-[1.015]
+                      "
                     />
                   </div>
 
-                  <div className="mt-4 flex items-center justify-between px-2">
-                    <p className="text-sm font-medium text-[var(--text-main)]">
-                      Certificate {index + 1}
-                    </p>
+                  {/* Bottom info */}
+                  <div className="mt-3 flex items-center justify-between px-1 sm:px-2">
+                    <div>
+                      <p className="text-sm font-semibold text-[var(--text-main)]">
+                        Certificate {index + 1}
+                      </p>
 
-                    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
+                      <p className="mt-0.5 text-xs text-[var(--text-secondary)]">
+                        Professional development
+                      </p>
+                    </div>
+
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-[10px] font-semibold text-emerald-700 sm:text-xs">
                       Verified
                     </span>
                   </div>
@@ -75,6 +117,11 @@ function Certificate() {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Slider indicator */}
+        <div className="mt-3 text-center text-xs text-[var(--text-secondary)]">
+          6 certificates • Auto rotating
+        </div>
       </div>
     </section>
   );

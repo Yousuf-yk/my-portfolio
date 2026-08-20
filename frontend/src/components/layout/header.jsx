@@ -28,20 +28,18 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 px-4">
       <div className="mx-auto max-w-6xl">
         <nav
-          className={`flex items-center justify-between border transition-all duration-300 ${
-            scrolled
+          className={`flex items-center justify-between  transition-all duration-300 ${scrolled
               ? 'mt-3 rounded-4xl border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-2 shadow-lg backdrop-blur-xl'
               : 'rounded-none border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md'
-          }`}
+            }`}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
               src={yousufImg}
               alt="Yousuf Khan"
-              className={`rounded-full object-cover ring-1 ring-[var(--border-color)] transition-all duration-300 ${
-                scrolled ? 'h-9 w-9' : 'h-[45px] w-[45px]'
-              }`}
+              className={`rounded-full object-cover ring-1 ring-[var(--border-color)] transition-all duration-300 ${scrolled ? 'h-9 w-9' : 'h-[45px] w-[45px]'
+                }`}
             />
 
             <div className="hidden sm:block">
@@ -56,7 +54,7 @@ function Header() {
 
           {/* Desktop navigation */}
           <ul className="hidden items-center gap-8 md:flex">
-            
+
 
             <li>
               <Link
@@ -91,9 +89,8 @@ function Header() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className={`${glassButton} ${
-                scrolled ? 'rounded-2xl' : 'rounded-lg'
-              } relative overflow-hidden`}
+              className={`${glassButton} ${scrolled ? 'rounded-2xl' : 'rounded-lg'
+                } relative overflow-hidden`}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -105,9 +102,9 @@ function Header() {
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   {isDark ? (
-                    <Sun className="h-[18px] w-[18px] text-orange-500" />
+                    <Sun className="h-[18px] w-[18px] text-yellow-400" />
                   ) : (
-                    <Moon className="h-[18px] w-[18px] text-sky-500" />
+                    <Moon className="h-[18px] w-[18px] text-sky-800" />
                   )}
                 </motion.span>
               </AnimatePresence>
@@ -115,9 +112,8 @@ function Header() {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className={`${glassButton} ${
-                scrolled ? 'rounded-2xl' : 'rounded-lg'
-              } md:hidden`}
+              className={`${glassButton} ${scrolled ? 'rounded-2xl' : 'rounded-lg'
+                } md:hidden`}
               aria-label="Toggle navigation menu"
             >
               {menuOpen ? (
@@ -131,15 +127,9 @@ function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="absolute right-[10px] mt-3 w-[50%] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/70 p-4 shadow-lg backdrop-blur-xl md:hidden">
-            <div className="flex flex-col gap-3">
-              <Link
-                to="/"
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
-              >
-                Home
-              </Link>
+          <div className="absolute right-[10px] mt-3 w-[40%] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/70 p-4 shadow-lg backdrop-blur-xl md:hidden">
+            <div className="flex flex-col gap-3 text-center">
+
 
               <Link
                 to="/projects"

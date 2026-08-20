@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import { API_URL } from '../../api';
-import { HiMail, HiPhone, HiLocationMarker, HiArrowRight } from 'react-icons/hi';
-import GlowButton from '../layout/button';
+import React, { useState } from "react";
+import { API_URL } from "../../api";
+import {
+  HiMail,
+  HiPhone,
+  HiLocationMarker,
+  HiArrowRight,
+} from "react-icons/hi";
+import GlowButton from "../layout/button";
 
 function Contact() {
   const [submitting, setSubmitting] = useState(false);
@@ -13,26 +18,27 @@ function Contact() {
     const formData = new FormData(e.target);
 
     const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('number'),
-      message: formData.get('text'),
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("number"),
+      message: formData.get("text"),
     };
 
     try {
       const response = await fetch(`${API_URL}/contact`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
       const result = await response.json();
-      alert(result.message || 'Message sent successfully!');
+
+      alert(result.message || "Message sent successfully!");
       e.target.reset();
     } catch (error) {
-      alert('Unable to send message right now. Please try again later.');
+      alert("Unable to send message right now. Please try again later.");
     } finally {
       setSubmitting(false);
     }
@@ -41,167 +47,151 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden px-6 py-20 sm:px-10 lg:px-16"
+      className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-16 lg:px-10"
     >
-      {/* Background glow */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-10 top-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
-        <div className="absolute right-10 bottom-10 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-120px] top-[-100px] h-72 w-72 rounded-full bg-emerald-500/[0.05] blur-3xl" />
+        <div className="absolute bottom-[-120px] right-[-100px] h-72 w-72 rounded-full bg-emerald-500/[0.04] blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-emerald-600">
+        {/* Header */}
+        <div className="mb-8 text-center">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
             Contact
           </p>
 
-          <h2 className="text-4xl font-bold text-[var(--text-main)] md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[var(--text-main)] sm:text-4xl">
             Let's work together
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--text-secondary)]">
-            Have an idea, project, or opportunity? I'd love to hear from you.
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-[var(--text-secondary)] sm:text-base">
+            Have a project, internship opportunity, or just want to connect?
+            Send me a message.
           </p>
         </div>
 
-        <div className="grid gap-10 lg:grid-cols-[340px_1fr]">
-          {/* Contact info */}
-          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 shadow-sm transition-all duration-300 hover:border-emerald-300 hover:shadow-[0_15px_40px_rgba(16,185,129,0.12)]">
-            <h3 className="mb-8 text-2xl font-semibold text-[var(--text-main)]">
-              Contact information
+        {/* Content */}
+        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+          {/* Contact details */}
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm sm:p-7">
+            <h3 className="text-xl font-semibold text-[var(--text-main)]">
+              Get in touch
             </h3>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="rounded-xl bg-emerald-100 p-3 text-emerald-600">
-                  <HiMail size={20} />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-[var(--text-secondary)]">
+            <div className="mt-6 space-y-4">
+              {/* Email */}
+              <a
+                href="mailto:yk0574292@gmail.com"
+                className="group flex items-center gap-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300/60"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
+                  <HiMail size={19} />
+                </span>
+
+                <div className="min-w-0">
+                  <p className="text-xs text-[var(--text-secondary)]">
                     Email
                   </p>
-                  <a
-                    href="mailto:yk0574292@gmail.com"
-                    className="mt-1 block text-[var(--text-main)] transition-colors hover:text-emerald-600"
-                  >
-                    yk0574292@gmail.com
-                  </a>
-                </div>
-              </div>
 
-              <div className="flex items-start gap-4">
-                <div className="rounded-xl bg-emerald-100 p-3 text-emerald-600">
-                  <HiPhone size={20} />
+                  <p className="truncate text-sm font-medium text-[var(--text-main)] group-hover:text-emerald-600">
+                    yk0574292@gmail.com
+                  </p>
                 </div>
+              </a>
+
+              {/* Phone */}
+              <div className="flex items-center gap-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
+                  <HiPhone size={19} />
+                </span>
+
                 <div>
-                  <p className="text-sm font-medium text-[var(--text-secondary)]">
+                  <p className="text-xs text-[var(--text-secondary)]">
                     Phone
                   </p>
-                  <p className="mt-1 text-[var(--text-main)]">
+
+                  <p className="text-sm font-medium text-[var(--text-main)]">
                     +91 **********
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="rounded-xl bg-emerald-100 p-3 text-emerald-600">
-                  <HiLocationMarker size={20} />
-                </div>
+              {/* Location */}
+              <div className="flex items-center gap-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
+                  <HiLocationMarker size={19} />
+                </span>
+
                 <div>
-                  <p className="text-sm font-medium text-[var(--text-secondary)]">
+                  <p className="text-xs text-[var(--text-secondary)]">
                     Location
                   </p>
-                  <p className="mt-1 text-[var(--text-main)]">
+
+                  <p className="text-sm font-medium text-[var(--text-main)]">
                     Bangalore, India
                   </p>
                 </div>
               </div>
+            </div>
 
-              <div className="pt-4">
-                <p className="mb-3 text-sm font-medium text-[var(--text-secondary)]">
-                  Availability
-                </p>
-
-                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-300 bg-emerald-100 px-4 py-2 text-sm font-medium text-emerald-800">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Open to internship opportunities
-                </div>
-              </div>
+            {/* Status */}
+            <div className="mt-5 flex items-center gap-2 text-xs text-[var(--text-secondary)]">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+              Open to internship opportunities
             </div>
           </div>
 
-          {/* Contact form */}
-          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-8 shadow-sm transition-all duration-300 hover:border-emerald-300 hover:shadow-[0_15px_40px_rgba(16,185,129,0.12)]">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid gap-6 md:grid-cols-2">
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-[var(--text-main)]">
-                    Your name
-                  </label>
-
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="enter your name"
-                    required
-                    className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-[var(--text-main)] outline-none transition-all duration-300 placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-[var(--text-main)]">
-                    Email address
-                  </label>
-
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="alex@example.com"
-                    required
-                    className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-[var(--text-main)] outline-none transition-all duration-300 placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-[var(--text-main)]">
-                  Phone number
-                </label>
+          {/* Form */}
+          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm sm:p-7">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+                />
 
                 <input
-                  type="tel"
-                  name="number"
-                  placeholder="+91 69696 96969"
-                  className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-[var(--text-main)] outline-none transition-all duration-300 placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20"
-                />
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-[var(--text-main)]">
-                  Project details
-                </label>
-
-                <textarea
-                  name="text"
-                  placeholder="Tell me about your project, timeline, and requirements..."
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
                   required
-                  rows={6}
-                  className="w-full resize-none rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-[var(--text-main)] outline-none transition-all duration-300 placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20"
+                  className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                 />
               </div>
+
+              <input
+                type="tel"
+                name="number"
+                placeholder="Phone number (optional)"
+                className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+              />
+
+              <textarea
+                name="text"
+                rows={5}
+                required
+                placeholder="Tell me what you'd like to discuss..."
+                className="w-full resize-none rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+              />
 
               <GlowButton
-  type="submit"
-  disabled={submitting}
-  className="group bg-emerald-600 px-4 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
->
-  <span className="inline-flex items-center gap-2">
-    {submitting ? 'Sending...' : 'Send message'}
-    {!submitting && (
-      <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-    )}
-  </span>
-</GlowButton>
+                type="submit"
+                disabled={submitting}
+                className="group !bg-emerald-600 px-5 hover:!bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <span className="inline-flex items-center gap-2">
+                  {submitting ? "Sending..." : "Send message"}
+
+                  {!submitting && (
+                    <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                  )}
+                </span>
+              </GlowButton>
             </form>
           </div>
         </div>

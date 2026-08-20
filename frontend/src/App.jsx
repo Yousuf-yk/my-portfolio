@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, ThemeContext } from './context/ThemeContext.jsx';
+import ScrollToTop from "./ScrollToTop";
 
 import Header from './components/layout/header';
 import Footer from './components/layout/footer';
@@ -41,6 +42,7 @@ function AppContent() {
       <Header />
 
       <main className="mx-auto w-full max-w-6xl px-[2px] pt-24">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/projects" element={<ProjectsPage />} />

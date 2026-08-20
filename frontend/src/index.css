@@ -1,29 +1,38 @@
 @import "tailwindcss";
 
 /* =========================================
-Theme variables
+   Theme Variables
 ========================================= */
 
 :root {
+  /* Light theme */
   --bg-main: #ffffff;
   --bg-card: #ffffff;
+
   --text-main: #111827;
   --text-secondary: #6b7280;
+
   --border-color: #e5e7eb;
 
   --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* =========================================
+   Warm Dark Theme
+========================================= */
+
 [theme="warm"] {
-  --bg-main: #0a0a0a;
-  --bg-card: #121212;
-  --text-main: #ededed;
-  --text-secondary: #a1a1aa;
-  --border-color: #27272a;
+  --bg-main: #0f0e0c;
+  --bg-card: #171512;
+
+  --text-main: #f5f0e6;
+  --text-secondary: #b8b0a3;
+
+  --border-color: #302c26;
 }
 
 /* =========================================
-Base styles
+   Base Styles
 ========================================= */
 
 html,
@@ -34,19 +43,37 @@ body,
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
-  font-family: Inter, system-ui, sans-serif;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+
+  background: var(--bg-main);
+  color: var(--text-main);
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .app-wrapper {
+  min-height: 100vh;
+
   background: var(--bg-main);
   color: var(--text-main);
-  min-height: 100vh;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 /* =========================================
-Page blur helper
+   Page Blur Helper
 ========================================= */
 
 .page-blur {
@@ -55,38 +82,89 @@ Page blur helper
 }
 
 /* =========================================
-SVG support
+   SVG Support
 ========================================= */
 
+.svg-invert {
+  filter: invert(0);
+}
+
+[theme="warm"] .svg-invert {
+  /*
+    Instead of pure white,
+    use a softer warm off-white.
+  */
+  filter: brightness(0) saturate(100%) invert(93%) sepia(10%)
+    saturate(250%) hue-rotate(355deg) brightness(104%) contrast(92%);
+}
 
 /* =========================================
-View Transition Base Setup
+   View Transition Setup
 ========================================= */
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
-  animation-duration: 2s;
+
+  animation-duration: 0.6s;
   animation-timing-function: var(--expo-out);
 }
 
 /* =========================================
-Selection styling
+   Selection Styling
 ========================================= */
 
 ::selection {
-  background: rgba(99, 102, 241, 0.18);
+  background: rgba(16, 185, 129, 0.2);
   color: inherit;
 }
 
 [theme="warm"] ::selection {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(245, 240, 230, 0.18);
+  color: #f5f0e6;
 }
 
-.svg-invert {
-  filter: invert(0); /* black in light theme */
+/* =========================================
+   Scrollbar
+========================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-[theme='warm'] .svg-invert {
-  filter: invert(1); /* white in dark theme */
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #10b981;
+}
+
+/* =========================================
+   Focus
+========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   Theme Transitions
+========================================= */
+
+* {
+  border-color: var(--border-color);
+}
+
+::selection {
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
 }
