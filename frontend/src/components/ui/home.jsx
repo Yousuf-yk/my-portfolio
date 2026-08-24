@@ -107,7 +107,7 @@ function Home() {
                 {techStack.map((tech) => (
                   <div
                     key={tech.name}
-                    className="group inline-flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-3.5 py-2.5 text-sm font-medium text-[var(--text-secondary)] shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/60 hover:text-[var(--text-main)] hover:shadow-lg"
+                    className="group inline-flex items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] px-2 py-1 text-sm font-medium text-[var(--text-secondary)] shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300/60 hover:text-[var(--text-main)] hover:shadow-lg"
                   >
                     <span className="flex h-5 w-5 items-center justify-center">
                       <img
@@ -124,21 +124,6 @@ function Home() {
                 ))}
               </div>
             </div>
-
-            {/* CTA */}
-            {/* <div className="mt-4 flex  gap-3">
-              <Link to="/projects">
-                <GlowButton className="!bg-emerald-600 px-5 hover:!bg-emerald-700">
-                  View my projects
-                </GlowButton>
-              </Link>
-
-              <a href="/resume.pdf" download>
-                <GlowButton className="!bg-gray-600 px-5 hover:!bg-gray-700">
-                  Download resume
-                </GlowButton>
-              </a>
-            </div> */}
 
             {/* Socials */}
             <div className="mt-8 flex flex-wrap items-center gap-2">
@@ -258,38 +243,7 @@ developer.ship();`}
           </div>
         </div>
 
-        {/* ───────────────── BOTTOM STRIP ───────────────── */}
-        {/* <div className="grid overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/50 backdrop-blur-md sm:grid-cols-3">
-          <div className="px-5 py-5 sm:px-7">
-            <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)]">
-              Frontend
-            </p>
-
-            <p className="mt-1 text-sm font-semibold">
-              React · Tailwind · Responsive UI
-            </p>
-          </div>
-
-          <div className="border-t border-[var(--border-color)] px-5 py-5 sm:border-l sm:border-t-0 sm:px-7">
-            <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)]">
-              Backend
-            </p>
-
-            <p className="mt-1 text-sm font-semibold">
-              Node · Express · REST APIs
-            </p>
-          </div>
-
-          <div className="border-t border-[var(--border-color)] px-5 py-5 sm:border-l sm:border-t-0 sm:px-7">
-            <p className="text-xs uppercase tracking-[0.15em] text-[var(--text-secondary)]">
-              Database
-            </p>
-
-            <p className="mt-1 text-sm font-semibold">
-              PostgreSQL · SQL · Data modeling
-            </p>
-          </div>
-        </div> */}
+     
       </section>
     </main>
   );

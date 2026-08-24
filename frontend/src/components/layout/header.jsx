@@ -1,13 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import yousufImg from '../../assets/photos/yousufimg2.jpeg';
-import { ThemeContext } from '../../context/ThemeContext.jsx';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+
+import yousufImg from "../../assets/photos/yousufimg2.jpeg";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useContext(ThemeContext);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -15,47 +14,49 @@ function Header() {
       setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const glassButton =
-    'flex h-10 w-10 items-center justify-center border border-[var(--border-color)]/70 bg-[var(--bg-card)]/40 backdrop-blur-md transition-all duration-300 hover:bg-[var(--bg-card)]/70 hover:border-[var(--border-color)] active:scale-95';
-
-  const isDark = theme === 'warm';
+    "flex h-10 w-10 items-center justify-center border border-[var(--border-color)]/70 bg-[var(--bg-card)]/40 backdrop-blur-md transition-all duration-300 hover:bg-[var(--bg-card)]/70 hover:border-[var(--border-color)] active:scale-95";
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4">
       <div className="mx-auto max-w-6xl">
         <nav
-          className={`flex items-center justify-between  transition-all duration-300 ${scrolled
-              ? 'mt-3 rounded-4xl border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-2 shadow-lg backdrop-blur-xl'
-              : 'rounded-none border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md'
-            }`}
+          className={`flex items-center justify-between transition-all duration-300 ${
+            scrolled
+              ? "mt-3 rounded-4xl  border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-2 shadow-lg backdrop-blur-xl"
+              : "rounded-none  border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
+          }`}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
               src={yousufImg}
               alt="Yousuf Khan"
-              className={`rounded-full object-cover ring-1 ring-[var(--border-color)] transition-all duration-300 ${scrolled ? 'h-9 w-9' : 'h-[45px] w-[45px]'
-                }`}
+              className={`rounded-full object-cover ring-1 ring-[var(--border-color)] transition-all duration-300 ${
+                scrolled ? "h-9 w-9" : "h-[45px] w-[45px]"
+              }`}
             />
 
             <div className="hidden sm:block">
               <p className="text-sm font-semibold text-[var(--text-main)]">
                 Yousuf Khan
               </p>
+
               <p className="text-xs text-[var(--text-secondary)]">
                 Full Stack Developer
               </p>
             </div>
           </Link>
 
-          {/* Desktop navigation */}
+          {/* Desktop Navigation */}
           <ul className="hidden items-center gap-8 md:flex">
-
-
             <li>
               <Link
                 to="/projects"
@@ -84,37 +85,29 @@ function Header() {
             </li>
           </ul>
 
-          {/* Right side buttons */}
+          {/* Right side */}
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className={`${glassButton} ${scrolled ? 'rounded-2xl' : 'rounded-lg'
-                } relative overflow-hidden`}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={isDark ? 'sun' : 'moon'}
-                  initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
-                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotate: 90, scale: 0.2 }}
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  {isDark ? (
-                    <Sun className="h-[18px] w-[18px] text-yellow-400" />
-                  ) : (
-                    <Moon className="h-[18px] w-[18px] text-sky-800" />
-                  )}
-                </motion.span>
-              </AnimatePresence>
-            </button>
 
+            {/* Magic UI Theme Toggle */}
+            <AnimatedThemeToggler
+              variant="circle"
+              fromCenter
+              duration={700}
+              className={`${glassButton} ${scrolled ? "rounded-2xl" : "rounded-lg"
+                } text-[var(--text-main)]`}
+              aria-label="Toggle theme"
+            />
+            
+
+            {/* Mobile menu */}
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className={`${glassButton} ${scrolled ? 'rounded-2xl' : 'rounded-lg'
-                } md:hidden`}
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              className={`${glassButton} ${
+                scrolled ? "rounded-2xl" : "rounded-lg"
+              } md:hidden`}
               aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
             >
               {menuOpen ? (
                 <X className="h-5 w-5 text-[var(--text-main)]" />
@@ -129,8 +122,6 @@ function Header() {
         {menuOpen && (
           <div className="absolute right-[10px] mt-3 w-[40%] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/70 p-4 shadow-lg backdrop-blur-xl md:hidden">
             <div className="flex flex-col gap-3 text-center">
-
-
               <Link
                 to="/projects"
                 onClick={() => setMenuOpen(false)}
@@ -138,6 +129,7 @@ function Header() {
               >
                 Projects
               </Link>
+
               <Link
                 to="/about"
                 onClick={() => setMenuOpen(false)}
