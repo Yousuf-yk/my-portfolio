@@ -72,7 +72,7 @@ function Skills() {
   const SkillPill = ({ skill }) => {
     return (
       <div
-        className="group flex cursor-default items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-3 py-2 transition-all duration-300 hover:-translate-y-1"
+        className=" flex cursor-default items-center gap-2 rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-1.5 py-1.5 transition-all duration-300 hover:-translate-y-1"
         onMouseEnter={(e) => {
           e.currentTarget.style.borderColor = skill.hoverColor;
           e.currentTarget.style.backgroundColor = `${skill.hoverColor}12`;
@@ -100,7 +100,7 @@ function Skills() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-16 lg:px-10"
+      className="relative overflow-hidden px-5 py-5 sm:px-8 sm:py-16 lg:px-10"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -140,7 +140,7 @@ function Skills() {
               className="rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)] p-5 shadow-sm transition-all duration-300 hover:border-emerald-300/50 hover:shadow-lg sm:p-6"
             >
               {/* Category heading */}
-              <div className="mb-5  flex items-start justify-between">
+              <div className="mb-3  flex items-start justify-between">
                 <div>
                   <h3 className="text-lg font-semibold text-[var(--text-main)]">
                     {category.title}
@@ -167,7 +167,7 @@ function Skills() {
         </div>
 
         {/* Currently learning */}
-        <div className="mt-4 rounded-2xl border border-dashed border-emerald-300/50 bg-emerald-500/[0.025] p-5 sm:p-6">
+        <div className="mt-4 rounded-2xl border border-dashed border-emerald-300/50 bg-emerald-500/[0.025] p-3 sm:p-6">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="flex items-center gap-2">

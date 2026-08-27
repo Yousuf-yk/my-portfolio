@@ -28,10 +28,10 @@ function Header() {
     <header className="fixed inset-x-0 top-0 z-50 px-4">
       <div className="mx-auto max-w-6xl">
         <nav
-          className={`flex items-center justify-between transition-all duration-300 ${
+          className={`flex items-center justify-between transition-all  duration-300 ${
             scrolled
               ? "mt-3 rounded-4xl  border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-2 shadow-lg backdrop-blur-xl"
-              : "rounded-none  border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
+              : " rounded-none  border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
           }`}
         >
           {/* Logo */}

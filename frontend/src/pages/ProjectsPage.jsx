@@ -14,7 +14,7 @@ function ProjectsPage() {
         <div className="absolute left-[-150px] bottom-[10%] h-[300px] w-[300px] rounded-full bg-[var(--text-main)]/[0.03] blur-3xl" />
       </div>
 
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-12 sm:px-8 lg:px-10">
+      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 lg:px-10">
         {/* Header */}
         <div className="mb-10">
           <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">

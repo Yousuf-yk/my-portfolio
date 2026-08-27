@@ -54,7 +54,7 @@ function AboutPage() {
           <div className="absolute bottom-[-200px] left-[20%] h-[400px] w-[400px] rounded-full bg-[var(--text-main)]/[0.025] blur-3xl" />
         </div>
 
-        <section className="mx-auto max-w-7xl px-5 pb-16 pt-10 sm:px-8 lg:px-10">
+        <section className="mx-auto max-w-7xl px-5 pb-16  sm:px-8 lg:px-10">
           {/* ───────────────── HERO ───────────────── */}
           <div className="grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]">
             <div>

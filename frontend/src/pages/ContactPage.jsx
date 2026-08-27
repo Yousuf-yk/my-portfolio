@@ -70,7 +70,7 @@ function ContactPage() {
         <div className="absolute right-[-180px] top-[35%] h-[400px] w-[400px] rounded-full bg-[var(--text-main)]/[0.025] blur-3xl" />
       </div>
 
-      <section className="mx-auto max-w-7xl px-5 pb-16 pt-10 sm:px-8 lg:px-10">
+      <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 lg:px-10">
         {/* ───────────────── HERO ───────────────── */}
         <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
           <div>
