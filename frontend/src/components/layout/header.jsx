@@ -92,7 +92,7 @@ function Header() {
             <AnimatedThemeToggler
               variant="circle"
               fromCenter
-              duration={700}
+              duration={300}
               className={`${glassButton} ${scrolled ? "rounded-2xl" : "rounded-lg"
                 } text-[var(--text-main)]`}
               aria-label="Toggle theme"

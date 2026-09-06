@@ -1,29 +1,63 @@
-import React from 'react';
+import React from "react";
 
 const GlowButton = ({
-  children = 'Click Me',
-  className = '',
-  type = 'button',
+  children,
+  className = "",
+  type = "button",
   disabled = false,
 }) => {
   return (
     <>
       <style>{`
-        .button-wrapper::before {
-          animation: spin-gradient 4s linear infinite;
-        }
-
         @keyframes spin-gradient {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
       `}</style>
 
-      <div className="button-wrapper relative inline-block overflow-hidden rounded-full p-0.5 transition duration-300 hover:scale-105 active:scale-100 before:absolute before:inset-0 before:content-[''] before:bg-[conic-gradient(from_0deg,_#10B981,_#34D399,_#10B981)]">
+      <div
+        className={`
+          relative inline-flex overflow-hidden rounded-full
+          p-[2px]
+          transition-transform duration-300
+          hover:scale-105 active:scale-100
+          disabled:opacity-50
+          ${disabled ? "pointer-events-none" : ""}
+        `}
+      >
+        {/* Rotating gradient */}
+        <div
+          className="
+            absolute inset-[-100%]
+            animate-[spin-gradient_4s_linear_infinite]
+            bg-[conic-gradient(from_0deg,#10B981,#34D399,#10B981,#059669,#10B981)]
+          "
+        />
+
         <button
           type={type}
           disabled={disabled}
-          className={`relative z-10 rounded-full px-2 py-4 text-sm font-semibold text-white sm:px-8 sm:py-3 ${className}`}
+          className={`
+            relative z-10
+            inline-flex items-center justify-center
+            whitespace-nowrap
+            rounded-full
+            bg-emerald-600
+            px-5 py-3
+            text-sm font-semibold text-white
+            transition-colors duration-300
+            hover:bg-emerald-700
+            disabled:cursor-not-allowed
+            disabled:opacity-50
+
+            sm:px-8
+
+            ${className}
+          `}
         >
           {children}
         </button>

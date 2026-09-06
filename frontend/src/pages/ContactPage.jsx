@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { API_URL } from "../api";
 import GlowButton from "../components/layout/button";
+import {
+  HiArrowRight,
+} from "react-icons/hi";
 
 function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
@@ -247,7 +250,7 @@ function ContactPage() {
                   <input
                     type="text"
                     name="name"
-                    placeholder="Your name"
+                    placeholder="Your name 👽"
                     required
                     className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />
@@ -261,7 +264,7 @@ function ContactPage() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="you@example.com"
+                    placeholder="alien@mars.com"
                     required
                     className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                   />
@@ -280,7 +283,7 @@ function ContactPage() {
                 <input
                   type="tel"
                   name="number"
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 69696 69696"
                   className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition placeholder:text-[var(--text-secondary)] focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
                 />
               </div>
@@ -313,9 +316,7 @@ function ContactPage() {
                 </div>
 
                 <p className="text-xs leading-5 text-[var(--text-secondary)]">
-                  For project inquiries, mentioning your timeline, expected
-                  deliverables, and whether you need frontend, backend, or
-                  full-stack work will help me give you a more useful response.
+                  sending a message may take a few seconds. as my backend is hosted on a free-tier server, it may take a moment to wake up. please be patient and do not send multiple messages.
                 </p>
               </div>
 
@@ -327,9 +328,15 @@ function ContactPage() {
                 <GlowButton
                   type="submit"
                   disabled={submitting}
-                  className="bg-emerald-600 hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group w-full sm:w-auto"
                 >
-                  {submitting ? "Sending message..." : "Send message"}
+                  <span className="inline-flex items-center justify-center gap-2">
+                    {submitting ? "Sending..." : "Send message"}
+
+                    {!submitting && (
+                      <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                    )}
+                  </span>
                 </GlowButton>
               </div>
             </form>

@@ -22,8 +22,8 @@ const ProjectCard = ({ project, index }) => {
     >
       {/* Image */}
       <div className="relative overflow-hidden">
-        <img
-          src={project.image}
+        <video autoPlay muted loop
+          src={project.video}
           alt={project.name}
           className="
             h-48
@@ -37,7 +37,7 @@ const ProjectCard = ({ project, index }) => {
         />
 
         {/* Image overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" /> */}
 
         {/* Project number */}
         <span

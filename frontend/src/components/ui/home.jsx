@@ -2,6 +2,7 @@ import React from "react";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { Highlighter } from "@/components/ui/highlighter"
 
 function Home() {
   const techStack = [
@@ -27,14 +28,7 @@ function Home() {
 
   return (
     <main className="relative min-h-[calc(100vh-72px)] overflow-hidden bg-[var(--bg-main)] text-[var(--text-main)]">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-[55%] top-[-20%] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-emerald-500/[0.025] blur-[120px]" />
-        <div className="absolute bottom-[-250px] right-[-150px] h-[500px] w-[500px] rounded-full bg-emerald-500/[0.025] blur-[110px]" />
-        <div className="absolute left-[6%] top-0 hidden h-full w-px bg-[var(--border-color)]/40 xl:block" />
-        <div className="absolute right-[6%] top-0 hidden h-full w-px bg-[var(--border-color)]/40 xl:block" />
-        <div className="absolute left-1/2 top-0 hidden h-full w-px bg-[var(--border-color)]/[0.12] lg:block" />
-        <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(var(--text-main)_1px,transparent_1px),linear-gradient(90deg,var(--text-main)_1px,transparent_1px)] [background-size:80px_80px]" />
-      </div>
+
 
       <section className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-[1600px] flex-col px-5 sm:px-8 lg:px-14 xl:px-20">
         <header className="flex min-h-[68px] items-center justify-between border-b border-[var(--border-color)]">
@@ -77,18 +71,34 @@ function Home() {
           <div className="order-1 flex flex-col justify-center lg:order-1">
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-7 bg-emerald-500 sm:w-10" />
-              <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--text-secondary)] sm:text-[10px]">Full Stack Web Developer</span>
+              <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--text-secondary)] sm:text-[10px]">
+                
+                Full Stack Web Developer
+                </span>
             </div>
             <h1 className="max-w-[850px] text-[clamp(3.4rem,8vw,7.4rem)] font-semibold leading-[0.88] tracking-[-0.055em]">
               Building<br /><span className="text-[var(--text-secondary)]">useful</span> digital<br />experiences.
             </h1>
             <div className="mt-7 flex items-center gap-4">
-              <span className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)]">I'm Yousuf Khan</span>
+              <span className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                <Highlighter action="underline" color="#A261B8">
+                  I'm Yousuf Khan</Highlighter>
+               </span>
               <span className="h-px w-12 bg-[var(--border-color)] sm:w-20" />
             </div>
+            
+
+
             <p className="mt-7 max-w-[600px] text-sm leading-7 text-[var(--text-secondary)] sm:text-base sm:leading-8">
-              I create responsive web applications with modern technologies, thoughtful interfaces and dependable backend architecture. My focus is turning ideas into products that are simple to use and built to work.
+              I create {" "}
+              <Highlighter action="underline" color="#FF9800">
+                responsive web applications
+              </Highlighter>{" "} with modern technologies, thoughtful interfaces and dependable backend architecture. My focus is turning ideas into products that are simple to use and built to work.
             </p>
+           
+
+
+
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
               <Link to="/projects" className="group inline-flex h-11 items-center justify-center gap-5 rounded-full bg-[var(--text-main)] px-6 text-xs font-semibold text-[var(--bg-main)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 sm:h-12 sm:px-7">
                 <span>Explore projects</span>

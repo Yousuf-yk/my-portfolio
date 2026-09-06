@@ -1,13 +1,12 @@
 import textogram from '../assets/photos/textogram.png';
-import Ecommerce from '../assets/photos/basicEcommerce.png';
 import weatherApp from '../assets/photos/weatherApp.png';
-
+import plutoVideo from '../assets/videos/pluto.mp4';
 
 export const projects = [
   {
     id: 1,
     name: 'Pluto Ecommerce',
-    image: Ecommerce,
+    video: plutoVideo,
     description:
       ' full-stack ecommerce application built with Node.js, Express, React, and PostgreSQL featuring product management and server-rendered pages.',
     github: 'https://github.com/Yousuf-yk/pluto.git',
@@ -23,7 +22,7 @@ export const projects = [
   {
     id: 2,
     name: 'textOgram',
-    image: textogram,
+    video: textogram,
     description:
       'online texting app that allows users to send and receive messages in real-time, with a focus on simplicity and ease of use.',
     github: 'https://github.com/Yousuf-yk/textOgram.git',
@@ -40,7 +39,7 @@ export const projects = [
   {
     id: 3,
     name: 'weatherApp',
-    image: weatherApp,
+    video: weatherApp,
     description:
       'online weather app that provides real-time weather updates and forecasts, with a focus on simplicity and ease of use.',
     github: 'https://github.com/Yousuf-yk/weather-app.git',
