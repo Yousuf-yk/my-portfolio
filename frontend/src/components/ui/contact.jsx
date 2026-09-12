@@ -47,151 +47,144 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-16 lg:px-10"
+      className="relative overflow-hidden bg-[var(--bg-main)] px-6 py-20 text-[var(--text-main)] sm:px-12 sm:py-28 lg:px-20"
     >
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-[-120px] top-[-100px] h-72 w-72 rounded-full bg-emerald-500/[0.05] blur-3xl" />
-        <div className="absolute bottom-[-120px] right-[-100px] h-72 w-72 rounded-full bg-emerald-500/[0.04] blur-3xl" />
-      </div>
+      {/* Subtle, elegant background gradients instead of bright colors */}
+      {/* <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-[10%] top-0 h-[500px] w-[500px] rounded-full bg-neutral-400/[0.03] blur-3xl" />
+        <div className="absolute -right-[10%] bottom-0 h-[500px] w-[500px] rounded-full bg-neutral-400/[0.03] blur-3xl" />
+      </div> */}
 
       <div className="mx-auto max-w-6xl">
-        {/* Header */}
-        <div className="mb-8 text-center">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
-            Contact
+        {/* Header Section */}
+        <div className="mb-16 max-w-2xl">
+          <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.3em] text-[var(--text-secondary)]">
+            Inquiries
           </p>
-
-          <h2 className="text-3xl font-bold tracking-tight text-[var(--text-main)] sm:text-4xl">
-            Let's work together
+          <h2 className="text-3xl font-bold tracking-tight text-[var(--text-main)] sm:text-4xl lg:text-[40px]">
+            Let's create something <br className="hidden sm:block" />
+           extraordinary
           </h2>
-
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-[var(--text-secondary)] sm:text-base">
-            Have a project, internship opportunity, or just want to connect?
-            Send me a message.
-          </p>
         </div>
 
-        {/* Content */}
-        <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-          {/* Contact details */}
-          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm sm:p-7">
-            <h3 className="text-xl font-semibold text-[var(--text-main)]">
-              Get in touch
-            </h3>
+        {/* Layout Grid */}
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
+          
+          {/* Left Column: Contact Details */}
+          <div className="flex flex-col space-y-10">
+            <p className="text-sm font-light leading-relaxed text-[var(--text-secondary)]">
+              Whether you have a project in mind, an internship opportunity, or simply want to connect, feel free to reach out. I am currently open to new ventures.
+            </p>
 
-            <div className="mt-6 space-y-4">
+            <div className="space-y-8">
               {/* Email */}
               <a
                 href="mailto:yk0574292@gmail.com"
-                className="group flex items-center gap-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300/60"
+                className="group flex items-start gap-5 transition-opacity hover:opacity-70"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
-                  <HiMail size={19} />
-                </span>
-
-                <div className="min-w-0">
-                  <p className="text-xs text-[var(--text-secondary)]">
+                <div className="mt-1 text-neutral-400">
+                  <HiMail size={22} />
+                </div>
+                <div>
+                  <p className="text-[11px] font-medium uppercase tracking-widest text-[var(--text-secondary)]">
                     Email
                   </p>
-
-                  <p className="truncate text-sm font-medium text-[var(--text-main)] group-hover:text-emerald-600">
+                  <p className="mt-1 text-base font-light">
                     yk0574292@gmail.com
                   </p>
                 </div>
               </a>
 
               {/* Phone */}
-              <div className="flex items-center gap-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
-                  <HiPhone size={19} />
-                </span>
-
+              <div className="flex items-start gap-5">
+                <div className="mt-1 text-neutral-400">
+                  <HiPhone size={22} />
+                </div>
                 <div>
-                  <p className="text-xs text-[var(--text-secondary)]">
+                  <p className="text-[11px] font-medium uppercase tracking-widest text-[var(--text-secondary)]">
                     Phone
                   </p>
-
-                  <p className="text-sm font-medium text-[var(--text-main)]">
+                  <p className="mt-1 text-base font-light">
                     +91 **********
                   </p>
                 </div>
               </div>
 
               {/* Location */}
-              <div className="flex items-center gap-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-main)] p-4">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
-                  <HiLocationMarker size={19} />
-                </span>
-
+              <div className="flex items-start gap-5">
+                <div className="mt-1 text-neutral-400">
+                  <HiLocationMarker size={22} />
+                </div>
                 <div>
-                  <p className="text-xs text-[var(--text-secondary)]">
+                  <p className="text-[11px] font-medium uppercase tracking-widest text-[var(--text-secondary)]">
                     Location
                   </p>
-
-                  <p className="text-sm font-medium text-[var(--text-main)]">
+                  <p className="mt-1 text-base font-light">
                     Bangalore, India
                   </p>
                 </div>
               </div>
             </div>
-
-            {/* Status */}
-            <div className="mt-5 flex items-center gap-2 text-xs text-[var(--text-secondary)]">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              Open to internship opportunities
-            </div>
           </div>
 
-          {/* Form */}
-          <div className="rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm sm:p-7">
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
-                />
+          {/* Right Column: Editorial Form */}
+          <div>
+            <form onSubmit={handleSubmit} className="space-y-10">
+              <div className="grid gap-10 sm:grid-cols-2">
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    required
+                    className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
+                  />
+                </div>
 
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
+                  />
+                </div>
+              </div>
+
+              <div className="relative">
                 <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email"
-                  required
-                  className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
+                  type="tel"
+                  name="number"
+                  placeholder="Phone Number (Optional)"
+                  className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
                 />
               </div>
 
-              <input
-                type="tel"
-                name="number"
-                placeholder="Phone number (optional)"
-                className="w-full rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
-              />
+              <div className="relative">
+                <textarea
+                  name="text"
+                  rows={4}
+                  required
+                  placeholder="How can we collaborate?"
+                  className="w-full resize-none border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
+                />
+              </div>
 
-              <textarea
-                name="text"
-                rows={5}
-                required
-                placeholder="Tell me what you'd like to discuss..."
-                className="w-full resize-none rounded-xl border border-[var(--border-color)] bg-[var(--bg-main)] px-4 py-3 text-sm text-[var(--text-main)] outline-none transition focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10"
-              />
-
-              <GlowButton
-                type="submit"
-                disabled={submitting}
-                className="group !bg-emerald-600 px-5 hover:!bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                <span className="inline-flex items-center gap-2">
-                  {submitting ? "Sending..." : "Send message"}
-
-                  {!submitting && (
-                    <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                  )}
-                </span>
-              </GlowButton>
+              <div className=" center flex justify-center ">
+                <GlowButton
+                  type="submit"
+                  disabled={submitting}
+                  className="group !bg-gray-500 px-6 py-2 hover:!bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <span className="inline-flex items-center gap-3">
+                    {submitting ? "Transmitting..." : "Send Message"}
+                    {!submitting && (
+                      <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                    )}
+                  </span>
+                </GlowButton>
+              </div>
             </form>
           </div>
         </div>

@@ -18,7 +18,7 @@ import Blog from './components/ui/Blog.jsx';
 import Skills from './components/ui/skill.jsx';
 import Certificate from './components/ui/certificate.jsx';
 import Contact from './components/ui/contact.jsx';
-
+import BlogAndCertificates from "./components/ui/mega.jsx";
 
 
 function HomePage() {
@@ -27,8 +27,8 @@ function HomePage() {
       <Home />
       <Projects />
       <Skills />
-      <Blog />
-      <Certificate />
+      <BlogAndCertificates/>
+    
       <Contact />
     </>
   );

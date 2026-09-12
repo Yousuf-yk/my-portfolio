@@ -276,7 +276,7 @@ export const AnimatedThemeToggler = ({
         "transition-all duration-300 ease-out",
         "hover:bg-[var(--bg-card)]/70",
         "hover:border-[var(--border-color)]",
-        "hover:shadow-md",
+        // "hover:shadow-md",
         "active:scale-90",
         "focus-visible:outline-none",
         "focus-visible:ring-2",
@@ -295,9 +295,9 @@ export const AnimatedThemeToggler = ({
       "
       >
         {isDark ? (
-          <Sun className="h-[18px] w-[18px] text-blue-300" />
+          <Sun className="h-[18px] w-[18px] text-sky-500" />
         ) : (
-          <Moon className="h-[18px] w-[18px] text-orange-500"/>
+          <Moon className="h-[18px] w-[18px] text-orange-600"/>
         )}
       </span>
 

@@ -30,7 +30,7 @@ function Header() {
         <nav
           className={`flex items-center justify-between transition-all  duration-300 ${
             scrolled
-              ? "mt-3 rounded-4xl  border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-2 shadow-lg backdrop-blur-xl"
+              ? "mt-3 rounded-4xl  border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-3 shadow-lg backdrop-blur-xl"
               : " rounded-none  border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
           }`}
         >
@@ -86,13 +86,13 @@ function Header() {
           </ul>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 flex-row-reverse">
 
             {/* Magic UI Theme Toggle */}
             <AnimatedThemeToggler
               variant="circle"
               fromCenter
-              duration={300}
+              duration={400}
               className={`${glassButton} ${scrolled ? "rounded-2xl" : "rounded-lg"
                 } text-[var(--text-main)]`}
               aria-label="Toggle theme"
