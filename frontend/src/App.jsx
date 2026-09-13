@@ -28,7 +28,6 @@ function HomePage() {
       <Projects />
       <Skills />
       <BlogAndCertificates/>
-    
       <Contact />
     </>
   );
