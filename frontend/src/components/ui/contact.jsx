@@ -47,13 +47,9 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-[var(--bg-main)] px-6 py-20 text-[var(--text-main)] sm:px-12 sm:py-28 lg:px-20"
+      className="relative overflow-hidden bg-[var(--bg-main)] px-6 py-20 text-[var(--text-main)] sm:px-12 sm:py-8 lg:px-20"
     >
-      {/* Subtle, elegant background gradients instead of bright colors */}
-      {/* <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -left-[10%] top-0 h-[500px] w-[500px] rounded-full bg-neutral-400/[0.03] blur-3xl" />
-        <div className="absolute -right-[10%] bottom-0 h-[500px] w-[500px] rounded-full bg-neutral-400/[0.03] blur-3xl" />
-      </div> */}
+    
 
       <div className="mx-auto max-w-6xl">
         {/* Header Section */}

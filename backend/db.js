@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+Koko
 
 import pg from "pg";
 const { Pool } = pg;

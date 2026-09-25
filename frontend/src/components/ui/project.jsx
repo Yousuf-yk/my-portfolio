@@ -11,7 +11,7 @@ function Projects() {
   return (
     <section
       id="project"
-      className="relative overflow-hidden bg-[var(--bg-main)] px-6 py-20 text-[var(--text-main)] sm:px-12 sm:py-28 lg:px-20"
+      className="relative overflow-hidden bg-[var(--bg-main)] px-6 py-5 text-[var(--text-main)] sm:px-12 sm:py-8 lg:px-20"
     >
       {/* Subtle, elegant background gradient replacing the vibrant emerald */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center">

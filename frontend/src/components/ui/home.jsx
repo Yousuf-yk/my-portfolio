@@ -31,7 +31,8 @@ function Home() {
 
 
       <section className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-[1600px] flex-col px-5 sm:px-8 lg:px-14 xl:px-20">
-        <header className="flex min-h-[68px] items-center justify-between border-b border-[var(--border-color)]">
+
+        <header className="flex min-h-[10px] items-center justify-between border-b border-[var(--border-color)]">
           <div className="flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-color)] text-[10px] font-bold tracking-tight">YK</div>
             <span className="hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--text-secondary)] sm:block">Yousuf Khan</span>

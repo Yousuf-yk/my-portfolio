@@ -29,7 +29,7 @@ function BlogAndCertificates() {
     return (
         <section
             id="writing"
-            className="relative overflow-hidden bg-[var(--bg-main)] px-4 py-12 text-[var(--text-main)] sm:px-6 sm:py-14 md:px-8 lg:px-10 lg:py-16"
+            className="relative overflow-hidden bg-[var(--bg-main)] px-4 py-12 text-[var(--text-main)] sm:px-6 sm:py-4 md:px-8 lg:px-10 lg:py-16"
         >
             {/* Background decoration */}
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">

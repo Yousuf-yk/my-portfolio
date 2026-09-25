@@ -15,7 +15,7 @@ function Blog() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[var(--bg-main)] px-5 py-12 text-[var(--text-main)] sm:px-8 sm:py-14 lg:px-10">
+    <section className="relative overflow-hidden bg-[var(--bg-main)] px-5 py-12 text-[var(--text-main)] sm:px-8 sm:py-4 lg:px-10">
       {/* Background decoration */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-[-100px] top-[-100px] h-72 w-72 rounded-full bg-emerald-500/[0.035] blur-3xl" />
