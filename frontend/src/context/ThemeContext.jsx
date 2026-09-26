@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
+import { flushSync } from 'react-dom';
 
 export const ThemeContext = createContext();
 
@@ -14,11 +15,20 @@ const updateStyles = (css) => {
   styleElement.textContent = css;
 };
 
-const createAnimation = () => ({
+// Generates dynamic circular reveal coordinates from click origin
+const createAnimation = (originX = '50%', originY = '50%', maxRadius = 150) => ({
   css: `
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-group(root),
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none !important;
+      }
+    }
+
     ::view-transition-group(root) {
-      animation-duration: 0.4s;
-      animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+      animation-duration: 0.55s;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     ::view-transition-old(root) {
@@ -27,20 +37,18 @@ const createAnimation = () => ({
     }
 
     ::view-transition-new(root) {
-      animation-name: reveal-center;
+      animation: reveal-origin 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       z-index: 9999;
       mix-blend-mode: normal;
-      will-change: clip-path, filter;
+      will-change: clip-path;
     }
 
-    @keyframes reveal-center {
+    @keyframes reveal-origin {
       0% {
-        clip-path: circle(0% at 50% 50%);
-        filter: blur(8px) brightness(1.05);
+        clip-path: circle(0px at ${originX} ${originY});
       }
       100% {
-        clip-path: circle(150% at 50% 50%);
-        filter: blur(0px) brightness(1);
+        clip-path: circle(${maxRadius}px at ${originX} ${originY});
       }
     }
   `,
@@ -64,22 +72,54 @@ export const ThemeProvider = ({ children }) => {
     }
   }, [theme]);
 
-  const toggleTheme = useCallback(() => {
-    const nextTheme = theme === 'classic' ? 'warm' : 'classic';
-    const animation = createAnimation();
-    updateStyles(animation.css);
+  const toggleTheme = useCallback(
+    (event) => {
+      const nextTheme = theme === 'classic' ? 'warm' : 'classic';
 
-    const switchTheme = () => {
-      setTheme(nextTheme);
-    };
+      // Fallback if View Transitions API is not supported
+      if (!document.startViewTransition) {
+        setTheme(nextTheme);
+        return;
+      }
 
-    if (!document.startViewTransition) {
-      switchTheme();
-      return;
-    }
+      // Calculate origin coordinates from the click/tap event
+      let originX = '50%';
+      let originY = '50%';
+      let maxRadius = Math.hypot(window.innerWidth, window.innerHeight);
 
-    document.startViewTransition(switchTheme);
-  }, [theme]);
+      if (event && (event.clientX !== undefined || event.nativeEvent?.clientX !== undefined)) {
+        const clientX = event.clientX ?? event.nativeEvent.clientX;
+        const clientY = event.clientY ?? event.nativeEvent.clientY;
+
+        originX = `${clientX}px`;
+        originY = `${clientY}px`;
+
+        // Calculate distance from click point to the furthest corner
+        const endRadius = Math.hypot(
+          Math.max(clientX, window.innerWidth - clientX),
+          Math.max(clientY, window.innerHeight - clientY)
+        );
+        maxRadius = Math.ceil(endRadius);
+      }
+
+      // Inject the computed origin keyframes
+      const animation = createAnimation(originX, originY, maxRadius);
+      updateStyles(animation.css);
+
+      // flushSync guarantees the state change is committed to the DOM synchronously
+      const transition = document.startViewTransition(() => {
+        flushSync(() => {
+          setTheme(nextTheme);
+        });
+      });
+
+      // Cleanup transition styles after the animation finishes
+      transition.finished.finally(() => {
+        updateStyles('');
+      });
+    },
+    [theme]
+  );
 
   const triggerPageBlur = (callback) => {
     setIsBlurring(true);

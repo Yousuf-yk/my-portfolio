@@ -89,6 +89,7 @@ function Home() {
                 Full Stack Web Developer
                 </span>
             </div>
+            
             <h1 className="max-w-[850px] text-[clamp(3.4rem,8vw,7.4rem)] font-semibold leading-[0.88] tracking-[-0.055em]">
               Building<br /><span className="text-[var(--text-secondary)]">useful</span> digital<br />experiences.
             </h1>
@@ -135,24 +136,7 @@ function Home() {
           </div>
 
           <aside className="order-3 mt-10 lg:mt-0">
-            {/* <div className="relative mx-auto h-[230px] w-full max-w-[320px] sm:h-[270px] lg:h-[330px] lg:max-w-none">
-              <div className="absolute inset-0 rounded-[2rem] border border-[var(--border-color)]" />
-              <div className="absolute inset-4 rounded-[1.5rem] border border-[var(--border-color)]/50" />
-              <div className="absolute left-6 top-6 flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--text-secondary)]">Available</span>
-              </div>
-              <div className="absolute left-1/2 top-1/2 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--border-color)] sm:h-32 sm:w-32">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[var(--text-main)] text-xl font-semibold tracking-[-0.04em] text-[var(--bg-main)] sm:h-24 sm:w-24 sm:text-2xl">YK</div>
-              </div>
-              <div className="absolute left-1/2 top-1/2 h-[165px] w-[165px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[var(--border-color)]/70 sm:h-[190px] sm:w-[190px]" />
-              <span className="absolute left-1/2 top-[28px] h-2 w-2 -translate-x-1/2 rounded-full bg-emerald-500 sm:top-[38px]" />
-              <div className="absolute bottom-6 left-6">
-                <p className="text-[9px] uppercase tracking-[0.18em] text-[var(--text-secondary)]">Personal portfolio</p>
-                <p className="mt-1 text-xs font-semibold">Yousuf Khan</p>
-              </div>
-              <span className="absolute bottom-6 right-6 text-[10px] font-medium tracking-[0.2em] text-[var(--text-secondary)]">01</span>
-            </div> */}
+           
 
             <div className="mt-8">
               <div className="mb-4 flex items-center justify-between">
