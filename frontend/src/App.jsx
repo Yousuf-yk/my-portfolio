@@ -20,6 +20,7 @@ import Certificate from './components/ui/certificate.jsx';
 import Contact from './components/ui/contact.jsx';
 import BlogAndCertificates from "./components/ui/mega.jsx";
 
+import SmoothScroll from "./components/animation/scrollanimation.jsx";
 
 function HomePage() {
   return (
@@ -41,6 +42,7 @@ function AppContent() {
       <Header />
 
       <main className="mx-auto w-full max-w-6xl px-[2px] pt-24">
+
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -63,7 +65,9 @@ function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <AppContent />
+        <SmoothScroll>
+          <AppContent />
+        </SmoothScroll>
       </BrowserRouter>
     </ThemeProvider>
   );

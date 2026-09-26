@@ -3,6 +3,8 @@ import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Highlighter } from "@/components/ui/highlighter"
+import Text3DFlip from "@/components/ui/text-3d-flip"
+
 
 function Home() {
   const techStack = [
@@ -55,7 +57,17 @@ function Home() {
             </div>
             <div className="max-w-[220px]">
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">About</p>
-              <p className="mt-5 text-sm leading-7 text-[var(--text-secondary)]">I build digital products from interface to database, combining clean frontend experiences with reliable backend systems.</p>
+              <Text3DFlip
+                className="bg-background"
+                textClassName="bg-background text-foreground"
+                flipTextClassName="bg-background text-foreground"
+                rotateDirection="top"
+              >
+              
+                I build digital products from interface to database, combining clean frontend experiences with reliable backend systems.
+              
+              </Text3DFlip>
+
             </div>
             <div className="my-10 h-px w-full bg-[var(--border-color)]" />
             <div>
