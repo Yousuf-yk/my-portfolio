@@ -171,7 +171,7 @@ function Contact() {
                 <GlowButton
                   type="submit"
                   disabled={submitting}
-                  className="group !bg-gray-500 px-6 py-2 hover:!bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group px-6 py-2  disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span className="inline-flex items-center gap-3">
                     {submitting ? "Transmitting..." : "Send Message"}

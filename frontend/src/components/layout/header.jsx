@@ -14,6 +14,8 @@ function Header() {
       setScrolled(window.scrollY > 20);
     };
 
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -25,14 +27,13 @@ function Header() {
     "flex h-10 w-10 items-center justify-center border border-[var(--border-color)]/70 bg-[var(--bg-card)]/40 backdrop-blur-md transition-all duration-300 hover:bg-[var(--bg-card)]/70 hover:border-[var(--border-color)] active:scale-95";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4">
+    <header className="fixed inset-x-0 top-0 z-[9999] px-4">
       <div className="mx-auto max-w-6xl">
         <nav
-          className={`flex items-center justify-between transition-all  duration-300 ${
-            scrolled
-              ? "mt-3 rounded-4xl  border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-3 shadow-lg backdrop-blur-xl"
-              : " rounded-none  border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
-          }`}
+          className={`flex items-center justify-between transition-all duration-300 ${scrolled
+              ? "mt-3 rounded-4xl border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-3 shadow-lg backdrop-blur-xl"
+              : "rounded-none border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
+            }`}
         >
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
@@ -60,7 +61,7 @@ function Header() {
             <li>
               <Link
                 to="/projects"
-                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+                className="text-sm font-medium text-[var(--text-main)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
               >
                 Projects
               </Link>
@@ -69,7 +70,7 @@ function Header() {
             <li>
               <Link
                 to="/about"
-                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+                className="text-sm font-medium text-[var(--text-main)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
               >
                 About
               </Link>
@@ -78,7 +79,7 @@ function Header() {
             <li>
               <Link
                 to="/contact"
-                className="text-sm font-medium text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--text-main)]"
+                className="text-sm font-medium text-[var(--text-main)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
               >
                 Contact
               </Link>
@@ -86,20 +87,17 @@ function Header() {
           </ul>
 
           {/* Right side */}
-          <div className="flex items-center gap-3 flex-row-reverse">
-
-            {/* Magic UI Theme Toggle */}
+          <div className="flex flex-row-reverse items-center gap-3">
             <AnimatedThemeToggler
               variant="circle"
               fromCenter
               duration={400}
-              className={`${glassButton} ${scrolled ? "rounded-2xl" : "rounded-lg"
-                } text-[var(--text-main)]`}
+              className={`${glassButton} ${
+                scrolled ? "rounded-2xl" : "rounded-lg"
+              } text-[var(--text-main)]`}
               aria-label="Toggle theme"
             />
-            
 
-            {/* Mobile menu */}
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}

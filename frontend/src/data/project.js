@@ -55,8 +55,8 @@ export const projects = [
 ];
 
 export const statusColors = {
-  Completed: 'bg-green-100 text-green-700 border-green-200',
-  Pending: 'bg-yellow-100 text-yellow-700 border-yellow-200',
+  Completed:
+    'border-2 border-green-600 bg-green-50 text-green-700',
+  Pending:
+    'border-2 border-yellow-500 bg-yellow-50 text-yellow-700',
 };
-
-

@@ -4,7 +4,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Highlighter } from "@/components/ui/highlighter"
 import Text3DFlip from "@/components/ui/text-3d-flip"
-
+import GlowButton from "@/components/layout/button";
 
 function Home() {
   const techStack = [
@@ -63,9 +63,7 @@ function Home() {
                 flipTextClassName="bg-background text-foreground"
                 rotateDirection="top"
               >
-              
                 I build digital products from interface to database, combining clean frontend experiences with reliable backend systems.
-              
               </Text3DFlip>
 
             </div>
@@ -94,6 +92,7 @@ function Home() {
               Building<br /><span className="text-[var(--text-secondary)]">useful</span> digital<br />experiences.
             </h1>
             <div className="mt-7 flex items-center gap-4">
+
               <span className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)]">
                 <Highlighter action="underline" color="#A261B8">
                   I'm Yousuf Khan</Highlighter>
@@ -113,15 +112,24 @@ function Home() {
 
 
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
-              <Link to="/projects" className="group inline-flex h-11 items-center justify-center gap-5 rounded-full bg-[var(--text-main)] px-6 text-xs font-semibold text-[var(--bg-main)] transition-all duration-200 hover:-translate-y-0.5 hover:opacity-90 sm:h-12 sm:px-7">
-                <span>Explore projects</span>
-                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            <div className="mt-8 flex flex-row items-center gap-3 sm:gap-6">
+              <Link to="/projects" className="shrink-0">
+                <GlowButton>
+                  <span>Explore projects</span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
+                </GlowButton>
               </Link>
-              <Link to="/contact" className="inline-flex h-11 items-center justify-center text-xs font-semibold text-[var(--text-main)] transition-colors hover:text-emerald-600 dark:hover:text-emerald-400 sm:h-12">
+
+              <Link
+                to="/contact"
+                className="shrink-0 whitespace-nowrap text-xs font-semibold text-[var(--text-main)] transition-colors hover:text-emerald-600 dark:hover:text-emerald-400"
+              >
                 Let's work together
               </Link>
             </div>
+            
             <div className="mt-10 border-t border-[var(--border-color)] pt-5 lg:hidden">
               <p className="mb-4 text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">Core stack</p>
               <div className="flex flex-wrap gap-x-5 gap-y-3">
@@ -161,7 +169,7 @@ function Home() {
           </aside>
         </div>
 
-        <div className="hidden border-t border-[var(--border-color)] py-5 lg:block">
+        <div className=" border-t border-[var(--border-color)] py-5 lg:block">
           <div className="grid grid-cols-[0.7fr_2fr_0.7fr] items-center gap-8">
             <div className="flex items-center gap-3">
               <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">Technologies</span>

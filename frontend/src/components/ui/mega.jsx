@@ -248,7 +248,7 @@ function BlogAndCertificates() {
                                     </p>
                                 </div>
 
-                                <div className="ml-3 flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-500/[0.08] px-2.5 py-1.5 text-[9px] font-semibold text-emerald-700 dark:text-emerald-400 sm:px-3 sm:text-[10px]">
+                                <div className="ml-3 flex shrink-0 items-center gap-1.5 rounded-full bg-emerald-500/[0.08] px-2.5 py-1.5 text-[9px] font-semibold text-emerald-700 dark:text-emerald-400 sm:px-3 sm:text-[10px] border-2 border-emerald-500 ">
                                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                                     Verified
                                 </div>
