@@ -14,7 +14,7 @@ export const projects = [
     techStack: [
       { name: 'React', src: '/svg/React.svg' },
       { name: 'Node.js', src: '/svg/Node.js.svg' },
-      { name: 'Express', src: '/svg/Express.svg' },
+      { name: 'Express', src: '/svg/Express.svg', darkIcon: true },
       { name: 'PostgreSQL', src: '/svg/PostgresSQL.svg' },
     ],
     status: 'Pending',
@@ -30,7 +30,7 @@ export const projects = [
     techStack: [
       { name: 'React', src: '/svg/React.svg' },
       { name: 'Node.js', src: '/svg/Node.js.svg' },
-      { name: 'Express', src: '/svg/Express.svg' },
+      { name: 'Express', src: '/svg/Express.svg', darkIcon: true },
       { name: 'PostgreSQL', src: '/svg/PostgresSQL.svg' },
       
     ],
@@ -47,7 +47,7 @@ export const projects = [
     techStack: [
       { name: 'React', src: '/svg/React.svg' },
       { name: 'Node.js', src: '/svg/Node.js.svg' },
-      
+    { name: "Express", shortName: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", darkIcon: true },
       
     ],
     status: 'Completed',

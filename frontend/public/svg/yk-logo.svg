@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">YK Developer Logo</title>
+  <desc id="desc">Premium beveled YK monogram with burgundy code brackets.</desc>
+  <defs>
+    <linearGradient id="yFace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset=".48" stop-color="#d8d3cb"/><stop offset="1" stop-color="#a9a39b"/></linearGradient>
+    <linearGradient id="kFace" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#66666a"/><stop offset=".5" stop-color="#333438"/><stop offset="1" stop-color="#17181b"/></linearGradient>
+    <linearGradient id="redFace" x1="0" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#d64a51"/><stop offset="1" stop-color="#861d27"/></linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feGaussianBlur in="SourceAlpha" stdDeviation="2.4"/><feOffset dx="1" dy="4" result="off"/><feComponentTransfer><feFuncA type="linear" slope=".55"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <!-- Dark, compact badge keeps the silhouette legible at favicon size. -->
+  <rect x="5" y="5" width="118" height="118" rx="25" fill="#171719" stroke="#414145" stroke-width="1.5"/>
+  <rect x="7.5" y="7.5" width="113" height="113" rx="22" fill="none" stroke="#ffffff" stroke-opacity=".07"/>
+  <g filter="url(#shadow)" stroke-linejoin="round">
+    <!-- coding brackets -->
+    <path d="M25 45 L16 54 L16 74 L25 83 L31 76 L24 69 L24 59 L31 52 Z" fill="#4d1018"/>
+    <path d="M24 42 L14 52 L14 72 L24 82 L30 75 L22 68 L22 57 L30 49 Z" fill="url(#redFace)" stroke="#e36b70" stroke-width="1"/>
+    <path d="M103 42 L113 52 L113 72 L103 82 L97 75 L105 68 L105 57 L97 49 Z" fill="url(#redFace)" stroke="#e36b70" stroke-width="1"/>
+    <!-- K extrusion and face -->
+    <path d="M65 39 L65 99 L77 106 L77 78 L94 101 L108 101 L85 70 L107 47 L92 47 L77 64 L77 39 Z" fill="#0a0a0b" stroke="#0b0b0c" stroke-width="2"/>
+    <path d="M61 34 L61 94 L73 101 L73 73 L90 96 L104 96 L81 65 L103 42 L88 42 L73 59 L73 34 Z" fill="url(#kFace)" stroke="#77777a" stroke-width="1.2"/>
+    <path d="M61 34 L73 34 L73 59 L88 42 L103 42 L81 65 L90 75 L73 73 L73 59 Z" fill="#737377" opacity=".18"/>
+    <!-- Y extrusion and bright face -->
+    <path d="M31 32 L46 32 L61 48 L76 32 L89 32 L68 57 L68 98 L53 107 L53 58 Z" fill="#0b0b0c" stroke="#0b0b0c" stroke-width="2"/>
+    <path d="M28 27 L43 27 L58 43 L73 27 L86 27 L65 52 L65 93 L50 102 L50 53 Z" fill="url(#yFace)" stroke="#fffaf0" stroke-width="1.2"/>
+    <path d="M28 27 L43 27 L58 43 L73 27 L86 27 L65 52 L58 59 L50 53 Z" fill="#fffdf9" opacity=".35"/>
+  </g>
+</svg>

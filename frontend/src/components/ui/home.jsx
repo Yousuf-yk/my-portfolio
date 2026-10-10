@@ -3,7 +3,6 @@ import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Highlighter } from "@/components/ui/highlighter"
-import Text3DFlip from "@/components/ui/text-3d-flip"
 import GlowButton from "@/components/layout/button";
 
 function Home() {
@@ -57,14 +56,10 @@ function Home() {
             </div>
             <div className="max-w-[220px]">
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">About</p>
-              <Text3DFlip
-                className="bg-background"
-                textClassName="bg-background text-foreground"
-                flipTextClassName="bg-background text-foreground"
-                rotateDirection="top"
+              <p className="mt-3 text-sm font-medium"
               >
                 I build digital products from interface to database, combining clean frontend experiences with reliable backend systems.
-              </Text3DFlip>
+              </p>
 
             </div>
             <div className="my-10 h-px w-full bg-[var(--border-color)]" />

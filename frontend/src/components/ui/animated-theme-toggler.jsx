@@ -4,6 +4,43 @@ import { flushSync } from "react-dom"
 
 import { cn } from "@/lib/utils"
 
+const VT_STYLE_ID = "magicui-theme-vt-style"
+
+// Injected once so the smoothness fixes work even if your global CSS doesn't
+// have them. You can delete any duplicate ::view-transition rules from your
+// index.css.
+//  - disables the default cross-fade (it fights the clip-path reveal and is
+//    the biggest cause of stutter)
+//  - freezes every CSS transition for the duration of the switch so hundreds
+//    of elements don't animate colours while the browser is snapshotting
+//  - promotes the revealed layer to its own compositor layer
+const VT_CSS = `
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; will-change: clip-path; }
+::view-transition-group(root) {
+  animation-duration: var(--magicui-theme-toggle-vt-duration, 400ms);
+}
+html[data-magicui-theme-vt="active"] *,
+html[data-magicui-theme-vt="active"] *::before,
+html[data-magicui-theme-vt="active"] *::after {
+  transition: none !important;
+}
+`
+
+function ensureTransitionStyles() {
+  if (typeof document === "undefined") return
+  if (document.getElementById(VT_STYLE_ID)) return
+  const style = document.createElement("style")
+  style.id = VT_STYLE_ID
+  style.textContent = VT_CSS
+  document.head.appendChild(style)
+}
+
 function polygonCollapsed(point, vertexCount) {
   const pairs = Array.from({ length: vertexCount }, () => point).join(", ")
   return `polygon(${pairs})`
@@ -120,7 +157,7 @@ export const AnimatedThemeToggler = ({
   onThemeChange,
   ...props
 }) => {
-  const shape = variant ?? "circle"
+  const requestedShape = variant ?? "circle"
   const isControlled = theme !== undefined
   const [internalIsDark, setInternalIsDark] = useState(false)
   const isDark = isControlled ? theme === "dark" : internalIsDark
@@ -134,6 +171,8 @@ export const AnimatedThemeToggler = ({
   }, [])
 
   useEffect(() => {
+    ensureTransitionStyles()
+
     return () => {
       cancelAnim()
       const root = document.documentElement
@@ -164,17 +203,28 @@ export const AnimatedThemeToggler = ({
 
   const toggleTheme = useCallback(() => {
     const button = buttonRef.current
+    const root = document.documentElement
     if (
       !button ||
       isTransitioningRef.current ||
-      document.documentElement.dataset.magicuiThemeVt === "active"
+      root.dataset.magicuiThemeVt === "active"
     )
       return
+
+    ensureTransitionStyles()
 
     // innerWidth/innerHeight (not visualViewport): percentages must resolve
     // against the snapshot reference box, which includes classic scrollbars.
     const viewportWidth = window.innerWidth
     const viewportHeight = window.innerHeight
+
+    // Mobile / touch devices: shorter run and a plain circle. Complex polygons
+    // (star, hexagon...) are interpolated on the main thread and drop frames
+    // on phones.
+    const isMobile =
+      viewportWidth < 768 || window.matchMedia("(pointer: coarse)").matches
+    const effectiveDuration = isMobile ? Math.min(duration, 320) : duration
+    const shape = isMobile ? "circle" : requestedShape
 
     let x
     let y
@@ -193,25 +243,32 @@ export const AnimatedThemeToggler = ({
       const newTheme = !isDark
       // Always toggle the class synchronously so the View Transitions API
       // snapshots the new theme inside the startViewTransition callback.
-      document.documentElement.classList.toggle("dark")
+      root.classList.toggle("dark", newTheme)
       if (isControlled) {
         onThemeChange?.(newTheme ? "dark" : "light")
       } else {
         setInternalIsDark(newTheme)
-        localStorage.setItem("theme", newTheme ? "dark" : "light")
+        try {
+          localStorage.setItem("theme", newTheme ? "dark" : "light")
+        } catch {
+          /* storage unavailable (private mode) - ignore */
+        }
       }
     }
 
-    if (typeof document.startViewTransition !== "function") {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
+    if (prefersReducedMotion || typeof document.startViewTransition !== "function") {
       applyTheme()
       return
     }
 
     const clipPath = getThemeTransitionClipPaths(shape, x, y, maxRadius, viewportWidth, viewportHeight)
 
-    const root = document.documentElement
     root.dataset.magicuiThemeVt = "active"
-    root.style.setProperty("--magicui-theme-toggle-vt-duration", `${duration}ms`)
+    root.style.setProperty("--magicui-theme-toggle-vt-duration", `${effectiveDuration}ms`)
     // Pin the collapsed clip-path via CSS so Firefox does not paint the new
     // theme unclipped between snapshot and the ready.then() JS animation.
     root.style.setProperty("--magicui-theme-vt-clip-from", clipPath[0])
@@ -237,12 +294,13 @@ export const AnimatedThemeToggler = ({
     if (ready && typeof ready.then === "function") {
       ready
         .then(() => {
-          const anim = document.documentElement.animate({
+          const anim = root.animate({
             clipPath,
           }, {
-            duration,
-            // Star: linear avoids easing overshoot that fights polygon interpolation at t→1; VT group duration is synced above.
-            easing: shape === "star" ? "linear" : "ease-in-out",
+            duration: effectiveDuration,
+            // Ease-out feels snappier and hides the heavy first frames;
+            // star: linear avoids easing overshoot that fights polygon interpolation at t->1.
+            easing: shape === "star" ? "linear" : "cubic-bezier(0.22, 1, 0.36, 1)",
             fill: "forwards",
             pseudoElement: "::view-transition-new(root)",
           })
@@ -251,7 +309,7 @@ export const AnimatedThemeToggler = ({
         .catch(() => { })
     }
   }, [
-    shape,
+    requestedShape,
     fromCenter,
     duration,
     isDark,
@@ -265,23 +323,25 @@ export const AnimatedThemeToggler = ({
       type="button"
       ref={buttonRef}
       onClick={toggleTheme}
+      aria-label="Toggle theme"
       className={cn(
         "group relative flex h-10 w-10 items-center justify-center",
         "rounded-xl",
         "border border-[var(--border-color)]/70",
         "bg-[var(--bg-card)]/40",
         "text-[var(--text-main)]",
-        "backdrop-blur-md",
-        // "shadow-sm",
-        "transition-all duration-300 ease-out",
+        "backdrop-blur-sm",
+        // Only animate what actually changes - `transition-all` is wasteful.
+        "transition-[background-color,border-color,transform] duration-300 ease-out",
         "hover:bg-[var(--bg-card)]/70",
         "hover:border-[var(--border-color)]",
-        // "hover:shadow-md",
         "active:scale-90",
         "focus-visible:outline-none",
         "focus-visible:ring-2",
         "focus-visible:ring-emerald-500/50",
         "overflow-hidden",
+        // Removes the grey tap flash and the 300ms tap delay on mobile.
+        "touch-manipulation [-webkit-tap-highlight-color:transparent]",
         className
       )}
       {...props}
@@ -297,7 +357,7 @@ export const AnimatedThemeToggler = ({
         {isDark ? (
           <Sun className="h-[18px] w-[18px] text-sky-500" />
         ) : (
-          <Moon className="h-[18px] w-[18px] text-orange-600"/>
+          <Moon className="h-[18px] w-[18px] text-orange-600" />
         )}
       </span>
 

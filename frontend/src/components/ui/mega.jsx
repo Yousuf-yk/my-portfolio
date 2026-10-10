@@ -10,6 +10,8 @@ import cert3 from "../../assets/certificates/certi3.jpeg";
 import cert4 from "../../assets/certificates/certi4.jpeg";
 import cert5 from "../../assets/certificates/certi5.jpeg";
 import cert6 from "../../assets/certificates/certi6.jpeg";
+import cert7 from "../../assets/certificates/certi7.jpeg";  
+import cert8 from "../../assets/certificates/certi8.jpeg";
 
 function BlogAndCertificates() {
     const blogs = [
@@ -24,7 +26,7 @@ function BlogAndCertificates() {
         },
     ];
 
-    const certificates = [cert1, cert2, cert3, cert4, cert5, cert6];
+    const certificates = [cert1, cert2, cert3, cert4, cert5, cert6, cert7, cert8];
 
     return (
         <section
