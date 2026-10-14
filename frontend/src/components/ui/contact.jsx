@@ -15,12 +15,13 @@ function Contact() {
     e.preventDefault();
     setSubmitting(true);
 
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
-      phone: formData.get("number"),
+      phone: formData.get("number") || "",
       message: formData.get("text"),
     };
 
@@ -35,10 +36,15 @@ function Contact() {
 
       const result = await response.json();
 
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to send message");
+      }
+
       alert(result.message || "Message sent successfully!");
-      e.target.reset();
+      form.reset();
     } catch (error) {
-      alert("Unable to send message right now. Please try again later.");
+      console.error("Contact form error:", error);
+      alert(error.message || "Unable to connect to the server.");
     } finally {
       setSubmitting(false);
     }
@@ -49,31 +55,27 @@ function Contact() {
       id="contact"
       className="relative overflow-hidden bg-[var(--bg-main)] px-6 py-20 text-[var(--text-main)] sm:px-12 sm:py-8 lg:px-20"
     >
-    
-
       <div className="mx-auto max-w-6xl">
-        {/* Header Section */}
         <div className="mb-16 max-w-2xl">
           <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.3em] text-[var(--text-secondary)]">
             Inquiries
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-[var(--text-main)] sm:text-4xl lg:text-[40px]">
-            Let's create something <br className="hidden sm:block" />
-           extraordinary
+            Let's create something
+            <br className="hidden sm:block" />
+            extraordinary
           </h2>
         </div>
 
-        {/* Layout Grid */}
         <div className="grid gap-16 lg:grid-cols-[1fr_1.5fr] lg:gap-24">
-          
-          {/* Left Column: Contact Details */}
           <div className="flex flex-col space-y-10">
             <p className="text-sm font-light leading-relaxed text-[var(--text-secondary)]">
-              Whether you have a project in mind, an internship opportunity, or simply want to connect, feel free to reach out. I am currently open to new ventures.
+              Whether you have a project in mind, an internship opportunity,
+              or simply want to connect, feel free to reach out. I am
+              currently open to new ventures.
             </p>
 
             <div className="space-y-8">
-              {/* Email */}
               <a
                 href="mailto:yk0574292@gmail.com"
                 className="group flex items-start gap-5 transition-opacity hover:opacity-70"
@@ -91,7 +93,6 @@ function Contact() {
                 </div>
               </a>
 
-              {/* Phone */}
               <div className="flex items-start gap-5">
                 <div className="mt-1 text-neutral-400">
                   <HiPhone size={22} />
@@ -106,7 +107,6 @@ function Contact() {
                 </div>
               </div>
 
-              {/* Location */}
               <div className="flex items-start gap-5">
                 <div className="mt-1 text-neutral-400">
                   <HiLocationMarker size={22} />
@@ -123,55 +123,46 @@ function Contact() {
             </div>
           </div>
 
-          {/* Right Column: Editorial Form */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-10">
               <div className="grid gap-10 sm:grid-cols-2">
-                <div className="relative">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    required
-                    className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
-                  />
-                </div>
-
-                <div className="relative">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    required
-                    className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
-                  />
-                </div>
-              </div>
-
-              <div className="relative">
                 <input
-                  type="tel"
-                  name="number"
-                  placeholder="Phone Number (Optional)"
-                  className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
-                />
-              </div>
-
-              <div className="relative">
-                <textarea
-                  name="text"
-                  rows={4}
+                  type="text"
+                  name="name"
+                  placeholder="Name"
                   required
-                  placeholder="How can we collaborate?"
-                  className="w-full resize-none border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none transition-colors focus:border-[var(--text-main)] focus:ring-0 dark:border-neutral-700"
+                  className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none focus:border-[var(--text-main)] dark:border-neutral-700"
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none focus:border-[var(--text-main)] dark:border-neutral-700"
                 />
               </div>
 
-              <div className=" center flex justify-center ">
+              <input
+                type="tel"
+                name="number"
+                placeholder="Phone Number (Optional)"
+                className="w-full border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none focus:border-[var(--text-main)] dark:border-neutral-700"
+              />
+
+              <textarea
+                name="text"
+                rows={4}
+                required
+                placeholder="How can we collaborate?"
+                className="w-full resize-none border-0 border-b border-neutral-300 bg-transparent px-0 py-3 text-sm font-light text-[var(--text-main)] placeholder-neutral-400 outline-none focus:border-[var(--text-main)] dark:border-neutral-700"
+              />
+
+              <div className="flex justify-center">
                 <GlowButton
                   type="submit"
                   disabled={submitting}
-                  className="group px-6 py-2  disabled:cursor-not-allowed disabled:opacity-50"
+                  className="group px-6 py-2 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span className="inline-flex items-center gap-3">
                     {submitting ? "Transmitting..." : "Send Message"}

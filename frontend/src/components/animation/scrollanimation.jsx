@@ -6,63 +6,64 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-  // Prevents ScrollTrigger from recalculating every time the mobile address
-  // bar shows/hides (a major source of jumps on phones).
+  // Stops ScrollTrigger from recalculating every time the mobile address bar
+  // shows / hides (a major source of jumps on phones).
   ScrollTrigger.config({ ignoreMobileResize: true });
 
   // Don't let GSAP "catch up" after a slow frame, it causes visible jumps.
   gsap.ticker.lagSmoothing(0);
 }
 
-// Smoothing only on devices with a mouse / trackpad. Touch devices keep their
-// native momentum scrolling, which is smoother than any JS emulation.
-const DESKTOP_QUERY = "(min-width: 1024px) and (hover: hover) and (pointer: fine)";
 const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
 
-const SmoothScroll = ({ children, smooth = 1.4 }) => {
+const SmoothScroll = ({
+  children,
+  smooth = 1.4, // desktop / mouse smoothing
+  smoothTouch = 0.1, // phones / tablets: light smoothing, native touch scroll stays in control
+}) => {
   const wrapperRef = useRef(null);
   const contentRef = useRef(null);
 
   useLayoutEffect(() => {
     const mm = gsap.matchMedia();
 
-    mm.add(
-      { desktop: DESKTOP_QUERY, reduceMotion: REDUCED_MOTION_QUERY },
-      (context) => {
-        const { desktop, reduceMotion } = context.conditions;
+    mm.add({ reduceMotion: REDUCED_MOTION_QUERY }, (context) => {
+      // Users who asked for reduced motion get plain native scrolling.
+      if (context.conditions.reduceMotion) return;
 
-        // Touch devices / reduced-motion users: do nothing, native scroll.
-        if (!desktop || reduceMotion) return;
+      const root = document.documentElement;
+      root.classList.add("has-smoother");
 
-        const root = document.documentElement;
-        root.classList.add("has-smoother");
+      // NOTE: no normalizeScroll here. It hijacks touch input and is the usual
+      // reason a page "can't be scrolled" on real phones. With smoothTouch
+      // set, ScrollSmoother lets the browser scroll the window natively and
+      // only eases the content on top of it.
+      const smoother = ScrollSmoother.create({
+        wrapper: wrapperRef.current,
+        content: contentRef.current,
+        smooth,
+        smoothTouch,
+        effects: true,
+      });
 
-        const smoother = ScrollSmoother.create({
-          wrapper: wrapperRef.current,
-          content: contentRef.current,
-          smooth,
-          effects: true,
-        });
+      // Keep scroll height correct when images / route content change size.
+      let raf = 0;
+      const observer = new ResizeObserver(() => {
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+      });
+      observer.observe(contentRef.current);
 
-        // Keep scroll height correct when images / route content change size.
-        let raf = 0;
-        const observer = new ResizeObserver(() => {
-          cancelAnimationFrame(raf);
-          raf = requestAnimationFrame(() => ScrollTrigger.refresh());
-        });
-        observer.observe(contentRef.current);
-
-        return () => {
-          cancelAnimationFrame(raf);
-          observer.disconnect();
-          smoother.kill();
-          root.classList.remove("has-smoother");
-        };
-      }
-    );
+      return () => {
+        cancelAnimationFrame(raf);
+        observer.disconnect();
+        smoother.kill();
+        root.classList.remove("has-smoother");
+      };
+    });
 
     return () => mm.revert();
-  }, [smooth]);
+  }, [smooth, smoothTouch]);
 
   return (
     <>
@@ -72,18 +73,16 @@ const SmoothScroll = ({ children, smooth = 1.4 }) => {
           margin: 0;
           padding: 0;
           width: 100%;
+          /* "clip" hides horizontal overflow WITHOUT turning html/body into
+             scroll containers (hidden does, and that can freeze touch scroll
+             when ScrollSmoother is active). "hidden" is the old-browser fallback. */
           overflow-x: hidden;
+          overflow-x: clip;
+          overscroll-behavior-y: none;
           -webkit-font-smoothing: antialiased;
           -webkit-tap-highlight-color: transparent;
         }
 
-        /* Native scrolling (mobile): just stop the rubber-band bounce. */
-        body {
-          overscroll-behavior-y: none;
-        }
-
-        /* Fixed wrapper is ONLY applied while the smoother is running,
-           so touch devices keep normal native scrolling. */
         html.has-smoother #smooth-wrapper {
           position: fixed;
           top: 0;
