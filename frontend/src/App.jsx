@@ -41,7 +41,7 @@ function AppContent() {
       <Header />
 
       <SmoothScroll>
-        <main className="mx-auto w-full max-w-6xl px-[2px] pt-24">
+        <main className="mx-auto w-full max-w-6xl px-[2px] pt-10">
           <ScrollToTop />
 
           <Routes>

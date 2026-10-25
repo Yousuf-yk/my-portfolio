@@ -3,7 +3,7 @@ import { FaGithub, FaGlobe, FaArrowRight } from 'react-icons/fa';
 import { statusColors } from '../../data/project';
 
 const ProjectCard = ({ project, index }) => {
-  const iconLinkClasses = "text-[var(--text-secondary)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-6 hover:text-[var(--text-main)]";
+  const iconLinkClasses = "text-[var(--text-main)] transition-transform duration-300 hover:-translate-y-1 hover:rotate-6 hover:text-[var(--text-main)]";
 
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] p-6 shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl sm:p-7">
@@ -52,8 +52,8 @@ const ProjectCard = ({ project, index }) => {
           <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-current " />
           {project.status}
         </span>
-
-        <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-medium text-[var(--text-secondary)] transition-colors duration-300 hover:text-[var(--text-main)]">
+{/* hover:text-[var(--text-main)] --- text-[var(--text-secondary)] */}
+        <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-lg font-medium text-[var(var(--text-main))] transition-colors duration-300 hover:text-[var(--text-secondary]">
           View Details
           <FaArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
         </a>

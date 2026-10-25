@@ -3,6 +3,10 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+/* font styling */
+@theme {
+  --font-Googleheading: "Isometra", sans-serif;
+}
 /* =========================================================
    Tailwind dark variant
 ========================================================= */
@@ -24,9 +28,13 @@
 
   --text-main: #111827;
   --text-secondary: #6b7280;
+  --text-span: linear-gradient(120deg,
+        #737373 0%,
+        #262626 45%,
+        #a31621 100%);
+
 
   --border-color: #e5e7eb;
-
   --expo-out: cubic-bezier(0.16, 1, 0.3, 1);
 
 
@@ -83,14 +91,7 @@
 }
 
 
-/* =========================================================
-   DARK / WARM THEME
 
-   AnimatedThemeToggler adds:
-   <html class="dark">
-
-   Therefore EVERYTHING dark-related lives here.
-========================================================= */
 
 .dark {
   /* -----------------------------------------

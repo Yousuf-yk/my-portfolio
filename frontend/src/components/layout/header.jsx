@@ -1,152 +1,111 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
 
-import yousufImg from "../../assets/photos/yousufimg2.jpeg";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+  Home,
+  FolderOpen,
+  BookOpen,
+  ScrollText,
+  CircleUserRound,
+} from "lucide-react";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+  const navItems = [
+    {
+      label: "Home",
+      to: "/",
+      icon: Home,
+    },
+    {
+      label: "Projects",
+      to: "/projects",
+      icon: FolderOpen,
+    },
+    {
+      label: "Blog",
+      to: "/#blog",
+      icon: BookOpen,
+      hash: true,
+    },
+    {
+      label: "Certificates",
+      to: "/#certificates",
+      icon: ScrollText,
+      hash: true,
+    },
+    {
+      label: "Contact",
+      to: "/contact",
+      icon: CircleUserRound,
+    },
+  ];
 
-    handleScroll();
+  const isActive = (item) => {
+    if (item.hash) {
+      return (
+        location.pathname === "/" &&
+        location.hash === item.to.substring(1)
+      );
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    return location.pathname === item.to;
+  };
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const glassButton =
-    "flex h-10 w-10 items-center justify-center border border-[var(--border-color)]/70 bg-[var(--bg-card)]/40 backdrop-blur-md transition-all duration-300 hover:bg-[var(--bg-card)]/70 hover:border-[var(--border-color)] active:scale-95";
+  const buttonStyle =
+    "group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-color)]/70 bg-[var(--bg-card)]/70 text-[var(--text-secondary)] shadow-[0_2px_5px_rgba(0,0,0,0.04),inset_0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:text-[var(--text-main)] hover:shadow-md active:scale-95 sm:h-[52px] sm:w-[52px]";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[9999] px-4">
-      <div className="mx-auto max-w-6xl">
-        <nav
-          className={`flex items-center justify-between transition-all duration-300 ${scrolled
-              ? "mt-3 rounded-4xl border-[var(--border-color)] bg-[var(--bg-card)]/65 px-5 py-3 shadow-lg backdrop-blur-xl"
-              : "rounded-none border-transparent bg-[var(--bg-card)]/30 px-5 py-4 backdrop-blur-md"
-            }`}
-        >
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <img
-              src={yousufImg}
-              alt="Yousuf Khan"
-              className={`rounded-full object-cover ring-1 ring-[var(--border-color)] transition-all duration-300 ${
-                scrolled ? "h-9 w-9" : "h-[45px] w-[45px]"
+    <header className="fixed inset-x-0 bottom-0 z-[9999] flex justify-center px-3 pb-[calc(12px+env(safe-area-inset-bottom))]">
+      <nav
+        aria-label="Main navigation"
+        className="flex max-w-full items-center gap-1.5 rounded-full border border-[var(--border-color)]/80 bg-[var(--bg-main)]/85 p-2 shadow-[0_4px_18px_rgba(0,0,0,0.07)] backdrop-blur-2xl sm:gap-2 sm:p-2.5"
+      >
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const active = isActive(item);
+
+          return (
+            <Link
+              key={item.label}
+              to={item.to}
+              aria-label={item.label}
+              aria-current={active ? "page" : undefined}
+              title={item.label}
+              className={`${buttonStyle} ${
+                active
+                  ? "border-[var(--text-secondary)]/30 text-[var(--text-main)]"
+                  : ""
               }`}
-            />
-
-            <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-[var(--text-main)]">
-                Yousuf Khan
-              </p>
-
-              <p className="text-xs text-[var(--text-secondary)]">
-                Full Stack Developer
-              </p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <ul className="hidden items-center gap-8 md:flex">
-            <li>
-              <Link
-                to="/projects"
-                className="text-sm font-medium text-[var(--text-main)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
-              >
-                Projects
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/about"
-                className="text-sm font-medium text-[var(--text-main)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
-              >
-                About
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/contact"
-                className="text-sm font-medium text-[var(--text-main)] transition-colors duration-200 hover:text-[var(--text-secondary)]"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-
-          {/* Right side */}
-          <div className="flex flex-row-reverse items-center gap-3">
-            <AnimatedThemeToggler
-              variant="circle"
-              fromCenter
-              duration={400}
-              className={`${glassButton} ${
-                scrolled ? "rounded-2xl" : "rounded-lg"
-              } text-[var(--text-main)]`}
-              aria-label="Toggle theme"
-            />
-
-            <button
-              type="button"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              className={`${glassButton} ${
-                scrolled ? "rounded-2xl" : "rounded-lg"
-              } md:hidden`}
-              aria-label="Toggle navigation menu"
-              aria-expanded={menuOpen}
             >
-              {menuOpen ? (
-                <X className="h-5 w-5 text-[var(--text-main)]" />
-              ) : (
-                <Menu className="h-5 w-5 text-[var(--text-main)]" />
+              <Icon
+                size={22}
+                strokeWidth={1.8}
+                className="transition-transform duration-200 group-hover:scale-105 sm:h-6 sm:w-6"
+              />
+
+              {active && (
+                <span className="absolute -bottom-0.5 h-1 w-1 rounded-full bg-[var(--text-main)]" />
               )}
-            </button>
-          </div>
-        </nav>
+            </Link>
+          );
+        })}
 
-        {/* Mobile menu */}
-        {menuOpen && (
-          <div className="absolute right-[10px] mt-3 w-[40%] rounded-2xl border border-[var(--border-color)] bg-[var(--bg-card)]/70 p-4 shadow-lg backdrop-blur-xl md:hidden">
-            <div className="flex flex-col gap-3 text-center">
-              <Link
-                to="/projects"
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
-              >
-                Projects
-              </Link>
+        <span
+          aria-hidden="true"
+          className="mx-1 h-8 w-px shrink-0 bg-[var(--border-color)] sm:mx-2 sm:h-10"
+        />
 
-              <Link
-                to="/about"
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
-              >
-                About
-              </Link>
-
-              <Link
-                to="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-main)] transition hover:bg-[var(--bg-card)]/60"
-              >
-                Contact
-              </Link>
-            </div>
-          </div>
-        )}
-      </div>
+        <AnimatedThemeToggler
+          variant="circle"
+          fromCenter
+          duration={400}
+          aria-label="Toggle light and dark theme"
+          className={`${buttonStyle} hover:rotate-[-8deg]`}
+        />
+      </nav>
     </header>
   );
 }
