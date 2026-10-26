@@ -7,18 +7,21 @@ import {
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { BadgeCheck } from "lucide-react";
+// import { BadgeCheck } from "lucide-react";
 import GlowButton from "@/components/layout/button";
 import { Highlighter } from "@/components/ui/highlighter";
 import yousufImg from "../../assets/photos/heroPic.jpeg";
+import badgeCheck from "../../assets/photos/verified.png";
+import { WordRotate } from "@/components/ui/word-rotate"
+
 
 function Home() {
   const techStack = [
-    { name: "React", icon: "/svg/React.svg" },
-    { name: "Node.js", icon: "/svg/Node.js.svg" },
-    { name: "Express.js", icon: "/svg/Express.svg" },
-    { name: "PostgreSQL", icon: "/svg/PostgresSQL.svg" },
-    { name: "Tailwind CSS", icon: "/svg/tailwind.svg" },
+    { name: "React", src: "/svg/React.svg" },
+    { name: "Node.js", src: "/svg/Node.js.svg" },
+    { name: "Express", src: "/svg/Express.svg", darkIcon: true },
+    { name: "PostgreSQL", src: "/svg/PostgresSQL.svg" },
+    { name: "Tailwind CSS", src: "/svg/tailwind.svg" },
   ];
 
   const socials = [
@@ -45,39 +48,35 @@ function Home() {
   ];
 
   return (
-    <main className="min-h-[calc(100vh-72px)] bg-[var(--bg-main)] pb-28 text-[var(--text-main)]">
-      <section className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-8 sm:py-16 lg:px-12 lg:py-20">
-        {/* Profile */}
-        <header className="flex flex-col items-center gap-4 text-center sm:flex-row sm:items-center sm:gap-5 sm:text-left">
+    <main className=" bg-[var(--bg-main)] pb-1 text-[var(--text-main)]">
+      <section className="mx-auto w-full max-w-5xl px-5 py-0.1 sm:px-8 sm:py-16 lg:px-12 lg:py-2">
+       
+        <header className="flex w-full min-w-0 flex-row items-center gap-3 text-left sm:gap-5">
           <img
             src={yousufImg}
             alt="Yousuf Khan"
-            className="h-28 w-28 shrink-0 rounded-full border-[3px] border-neutral-400/70 object-cover p-1 sm:h-32 sm:w-32"
+            className="h-20 w-20 shrink-0 rounded-full border-[3px] border-neutral-400/70 object-cover p-1 sm:h-32 sm:w-32"
           />
 
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
-              <h1 className="font-sans text-3xl font-semibold tracking-tight sm:text-4xl">
+          <div className="min-w-0 flex-1">
+            <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
+              <h1 className="min-w-0 text-2xl font-semibold leading-tight tracking-tight sm:text-4xl">
                 Yousuf Khan
               </h1>
 
               <span
                 aria-label="Verified"
                 title="Verified"
-                className="flex h-6 w-6 shrink-0 items-center justify-center text-sky-500 sm:h-7 sm:w-7"
+                className="flex h-5 w-5 shrink-0 items-center justify-center text-sky-500 sm:h-7 sm:w-7"
               >
-                <BadgeCheck
-                  size={24}
-                  strokeWidth={2.5}
-                  fill="currentColor"
-                  className="text-sky-500 [&>path]:stroke-white"
-                />
+                <img src={badgeCheck} alt="Verified" className="h-full w-full" />
               </span>
             </div>
 
-            <p className="mt-2 text-base font-medium text-[var(--text-secondary)] sm:text-xl">
+            <p className="mt-2 text-sm font-medium text-[var(--text-secondary)] sm:text-xl">
+              
               <Highlighter action="underline" color="#FF9800">
-                Full Stack Developer
+                <WordRotate words={["Full Stack Developer", "Software Engineer"]} />
               </Highlighter>
             </p>
           </div>
@@ -137,7 +136,7 @@ function Home() {
         </div>
 
         {/* Technology stack */}
-        <section className="mt-12 sm:mt-16 lg:mt-20">
+        <section className="mt-5 sm:mt-16 lg:mt-5">
           <h2 className="font-serif text-2xl italic tracking-tight sm:text-3xl">
             Tech Stack
           </h2>
@@ -152,7 +151,7 @@ function Home() {
                 className="flex shrink-0 items-center gap-2"
               >
                 <img
-                  src={tech.icon}
+                  src={tech.src}
                   alt=""
                   aria-hidden="true"
                   className="h-6 w-6 shrink-0 object-contain sm:h-8 sm:w-8"

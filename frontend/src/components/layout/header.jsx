@@ -24,15 +24,15 @@ function Header() {
       to: "/projects",
       icon: FolderOpen,
     },
-    {
-      label: "Blog",
-      to: "/#blog",
-      icon: BookOpen,
-      hash: true,
-    },
+    // {
+    //   label: "Blog",
+    //   to: "/#blog",
+    //   icon: BookOpen,
+    //   hash: true,
+    // },
     {
       label: "Certificates",
-      to: "/#certificates",
+      to: "/about",
       icon: ScrollText,
       hash: true,
     },

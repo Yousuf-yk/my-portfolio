@@ -6,7 +6,7 @@ function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[var(--border-color)]">
+    <footer className="border-t border-[var(--border-color)] lg:pb-2">
       <div className="mx-auto max-w-6xl px-6 py-6">
         {/* Top row */}
         <div className="flex items-center justify-between">
