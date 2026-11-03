@@ -22,10 +22,10 @@ import SmoothScroll from "./components/animation/scrollanimation.jsx";
 function HomePage() {
   return (
     <>
-     <Home />
+      <Home />
       <Projects />
       <Skills />
-      <BlogAndCertificates/>
+      <BlogAndCertificates />
       <Contact />
     </>
   );
@@ -41,7 +41,10 @@ function AppContent() {
       <Header />
 
       <SmoothScroll>
-        <main className="mx-auto w-full max-w-6xl px-[2px] pt-10">
+        <main
+          className={`mx-auto w-full max-w-6xl px-[2px] ${location.pathname === "/" ? "pt-0" : "pt-10"
+            }`}
+        >
           <ScrollToTop />
 
           <Routes>

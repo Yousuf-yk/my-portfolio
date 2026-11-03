@@ -54,8 +54,10 @@ function Header() {
     return location.pathname === item.to;
   };
 
+// hover:text-[var(--text-main)]   and     text-[var(--text-secondary)]
+
   const buttonStyle =
-    "group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-color)]/70 bg-[var(--bg-card)]/70 text-[var(--text-secondary)] shadow-[0_2px_5px_rgba(0,0,0,0.04),inset_0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:text-[var(--text-main)] hover:shadow-md active:scale-95 sm:h-[52px] sm:w-[52px]";
+    "group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-color)]/70 bg-[var(--bg-card)]/70 text-[var(--text-main)] shadow-[0_2px_5px_rgba(0,0,0,0.04),inset_0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:text-[var(--text-secondary)] hover:shadow-md active:scale-95 sm:h-[52px] sm:w-[52px]";
 
   return (
     <header className="fixed inset-x-0 bottom-0 z-[9999] flex justify-center px-3 pb-[calc(12px+env(safe-area-inset-bottom))]">
@@ -76,7 +78,7 @@ function Header() {
               title={item.label}
               className={`${buttonStyle} ${
                 active
-                  ? "border-[var(--text-secondary)]/30 text-[var(--text-main)]"
+                  ? "border-[var(--text-secondary)]/30 text-[var(--text-secondary)]"
                   : ""
               }`}
             >
