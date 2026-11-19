@@ -13,7 +13,7 @@ import Projects from "./components/ui/project.jsx";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/aboutPage.jsx";
-
+import Intrest from "./components/ui/intrest.jsx";
 import NotFound from "./pages/notFound.jsx";
 import BlogAndCertificates from "./components/ui/mega.jsx";
 
@@ -27,6 +27,7 @@ function HomePage() {
       <Skills />
       <BlogAndCertificates />
       <Contact />
+      <Intrest />
     </>
   );
 }
@@ -57,6 +58,7 @@ function AppContent() {
         </main>
 
         <div className="mx-auto w-full max-w-6xl px-[2px]">
+          
           <QuoteSection />
           <Footer />
         </div>

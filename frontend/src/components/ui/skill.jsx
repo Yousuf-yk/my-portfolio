@@ -1,5 +1,6 @@
 
 import React from "react";
+import catvid from "../../assets/videos/meow.mp4";
 
 function Skills() {
   const categories = [
@@ -45,8 +46,6 @@ function Skills() {
     { name: "AWS", src: "/svg/aws.svg", darkIcon: true },
   ];
 
-  const catGif = "./gif/meowMeow.mp4";
-
   const SkillItem = ({ skill }) => (
     <div className="group inline-flex items-center gap-1.5 rounded-md border border-[var(--border-color)] px-2 py-1.5 transition-colors hover:border-[#B86F53]/60 hover:bg-[#B86F53]/[0.06]">
       <img
@@ -84,17 +83,16 @@ function Skills() {
         </div>
 
         <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-[1.15fr_0.85fr] md:gap-5 lg:gap-7">
-          {/* Mobile: cat first. Desktop: skills left. */}
           <div className="order-1 min-w-0 md:order-2">
             <div className="relative overflow-hidden rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
               <video
-                src={catGif}
-                alt="Sleepy office cat taking a coffee break at a keyboard"
-                loading="lazy"
+                src={catvid}
+                aria-label="A sleepy cat at a keyboard"
                 className="block h-52 w-full object-cover object-center sm:h-64 md:h-full md:min-h-[350px] lg:min-h-[390px]"
                 autoPlay
                 loop
                 muted
+                playsInline
               />
 
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-4 pt-12">

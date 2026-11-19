@@ -1,3 +1,4 @@
+
 import React from "react";
 import {
   FaLinkedin,
@@ -5,9 +6,8 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import yousufImg from "../../assets/photos/heroPic.jpeg";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import yousufImg from "../../assets/photos/hero.jpeg";
 
 function Home() {
   const techStack = [
@@ -19,7 +19,6 @@ function Home() {
   ];
 
   const location = useLocation();
-  const isHome = location.pathname === "/";
 
   const socials = [
     {
@@ -46,11 +45,10 @@ function Home() {
 
   return (
     <main
-      className={`bg-[var(--bg-main)] text-[var(--text-main)] transition-colors duration-300 ${location.pathname === "/" ? "pt-0" : "pt-10"
-        }`}
+      className={`bg-[var(--bg-main)] text-[var(--text-main)] transition-colors duration-300 ${
+        location.pathname === "/" ? "pt-0" : "pt-10"
+      }`}
     >
-
-      {/* Hero Section */}
       <section
         className="relative flex min-h-[680px] items-center overflow-hidden border-b border-[var(--text-main)]/10 sm:min-h-[820px]"
         style={{
@@ -63,7 +61,6 @@ function Home() {
       >
         <div className="mx-auto w-full max-w-7xl px-6 py-1 sm:px-10 lg:px-16">
           <div className="max-w-5xl">
-
             <div className="mb-10 flex items-center gap-4 sm:mb-12">
               <span className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)]">
                 Bengaluru, India
@@ -88,11 +85,10 @@ function Home() {
             <div className="mt-10 flex flex-wrap items-center gap-3 sm:mt-12">
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-5 rounded-full border-2 border-[var(--text-main)] bg-[var(--bg-main)] text-[var(--text-main)] py-1.5 pl-6 pr-1.5 text-sm font-semibold shadow-[4px_5px_0px_var(--text-main)] transition-all duration-200 hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+                className="group inline-flex items-center gap-5 rounded-full border-2 border-[var(--text-main)] bg-[var(--bg-main)] py-1.5 pl-6 pr-1.5 text-sm font-semibold text-[var(--text-main)] shadow-[4px_5px_0px_var(--text-main)] transition-all duration-200 hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
               >
                 See the work
-
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#ffcc00] text-black text-xl transition-transform group-hover:rotate-[-45deg]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#ffcc00] text-xl text-black transition-transform group-hover:rotate-[-45deg]">
                   →
                 </span>
               </Link>
@@ -108,12 +104,10 @@ function Home() {
                 </span>
               </Link>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* About Section */}
       <section className="border-b border-[var(--text-main)]/10 bg-transparent">
         <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
           <div className="mb-12 max-w-xl">
@@ -131,7 +125,6 @@ function Home() {
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <div className="relative mx-auto w-full max-w-[460px] lg:mx-0">
-
               <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-[var(--text-main)]" />
 
               <img
@@ -182,17 +175,13 @@ function Home() {
               >
                 Get in touch <span>→</span>
               </Link>
-
             </div>
           </div>
         </div>
       </section>
 
-      {/* Technology Stack */}
-
       <section className="overflow-hidden bg-transparent py-12">
         <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
-
           <div className="mb-10 flex items-center gap-4">
             <h2 className="shrink-0 text-3xl font-bold tracking-tight sm:text-4xl">
               Tech Stack
@@ -202,7 +191,6 @@ function Home() {
 
           <div className="group relative overflow-hidden">
             <div className="flex w-max animate-marquee-right group-hover:[animation-play-state:paused]">
-
               {[0, 1].map((copy) => (
                 <div
                   key={copy}
@@ -228,14 +216,10 @@ function Home() {
                   ))}
                 </div>
               ))}
-
             </div>
           </div>
-
         </div>
       </section>
-
-
     </main>
   );
 }

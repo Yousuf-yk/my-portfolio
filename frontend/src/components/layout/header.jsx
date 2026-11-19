@@ -1,10 +1,8 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Home,
   FolderOpen,
-  BookOpen,
   ScrollText,
   CircleUserRound,
 } from "lucide-react";
@@ -14,47 +12,13 @@ function Header() {
   const location = useLocation();
 
   const navItems = [
-    {
-      label: "Home",
-      to: "/",
-      icon: Home,
-    },
-    {
-      label: "Projects",
-      to: "/projects",
-      icon: FolderOpen,
-    },
-    // {
-    //   label: "Blog",
-    //   to: "/#blog",
-    //   icon: BookOpen,
-    //   hash: true,
-    // },
-    {
-      label: "Certificates",
-      to: "/about",
-      icon: ScrollText,
-      hash: true,
-    },
-    {
-      label: "Contact",
-      to: "/contact",
-      icon: CircleUserRound,
-    },
+    { label: "Home", to: "/", icon: Home },
+    { label: "Projects", to: "/projects", icon: FolderOpen },
+    { label: "Certificates", to: "/about", icon: ScrollText },
+    { label: "Contact", to: "/contact", icon: CircleUserRound },
   ];
 
-  const isActive = (item) => {
-    if (item.hash) {
-      return (
-        location.pathname === "/" &&
-        location.hash === item.to.substring(1)
-      );
-    }
-
-    return location.pathname === item.to;
-  };
-
-// hover:text-[var(--text-main)]   and     text-[var(--text-secondary)]
+  const isActive = (item) => location.pathname === item.to;
 
   const buttonStyle =
     "group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-color)]/70 bg-[var(--bg-card)]/70 text-[var(--text-main)] shadow-[0_2px_5px_rgba(0,0,0,0.04),inset_0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-200 hover:-translate-y-0.5 hover:text-[var(--text-secondary)] hover:shadow-md active:scale-95 sm:h-[52px] sm:w-[52px]";
