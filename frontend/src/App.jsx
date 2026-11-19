@@ -13,7 +13,7 @@ import Projects from "./components/ui/project.jsx";
 import ProjectsPage from "./pages/ProjectsPage";
 import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/aboutPage.jsx";
-
+import Intrest from "./components/ui/intrest.jsx";
 import NotFound from "./pages/notFound.jsx";
 import BlogAndCertificates from "./components/ui/mega.jsx";
 
@@ -22,11 +22,12 @@ import SmoothScroll from "./components/animation/scrollanimation.jsx";
 function HomePage() {
   return (
     <>
-     <Home />
+      <Home />
       <Projects />
       <Skills />
-      <BlogAndCertificates/>
+      <BlogAndCertificates />
       <Contact />
+      <Intrest />
     </>
   );
 }
@@ -41,7 +42,10 @@ function AppContent() {
       <Header />
 
       <SmoothScroll>
-        <main className="mx-auto w-full max-w-6xl px-[2px] pt-24">
+        <main
+          className={`mx-auto w-full max-w-6xl px-[2px] ${location.pathname === "/" ? "pt-0" : "pt-10"
+            }`}
+        >
           <ScrollToTop />
 
           <Routes>
@@ -54,6 +58,7 @@ function AppContent() {
         </main>
 
         <div className="mx-auto w-full max-w-6xl px-[2px]">
+          
           <QuoteSection />
           <Footer />
         </div>

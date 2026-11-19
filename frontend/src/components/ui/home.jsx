@@ -1,208 +1,240 @@
 import React from "react";
-import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+} from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { Highlighter } from "@/components/ui/highlighter"
-import GlowButton from "@/components/layout/button";
+import yousufImg from "../../assets/photos/hero.jpeg";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 function Home() {
   const techStack = [
-    { name: "React", shortName: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-    { name: "Node.js", shortName: "Node", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
-    { name: "Express", shortName: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", darkIcon: true },
-    { name: "PostgreSQL", shortName: "Postgres", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
-    { name: "Tailwind", shortName: "Tailwind", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+    { name: "React", src: "/svg/React.svg" },
+    { name: "Node.js", src: "/svg/Node.js.svg" },
+    { name: "Express", src: "/svg/Express.svg" },
+    { name: "PostgreSQL", src: "/svg/PostgresSQL.svg" },
+    { name: "Tailwind CSS", src: "/svg/tailwind.svg" },
   ];
+
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   const socials = [
-    { name: "LinkedIn", icon: <FaLinkedin />, url: "https://www.linkedin.com/in/yousuf-khan06" },
-    { name: "GitHub", icon: <FaGithub />, url: "https://github.com/Yousuf-yk" },
-    { name: "Instagram", icon: <FaInstagram />, url: "https://www.instagram.com/_yousuf.yk_" },
-    { name: "X", icon: <FaXTwitter />, url: "https://x.com/yousufKhan_20" },
-  ];
-
-  const workHighlights = [
-    { number: "01", title: "Frontend", description: "Responsive interfaces" },
-    { number: "02", title: "Backend", description: "REST APIs & services" },
-    { number: "03", title: "Database", description: "PostgreSQL systems" },
+    {
+      name: "X",
+      icon: <FaXTwitter />,
+      url: "https://x.com/yousufKhan_20",
+    },
+    {
+      name: "GitHub",
+      icon: <FaGithub />,
+      url: "https://github.com/Yousuf-yk",
+    },
+    {
+      name: "LinkedIn",
+      icon: <FaLinkedin />,
+      url: "https://www.linkedin.com/in/yousuf-khan06",
+    },
+    {
+      name: "Instagram",
+      icon: <FaInstagram />,
+      url: "https://www.instagram.com/_yousuf.yk_",
+    },
   ];
 
   return (
-    <main className="relative min-h-[calc(100vh-72px)] overflow-hidden bg-[var(--bg-main)] text-[var(--text-main)]">
+    <main
+      className={`bg-[var(--bg-main)] text-[var(--text-main)] transition-colors duration-300 ${location.pathname === "/" ? "pt-0" : "pt-10"
+        }`}
+    >
 
+      {/* Hero Section */}
+      <section
+        className="relative flex min-h-[680px] items-center overflow-hidden border-b border-[var(--text-main)]/10 sm:min-h-[820px]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(150,150,150,0.15) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(150,150,150,0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: "108px 108px",
+        }}
+      >
+        <div className="mx-auto w-full max-w-7xl px-6 py-1 sm:px-10 lg:px-16">
+          <div className="max-w-5xl">
 
-      <section className="relative mx-auto flex min-h-[calc(100vh-72px)] max-w-[1600px] flex-col px-5 sm:px-8 lg:px-14 xl:px-20">
-
-        <header className="flex min-h-[10px] items-center justify-between border-b border-[var(--border-color)]">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-color)] text-[10px] font-bold tracking-tight">YK</div>
-            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--text-secondary)] sm:block">Yousuf Khan</span>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inset-0 rounded-full bg-emerald-500 opacity-30" />
-              <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--text-secondary)] sm:text-[10px]">Open to opportunities</span>
-          </div>
-          <span className="hidden text-[10px] font-medium tracking-[0.2em] text-[var(--text-secondary)] sm:block">2026</span>
-        </header>
-
-        <div className="grid flex-1 items-center py-8 sm:py-10 lg:grid-cols-[0.8fr_1.5fr_0.8fr] lg:gap-8 lg:py-10 xl:grid-cols-[0.85fr_1.55fr_0.85fr] xl:gap-12">
-          <aside className="order-2 hidden lg:block">
-            <div className="mb-10 flex items-center gap-3">
-              <span className="text-[10px] font-semibold tracking-[0.2em] text-emerald-600 dark:text-emerald-400">01</span>
-              <span className="h-px w-10 bg-[var(--border-color)]" />
-            </div>
-            <div className="max-w-[220px]">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">About</p>
-              <p className="mt-3 text-sm font-medium"
-              >
-                I build digital products from interface to database, combining clean frontend experiences with reliable backend systems.
-              </p>
-
-            </div>
-            <div className="my-10 h-px w-full bg-[var(--border-color)]" />
-            <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">Discipline</p>
-              <p className="mt-3 text-sm font-medium">Full Stack Development</p>
-              <p className="mt-1 text-xs text-[var(--text-secondary)]">Web · APIs · Databases</p>
-            </div>
-            <div className="mt-16 flex items-center gap-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-secondary)]" />
-              <span className="text-[9px] uppercase tracking-[0.18em] text-[var(--text-secondary)]">Based in India</span>
-            </div>
-          </aside>
-
-          <div className="order-1 flex flex-col justify-center lg:order-1">
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-7 bg-emerald-500 sm:w-10" />
-              <span className="text-[9px] font-semibold uppercase tracking-[0.22em] text-[var(--text-secondary)] sm:text-[10px]">
-                
-                Full Stack Web Developer
-                </span>
-            </div>
-            
-            <h1 className="max-w-[850px] text-[clamp(3.4rem,8vw,7.4rem)] font-semibold leading-[0.88] tracking-[-0.055em]">
-              Building<br /><span className="text-[var(--text-secondary)]">useful</span> digital<br />experiences.
-            </h1>
-            <div className="mt-7 flex items-center gap-4">
-
+            <div className="mb-10 flex items-center gap-4 sm:mb-12">
               <span className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--text-secondary)]">
-                <Highlighter action="underline" color="#A261B8">
-                  I'm Yousuf Khan</Highlighter>
-               </span>
-              <span className="h-px w-12 bg-[var(--border-color)] sm:w-20" />
+                Bengaluru, India
+              </span>
+              <span className="h-[2px] max-w-[300px] flex-1 bg-[var(--text-secondary)]/30" />
             </div>
-            
 
+            <h1 className="text-[clamp(5rem,14vw,12rem)] font-black uppercase leading-[0.76] tracking-[-0.085em]">
+              YOUSUF
+              <br />
+              KHAN<span className="text-[#f5c400]">.</span>
+            </h1>
 
-            <p className="mt-7 max-w-[600px] text-sm leading-7 text-[var(--text-secondary)] sm:text-base sm:leading-8">
-              I create {" "}
-              <Highlighter action="underline" color="#FF9800">
-                responsive web applications
-              </Highlighter>{" "} with modern technologies, thoughtful interfaces and dependable backend architecture. My focus is turning ideas into products that are simple to use and built to work.
+            <p className="mt-12 max-w-4xl text-2xl font-medium leading-[1.2] tracking-tight sm:mt-14 sm:text-4xl lg:text-5xl">
+              Full-stack developer building{" "}
+              <span className="font-bold underline decoration-[#e6bd00] decoration-[5px] underline-offset-4">
+                useful products
+              </span>{" "}
+              and exploring AI-powered systems.
             </p>
-           
 
+            <div className="mt-10 flex flex-wrap items-center gap-3 sm:mt-12">
+              <Link
+                to="/projects"
+                className="group inline-flex items-center gap-5 rounded-full border-2 border-[var(--text-main)] bg-[var(--bg-main)] text-[var(--text-main)] py-1.5 pl-6 pr-1.5 text-sm font-semibold shadow-[4px_5px_0px_var(--text-main)] transition-all duration-200 hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+              >
+                See the work
 
-
-            <div className="mt-8 flex flex-row items-center gap-3 sm:gap-6">
-              <Link to="/projects" className="shrink-0">
-                <GlowButton>
-                  <span>Explore projects</span>
-                  <span className="transition-transform duration-200 group-hover:translate-x-1">
-                    →
-                  </span>
-                </GlowButton>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#ffcc00] text-black text-xl transition-transform group-hover:rotate-[-45deg]">
+                  →
+                </span>
               </Link>
 
               <Link
                 to="/contact"
-                className="shrink-0 whitespace-nowrap text-xs font-semibold text-[var(--text-main)] transition-colors hover:text-emerald-600 dark:hover:text-emerald-400"
+                className="inline-flex items-center gap-3 rounded-full border border-dashed border-[var(--text-secondary)] px-5 py-4 text-sm font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--text-main)] hover:text-[var(--text-main)]"
               >
-                Let's work together
+                <span className="h-2 w-2 rounded-full bg-[#ffcc00]" />
+                Let's build something interesting
+                <span className="rounded-full border border-[var(--text-main)] bg-[#ffcc00] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-black">
+                  Let's talk
+                </span>
               </Link>
             </div>
-            
-            <div className="mt-10 border-t border-[var(--border-color)] pt-5 lg:hidden">
-              <p className="mb-4 text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">Core stack</p>
-              <div className="flex flex-wrap gap-x-5 gap-y-3">
-                {techStack.map((tech) => (
-                  <div key={tech.name} className="flex items-center gap-2">
-                    <img src={tech.icon} alt={`${tech.name} icon`} className={`h-4 w-4 object-contain ${tech.darkIcon ? "brightness-0 dark:invert" : ""}`} />
-                    <span className="text-[10px] font-medium text-[var(--text-secondary)]">{tech.shortName}</span>
-                  </div>
-                ))}
-              </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="border-b border-[var(--text-main)]/10 bg-transparent">
+        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
+          <div className="mb-12 max-w-xl">
+            <div className="mb-5 flex items-center gap-4">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+                About
+              </span>
+              <span className="h-[2px] flex-1 bg-[var(--text-secondary)]/30" />
             </div>
+
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+              Hi there!
+            </h2>
           </div>
 
-          <aside className="order-3 mt-10 lg:mt-0">
-           
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            <div className="relative mx-auto w-full max-w-[460px] lg:mx-0">
 
-            <div className="mt-8">
-              <div className="mb-4 flex items-center justify-between">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">What I build</p>
-                <span className="text-[9px] tracking-[0.15em] text-[var(--text-secondary)]">03</span>
+              <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-[var(--text-main)]" />
+
+              <img
+                src={yousufImg}
+                alt="Yousuf Khan"
+                className="relative aspect-[4/5] w-full rounded-2xl border-2 border-[var(--text-main)] object-cover object-center"
+              />
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-medium leading-[1.4] tracking-tight sm:text-3xl lg:text-[2.5rem]">
+                I build full-stack applications, explore AI engineering, and enjoy turning interesting ideas into real products.
+              </h3>
+
+              <div className="mt-8 space-y-5 text-base leading-8 text-[var(--text-secondary)] sm:text-lg">
+                <p>
+                  I'm a BCA student and full-stack developer interested in building applications that solve real problems. I enjoy working across the frontend and backend, from designing interfaces to building APIs and managing databases.
+                </p>
+
+                <p>
+                  Lately, I've also been exploring AI engineering, including LLMs, RAG pipelines, AI agents, and integrating intelligent features into web applications.
+                </p>
+
+                <p>
+                  I believe in learning by building. I like experimenting with new technologies, solving problems, breaking things, and understanding how they work under the hood.
+                </p>
               </div>
-              <div className="border-t border-[var(--border-color)]">
-                {workHighlights.map((item) => (
-                  <div key={item.number} className="group flex items-center justify-between border-b border-[var(--border-color)] py-3.5">
-                    <div className="flex items-center gap-3">
-                      <span className="text-[9px] font-medium text-[var(--text-secondary)]">{item.number}</span>
-                      <div>
-                        <p className="text-xs font-semibold">{item.title}</p>
-                        <p className="mt-0.5 text-[9px] text-[var(--text-secondary)]">{item.description}</p>
-                      </div>
-                    </div>
-                    <span className="text-xs text-[var(--text-secondary)] transition-transform duration-200 group-hover:translate-x-1">→</span>
-                  </div>
+
+              <div className="mt-9 flex flex-wrap items-center gap-5">
+                {socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    title={social.name}
+                    className="text-2xl text-[var(--text-secondary)] transition-all duration-200 hover:-translate-y-1 hover:text-[var(--text-main)]"
+                  >
+                    {social.icon}
+                  </a>
                 ))}
               </div>
-            </div>
-          </aside>
-        </div>
 
-        <div className=" border-t border-[var(--border-color)] py-5 lg:block">
-          <div className="grid grid-cols-[0.7fr_2fr_0.7fr] items-center gap-8">
-            <div className="flex items-center gap-3">
-              <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--text-secondary)]">Technologies</span>
-              <span className="h-px w-8 bg-[var(--border-color)]" />
+              <Link
+                to="/contact"
+                className="mt-9 inline-flex items-center gap-3 border-b-2 border-[#e6bd00] pb-2 text-sm font-bold text-[var(--text-main)] transition-all hover:gap-5"
+              >
+                Get in touch <span>→</span>
+              </Link>
+
             </div>
-            <div className="flex items-center justify-center gap-7 xl:gap-10">
-              {techStack.map((tech) => (
-                <div key={tech.name} className="group flex items-center gap-2.5">
-                  <div className="flex h-7 w-7 items-center justify-center">
-                    <img src={tech.icon} alt={`${tech.name} icon`} className={`h-5 w-5 object-contain opacity-70 transition-all duration-200 group-hover:scale-110 group-hover:opacity-100 ${tech.darkIcon ? "brightness-0 dark:invert" : ""}`} />
-                  </div>
-                  <span className="text-[10px] font-medium text-[var(--text-secondary)] transition-colors group-hover:text-[var(--text-main)]">{tech.name}</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Stack */}
+
+      <section className="overflow-hidden bg-transparent py-12">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+
+          <div className="mb-10 flex items-center gap-4">
+            <h2 className="shrink-0 text-3xl font-bold tracking-tight sm:text-4xl">
+              Tech Stack
+            </h2>
+            <span className="h-[2px] flex-1 bg-[var(--text-secondary)]/30" />
+          </div>
+
+          <div className="group relative overflow-hidden">
+            <div className="flex w-max animate-marquee-right group-hover:[animation-play-state:paused]">
+
+              {[0, 1].map((copy) => (
+                <div
+                  key={copy}
+                  className="flex shrink-0 items-center gap-12 pr-12 sm:gap-16 sm:pr-16"
+                  aria-hidden={copy === 1}
+                >
+                  {techStack.map((tech) => (
+                    <div
+                      key={`${copy}-${tech.name}`}
+                      className="flex shrink-0 items-center gap-3"
+                    >
+                      <img
+                        src={tech.src}
+                        alt=""
+                        aria-hidden="true"
+                        className="h-8 w-8 object-contain"
+                      />
+
+                      <span className="whitespace-nowrap text-sm font-medium text-[var(--text-main)]">
+                        {tech.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               ))}
-            </div>
-            <div className="flex items-center justify-end gap-3">
-              <span className="text-[9px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">PERN Stack</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            </div>
-          </div>
-        </div>
 
-        <footer className="flex flex-col gap-4 border-t border-[var(--border-color)] py-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-1">
-            <span className="mr-3 text-[9px] font-semibold uppercase tracking-[0.18em] text-[var(--text-secondary)]">Connect</span>
-            {socials.map((social) => (
-              <a key={social.name} href={social.url} target="_blank" rel="noreferrer" aria-label={social.name} className="flex h-8 w-8 items-center justify-center rounded-full text-[var(--text-secondary)] transition-all duration-200 hover:bg-[var(--bg-card)] hover:text-[var(--text-main)]">
-                <span className="text-sm">{social.icon}</span>
-              </a>
-            ))}
+            </div>
           </div>
-          <div className="flex items-center justify-between gap-5 text-[9px] uppercase tracking-[0.16em] text-[var(--text-secondary)] sm:justify-end">
-            <span>Designed & built by Yousuf</span>
-            <span className="hidden h-1 w-1 rounded-full bg-[var(--text-secondary)] sm:block" />
-            <span>Scroll ↓</span>
-          </div>
-        </footer>
+
+        </div>
       </section>
+
 
     </main>
   );
