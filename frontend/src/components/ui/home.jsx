@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   FaLinkedin,
   FaGithub,
@@ -8,8 +8,15 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 import yousufImg from "../../assets/photos/hero.jpeg";
+import { FallingLeaves } from "falling-leaves/react";
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 function Home() {
+  const profileImageRef = useRef(null);
+
   const techStack = [
     { name: "React", src: "/svg/React.svg" },
     { name: "Node.js", src: "/svg/Node.js.svg" },
@@ -19,6 +26,36 @@ function Home() {
   ];
 
   const location = useLocation();
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        profileImageRef.current,
+        {
+          x: -120,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 3,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: profileImageRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Keep your socials array and remaining code here.
+
 
   const socials = [
     {
@@ -44,6 +81,8 @@ function Home() {
   ];
 
   return (
+    <>
+    <FallingLeaves fullscreen shape="maple" />
     <main
       className={`bg-[var(--bg-main)] text-[var(--text-main)] transition-colors duration-300 ${
         location.pathname === "/" ? "pt-0" : "pt-10"
@@ -124,15 +163,18 @@ function Home() {
           </div>
 
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-            <div className="relative mx-auto w-full max-w-[460px] lg:mx-0">
-              <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-[var(--text-main)]" />
+              <div
+                ref={profileImageRef}
+                className="relative mx-auto w-full max-w-[460px] lg:mx-0"
+              >
+                <div className="absolute inset-0 translate-x-2 translate-y-2 rounded-2xl bg-[var(--text-main)]" />
 
-              <img
-                src={yousufImg}
-                alt="Yousuf Khan"
-                className="relative aspect-[4/5] w-full rounded-2xl border-2 border-[var(--text-main)] object-cover object-center"
-              />
-            </div>
+                <img
+                  src={yousufImg}
+                  alt="Yousuf Khan"
+                  className="relative aspect-[4/5] w-full rounded-2xl border-2 border-[var(--text-main)] object-cover object-center"
+                />
+              </div>
 
             <div>
               <h3 className="text-2xl font-medium leading-[1.4] tracking-tight sm:text-3xl lg:text-[2.5rem]">
@@ -221,6 +263,7 @@ function Home() {
         </div>
       </section>
     </main>
+    </>
   );
 }
 

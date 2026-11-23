@@ -1,8 +1,11 @@
 
 import React from "react";
 import profileImg from "../assets/photos/yousufimg2.jpeg";
+import { FallingLeaves } from "falling-leaves/react"; 
+
 
 function AboutPage() {
+  
   const facts = [
     { label: "Location", value: "Bengaluru, India" },
     { label: "Education", value: "BCA Student" },
@@ -77,6 +80,9 @@ function AboutPage() {
   ];
 
   return (
+  <>
+    <FallingLeaves fullscreen shape="maple" />
+
     <main className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
       <section className="mx-auto max-w-7xl px-5 pb-20 sm:px-8 lg:px-10">
         {/* Hero */}
@@ -354,6 +360,7 @@ function AboutPage() {
         </section>
       </section>
     </main>
+    </>
   );
 }
 

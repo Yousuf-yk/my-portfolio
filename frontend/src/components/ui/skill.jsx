@@ -1,8 +1,15 @@
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import catvid from "../../assets/videos/meow.mp4";
 
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 function Skills() {
+  const profileImageRef = useRef(null);
+
   const categories = [
     {
       title: "Frontend",
@@ -62,6 +69,31 @@ function Skills() {
     </div>
   );
 
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        profileImageRef.current,
+        {
+          x: -120,
+          opacity: 0,
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: profileImageRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="skills"
@@ -83,7 +115,12 @@ function Skills() {
         </div>
 
         <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-[1.15fr_0.85fr] md:gap-5 lg:gap-7">
-          <div className="order-1 min-w-0 md:order-2">
+
+          {/* Cat Video */}
+          <div
+            ref={profileImageRef}
+            className="relative mx-auto w-full max-w-[460px] lg:mx-0"
+          >
             <div className="relative overflow-hidden rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
               <video
                 src={catvid}
@@ -99,6 +136,7 @@ function Skills() {
                 <p className="text-sm font-semibold text-white">
                   Powered by coffee ☕
                 </p>
+
                 <p className="mt-1 text-xs text-white/75">
                   Debugging one nap at a time.
                 </p>
@@ -106,6 +144,7 @@ function Skills() {
             </div>
           </div>
 
+          {/* Skills */}
           <div className="order-2 min-w-0 md:order-1">
             <div className="overflow-hidden rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)]">
               {categories.map((category, index) => (
@@ -129,6 +168,7 @@ function Skills() {
                 </div>
               ))}
 
+              {/* Currently Learning */}
               <div className="grid grid-cols-[76px_minmax(0,1fr)] items-start gap-2 border-t border-dashed border-[#B86F53]/40 bg-[#B86F53]/[0.04] px-2.5 py-3 sm:grid-cols-[100px_minmax(0,1fr)] sm:gap-3 sm:px-4">
                 <h3 className="pt-1 text-xs font-semibold text-[#B86F53] sm:text-sm">
                   Learning
@@ -146,6 +186,7 @@ function Skills() {
               Build · Ship · Learn
             </p>
           </div>
+
         </div>
       </div>
     </section>
