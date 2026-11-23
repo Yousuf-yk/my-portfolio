@@ -1,7 +1,8 @@
 
 import plutoimage from '../assets/photos/pluto.png';
 import textogram from '../assets/photos/textogram.png';
-import weatherApp from '../assets/photos/weatherapp.png';
+
+import weatherApp from '../assets/photos/weatherApp.png';
 import pyTools from '../assets/photos/pytools.png';
 export const projects = [
   {
